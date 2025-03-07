@@ -275,6 +275,7 @@ section {
             color: rgb(252, 252, 252);
             text-align: center;
             background-color: rgba(0, 0, 0, 0.6);
+	    margin-left:2%;
             animation: myfirstclass 2s ease 0s 1 normal forwards;
             }
             
