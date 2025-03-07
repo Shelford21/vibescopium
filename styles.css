@@ -10,6 +10,10 @@ section {
 header{
 	display: none ;
 }
+
+footer{
+display:none;
+}
 div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button:focus{
 	border-color: rgb(238, 255, 0);
     	color : rgb(255, 230, 0);
