@@ -7,7 +7,9 @@ section {
     display: none !important;
 }
 
-
+div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button{
+	border-color: rgb(238, 255, 0);
+}
 
 
 /* Make the dataframe container wider */
