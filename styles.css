@@ -7,10 +7,17 @@ section {
     display: none !important;
 }
 
-div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button{
+header{
+	display: none ;
+}
+div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button:focus{
 	border-color: rgb(238, 255, 0);
+    	color : rgb(255, 230, 0);
 }
 
+div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button:hover{
+	border-color: rgb(238, 255, 0);
+}
 
 /* Make the dataframe container wider */
 .stDataFrameContainer {
