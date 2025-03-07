@@ -52,6 +52,7 @@ if 'word_listnegative' not in st.session_state:
     st.session_state['word_listnegative'] = None
     
     
+st.set_page_config(layout="wide")
 
 nltk.download('punkt')
 nltk.download('stopwords')
