@@ -78,7 +78,7 @@ page_bg_img = """
 def switch_page(page):
     st.session_state["current_page"] = page
     st.session_state["show_tweets_options"] = False
-    st.rerun()
+    st.experimental_rerun()
     
 
 def check_reviews_threshold(num_reviews):
@@ -596,7 +596,7 @@ if st.session_state["show_tweets_options"]:
     # Update current page instantly when selection changes
     if selected_tweet_page and st.session_state["current_page"] != selected_tweet_page:
         st.session_state["current_page"] = selected_tweet_page
-        st.rerun()  # Forces an instant update
+        st.experimental_rerun()  # Forces an instant update
 
 # Page content based on current selection
 if st.session_state["current_page"] == "😀 Positive":
