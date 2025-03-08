@@ -247,29 +247,30 @@ div[data-testid="stVerticalBlock"]>div>div>button:focus{
     }
   
     .transparent-container {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    text-align: center; /* Center text inside */
-    width: 100%;
-}
+        background: rgba(0,0,0,0.0);  
+        padding: 20px;
+        border-radius: 1000px;
+        text-align: center;
+        width: 100%;
+        margin: auto;
+        font-family: "Brush Script MT", monospace;
+        font-size: 10px;
+        color: gold;
+        
+    }
 
-.transparent-container > div {
-    display: flex;
-    justify-content: center; /* Ensure child div is centered */
-    width: 100%;
-}
-
-.transparent-container > div > h1 {
-    text-align: center;
-    width: 90%;
-    max-width: 1400px !important;
-    font-family: "Brush Script MT", cursive; /* 'monospace' is not suitable for Brush Script */
-    font-size: 5rem;
-    color: yellow;
-    text-shadow: 5px 5px 10px #da9f5a;
-    animation: myfirstclass 2s ease 0s 1 normal forwards;
-}
+    .transparent-container >div>h1{
+        text-align: center;
+        width: 90%;
+        max-width: 1400px !important;
+        position:relative;
+        font-family: "Brush Script MT", monospace;
+        font-size: 5rem;
+        color: yellow;
+        text-shadow: 5px 5px 10px #da9f5a;
+        animation: myfirstclass 2s ease 0s 1 normal forwards;
+        
+    }
 
 
     div[data-testid="stImage"] img {
