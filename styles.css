@@ -17,6 +17,7 @@ div[data-testid="stAppViewContainer"]{
 div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button::hover:focus:active{
 	border-color: rgb(238, 255, 0);
     	color : rgb(255, 230, 0);
+	 background-color: #000000;
 }
 
 div[data-testid="stVerticalBlock"]>div>div>button{
