@@ -21,6 +21,7 @@ div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button:focus{
 
 div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button:hover{
 	border-color: rgb(238, 255, 0);
+	
 	color : rgb(255, 230, 0);
 }
 
@@ -42,6 +43,8 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 
 div[data-testid="stVerticalBlock"]>div>div>button:hover{
    border-color: rgb(238, 255, 0);
+
+	color : rgb(255, 230, 0);
 }
 
 div[data-testid="stVerticalBlock"]>div>div>button:focus{
