@@ -7,13 +7,17 @@ section {
     display: none !important;
 }
 
+div[data-testid="stSidebar"]{
+	background-color:rgb(8, 8, 9);
+}
+
 .block-container {
     border: 0px solid #ccc; /* Optional border */
     border-radius: 8px; 
     color: rgb(252, 252, 252);
     width: 90%;
     max-width: 14000px;
-    background-color: rgba(0, 0, 0, 0.5); /* 50% transparent black */
+    background-color: rgba(0, 0, 0, 0.3); /* 50% transparent black */
 }
 
 header[data-testid="stHeader"]{
