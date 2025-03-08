@@ -1116,7 +1116,6 @@ if st.session_state["current_page"] == "🩺 Predict":
         """,
         unsafe_allow_html=True
     )
-    try:
             clean_df= st.session_state["clean_df"]
             X = clean_df['text_akhir']
             y = clean_df['polarity']
@@ -1240,16 +1239,6 @@ if st.session_state["current_page"] == "🩺 Predict":
                         st.write(f"🔹 Sentimen kalimat baru adalah **{hasil_sentimen}**.")
             # if st.session_state.hasil_sentimen:
             #     st.write(f"🔹 Sentimen kalimat baru adalah **{st.session_state.hasil_sentimen}**.")
-    except TypeError:
-             st.markdown(
-        """
-        <div class="transparent-container">
-            <h5>⚠️You have not done data scraping, please do scraping first.</h5>
-        </div>
-    
-        """,
-        unsafe_allow_html=True
-    )
     
 if st.sidebar.button("👨‍✈️ About Me"):
     switch_page("👨‍✈️ About Me")
