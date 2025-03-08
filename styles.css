@@ -340,7 +340,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     width: auto;
         position:relative;
         font-family: "Brush Script MT", monospace;
-        font-size: 10vw;
+        font-size: 5rem;
         color: yellow;
         text-shadow: 5px 5px 10px #da9f5a;
         animation: myfirstclass 2s ease 0s 1 normal forwards;
