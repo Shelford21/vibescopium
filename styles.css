@@ -7,6 +7,12 @@ section {
     display: none !important;
 }
 
+div[data-baseweb="select"]{
+width:auto !important;
+		 max-width: 90% !important;
+}
+
+
 div[data-baseweb="slider"]>div>div>div{
 background-color: #FFFFFF;
 }
