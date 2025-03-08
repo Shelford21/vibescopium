@@ -755,7 +755,22 @@ if st.session_state["current_page"] == "😀 Positive":
         ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
     
         st.pyplot(fig)
-            
+
+        st.markdown(
+            """
+            <div class="transparent-container">
+                <h5>If the most common word is "cool" 😎, this suggests that users often associate this word with positive experiences. In social media and reviews, "cool" is frequently used to describe something exciting, trendy, or enjoyable. The frequent appearance of this word means that people react enthusiastically to topics they find appealing or engaging.
+
+_
+
+Similarly, words like "great" 🎉, "love" ❤️, and "amazing" 🤩 often appear when users express enthusiasm and satisfaction. These words are common in product reviews, social media posts, and feedback where people want to share strongly positive emotions. If a dataset contains customer reviews, we might also see words like "satisfied" ✅ or "recommend" 👍 appearing at the top.
+
+If "happy" 😊 or "fun" 🎠 are frequently used, the dataset may contain tweets related to entertainment, joyful experiences, or celebrations. The presence of such words indicates that people often share positive emotions when discussing certain topics.</h5>
+            </div>
+        
+            """,
+            unsafe_allow_html=True
+        )
                 
     #             # Most Frequent Positive Words
     # st.write("### Top 20 Most Frequent Positive Words")
@@ -906,6 +921,24 @@ elif st.session_state["current_page"] == "😡 Negative":
         ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
     
         st.pyplot(fig)
+        
+        st.markdown(
+            """
+            <div class="transparent-container">
+                <h5>On the other hand, if words like "bad" 👎, "worst" 😡, or "disappointed" 😞 are among the most common, it indicates negative sentiment. Users tend to use these words when expressing frustration, dissatisfaction, or regret about an experience, product, or event.
+                
+_
+
+For instance, if "slow" 🐢 is frequently mentioned, it might be related to complaints about service delays or performance issues. If "broken" 💔 appears often, it suggests that many users are reporting defects or malfunctions.
+
+In cases where words like "scam" 🚨 or "waste" 🗑️ are dominant, the dataset could contain reviews about fraudulent activities or poor-quality experiences. These words provide insights into the pain points and common complaints users face.
+
+By analyzing both positive and negative word patterns, we gain a deeper understanding of how users perceive a given topic. The visualization allows us to identify key themes, track customer satisfaction, and even detect potential issues that need addressing.</h5>
+            </div>
+        
+            """,
+            unsafe_allow_html=True
+        )
     except Exception:
         st.write("_")
 
