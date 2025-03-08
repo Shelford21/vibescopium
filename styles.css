@@ -294,6 +294,8 @@ div[data-testid="stVerticalBlock"]>div>div>button{
    img {
         width: auto !important;
         max-width: 60% !important;
+	   position:relative !important;
+	    height: auto !important;
         border: 2px solid rgb(51, 51, 51) !important; /* Test if it's being applied */
     }
 /* Styles for Tablets (768px and below) */
