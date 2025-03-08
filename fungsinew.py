@@ -1126,13 +1126,16 @@ if st.session_state["current_page"] == "🩺 Predict":
 
             @st.cache_resource
             def preprocess_tfidf(df):
-                if "tfidf_vectorizer" not in st.session_state:
-                    st.session_state.tfidf_vectorizer = TfidfVectorizer(max_features=5000, min_df=5, max_df=0.7, ngram_range=(1,2))  # Initialize
-                    X_tfidf = st.session_state.tfidf_vectorizer.fit_transform(clean_df['text_akhir'])
+                if "tfidf_vectorizer" not in st.session_state or st.session_state.tfidf_vectorizer is None:
+                    st.session_state.tfidf_vectorizer = TfidfVectorizer(
+                        max_features=5000, min_df=5, max_df=0.7, ngram_range=(1,2)
+                    )  
+                    X_tfidf = st.session_state.tfidf_vectorizer.fit_transform(df['text_akhir'])
                 else:
-                    X_tfidf = st.session_state.tfidf_vectorizer.transform(clean_df['text_akhir'])
-                    #X_tfidf = tfidf_vectorizer.fit_transform(df['text_akhir'])
+                    X_tfidf = st.session_state.tfidf_vectorizer.transform(df['text_akhir'])
+            
                 return X_tfidf, df['polarity']
+
 
             X, y = preprocess_tfidf(clean_df)
 
