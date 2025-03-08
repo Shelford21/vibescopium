@@ -120,7 +120,6 @@ div[data-testid="stVerticalBlock"]>div>div>button{
         font-size: 2rem;
         color: gold;
         text-align: center;
-	margin-left:2%;
         animation: myfirstclass 2s ease 0s 1 normal forwards;
     }
 
@@ -332,6 +331,8 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     font-size: 2rem;
     color: yellow;
     text-align: center;
+	    
+	margin-left:2%;
     animation: myfirstclass 2s ease 0s 1 normal forwards;
     }
 
