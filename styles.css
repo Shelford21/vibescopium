@@ -7,7 +7,7 @@ section {
     display: none !important;
 }
 div[data-testid="stMarkdownContainer"] p {
-color:black;
+color:white;
 }
 
 div[data-baseweb="select"]{
