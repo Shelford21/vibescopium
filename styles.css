@@ -332,6 +332,13 @@ div[data-testid="stVerticalBlock"]>div>div>button{
          font-size: 2vw !important;/* Smaller font size ga ngaruh jims*/
         padding: 10px !important; /* Reduce padding */
     }
+
+	img{
+		width:auto !important;
+         max-width: 90% !important; 
+	padding: 20px !important;
+	margin-left:2%;
+	 text-align: center;
 	  
 }
 
@@ -407,15 +414,17 @@ div[data-testid="stVerticalBlock"]>div>div>button{
                 max-width: 90%; /* Make it responsive */
     width: auto; 
                 padding: 20px !important;
+	margin-left:2%;
+	 text-align: center;
                 position:relative;
                 /*text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.8);*/
                 font-size: 1.3rem;
                 border: 1px solid #ccc; /* Optional border */
                 border-radius: 8px; 
                 color: rgb(252, 252, 252);
-                text-align: center;
+               
                 background-color: rgba(0, 0, 0, 0.6);
-                margin-left:2%;
+                
                 }
             
 /* ----------------------------------------------
