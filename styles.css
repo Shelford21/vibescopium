@@ -7,7 +7,7 @@ section {
     display: none !important;
 }
 
-.stSlide>div>div[data-testid="stTickBar"]{
+.stSlider>div>div[data-testid="stTickBar"]{
 	display:hidden;
 }
 
