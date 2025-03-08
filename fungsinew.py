@@ -1084,8 +1084,7 @@ if st.sidebar.button("🩺 Predict"):
     switch_page("🩺 Predict")
 
 if st.session_state["current_page"] == "🩺 Predict": 
-   
-            st.markdown(
+    st.markdown(
                 """
                 <div class="transparent-container">
                     <h3>🩺 Predict</h3>
