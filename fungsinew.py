@@ -882,7 +882,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             clean_df= st.session_state["clean_df"]
             X = clean_df['text_akhir']
         except Exception:
-            st.warning("u")
+           st.warning("You have not done data scraping, please do scraping first.")
             
             y = clean_df['polarity']
             data_size = len(clean_df)
