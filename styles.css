@@ -281,11 +281,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
         background-repeat: no-repeat;
     }
 
-	 .transparent-container > div > h1{
-		max-width: 80%; 
-        	font-size: 3rem; 
-       		padding: 10px; 
-	 }
+	 
 	.transparent-container > div > h1,
 	.transparent-container > div > h2,
 	.transparent-container > div > h3,
