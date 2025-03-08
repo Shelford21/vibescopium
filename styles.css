@@ -336,8 +336,6 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 	img{
 		width:auto !important;
          max-width: 90% !important; 
-	padding: 20px !important;
-	margin-left:2%;
 	 text-align: center;
 	  
 }
