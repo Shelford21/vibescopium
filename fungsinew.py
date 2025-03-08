@@ -627,7 +627,15 @@ if st.session_state["current_page"] == "😀 Positive":
         unsafe_allow_html=True
     )
     if "clean_df" not in st.session_state or st.session_state["clean_df"] is None:
-        st.warning("You have not done data scraping, please do scraping first.")
+         st.markdown(
+        """
+        <div class="transparent-container">
+            <h5>⚠️You have not done data scraping, please do scraping first.</h5>
+        </div>
+    
+        """,
+        unsafe_allow_html=True
+    )
     else:
         clean_df = st.session_state["clean_df"]
         pd.set_option('display.max_colwidth', 100000)
@@ -766,7 +774,15 @@ elif st.session_state["current_page"] == "😡 Negative":
         unsafe_allow_html=True
     )
     if "clean_df" not in st.session_state or st.session_state["clean_df"] is None:
-        st.warning("You have not done data scraping, please do scraping first.")
+         st.markdown(
+        """
+        <div class="transparent-container">
+            <h5>⚠️You have not done data scraping, please do scraping first.</h5>
+        </div>
+    
+        """,
+        unsafe_allow_html=True
+    )
     else:
         clean_df = st.session_state["clean_df"]
         pd.set_option('display.max_colwidth', 100000)
@@ -1030,7 +1046,15 @@ if st.session_state["current_page"] == "🩻 Evaluation":
         
             
     except Exception:
-        st.warning("You have not done data scraping, please do scraping first.")
+         st.markdown(
+        """
+        <div class="transparent-container">
+            <h5>⚠️You have not done data scraping, please do scraping first.</h5>
+        </div>
+    
+        """,
+        unsafe_allow_html=True
+    )
     
 if st.sidebar.button("🩺 Predict"):
     switch_page("🩺 Predict")
@@ -1162,7 +1186,15 @@ if st.session_state["current_page"] == "🩺 Predict":
             # if st.session_state.hasil_sentimen:
             #     st.write(f"🔹 Sentimen kalimat baru adalah **{st.session_state.hasil_sentimen}**.")
     except TypeError:
-            st.warning("You have not done data scraping, please do scraping first.")
+             st.markdown(
+        """
+        <div class="transparent-container">
+            <h5>⚠️You have not done data scraping, please do scraping first.</h5>
+        </div>
+    
+        """,
+        unsafe_allow_html=True
+    )
     
 if st.sidebar.button("👨‍✈️ About Me"):
     switch_page("👨‍✈️ About Me")
