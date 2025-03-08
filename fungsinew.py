@@ -303,7 +303,16 @@ if st.session_state["current_page"] == "DataFrames":
                 mime="text/csv"
             )
         else:
-            st.warning("You have not done data scraping, please do scraping first.")
+            st.markdown(
+        """
+        <div class="transparent-container">
+            <h4>⚠️You have not done data scraping, please do scraping first.</h4>
+        </div>
+    
+        """,
+        unsafe_allow_html=True
+    )
+            
     
                 
           
