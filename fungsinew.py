@@ -1000,7 +1000,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             # Create a container
             
                 
-                evaluation_data = {
+            evaluation_data = {
                 "Metric": ["Accuracy", "Precision", "Recall", "F1 Score"],
                 "Training Score": [acc_train_lr, prec_train_lr, rec_train_lr, f1_train_lr],
                 "Testing Score": [acc_test_lr, prec_test_lr, rec_test_lr, f1_test_lr]
