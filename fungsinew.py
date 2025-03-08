@@ -161,14 +161,14 @@ So, get started, analyze app sentiments, and make informed decisions with VibeSc
         unsafe_allow_html=True
     )
     
-if st.sidebar.button("🔍 Input App ID"):
+if st.sidebar.button("💡 Input App ID"):
     switch_page("Input App ID")
 
 if st.session_state["current_page"] == "Input App ID":  
     st.markdown(
         """
         <div class="transparent-container">
-            <h3>🔍 Start Scraping!</h3>
+            <h3>💡 Start Scraping!</h3>
         </div>
     
         """,
