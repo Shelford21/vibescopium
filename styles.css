@@ -271,6 +271,18 @@ div[data-testid="stVerticalBlock"]>div>div>button:focus{
         animation: myfirstclass 2s ease 0s 1 normal forwards;
         
     }
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .transparent-container > div > h1 {
+        font-size: 3rem; /* Reduce size for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .transparent-container > div > h1 {
+        font-size: 2rem; /* Even smaller for very small phones */
+    }
+}
 
 
     div[data-testid="stImage"] img {
