@@ -705,6 +705,7 @@ if st.session_state["current_page"] == "😀 Positive":
             st.error("Clean dataset is missing. Please run preprocessing first.")
     except Exception:
         st.write("_")
+try:
     #st.write("### Most Frequent Words")
     positive_tweets = st.session_state.get("positive_tweets")
     vectorizer = TfidfVectorizer()
@@ -766,7 +767,9 @@ if st.session_state["current_page"] == "😀 Positive":
     # sns.barplot(x='frequency', y='word', data=df_top_words, palette='Greens_r', ax=ax)
     # ax.set_title('Top 20 Most Frequent Positive Words')
     # st.pyplot(fig)
-
+except Exception:
+        st.write("_")
+    
 elif st.session_state["current_page"] == "😡 Negative":
     st.markdown(
         """
