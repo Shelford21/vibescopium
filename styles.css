@@ -54,6 +54,8 @@ div[data-testid="stVerticalBlock"] > div > div > button:hover,
 div[data-testid="stVerticalBlock"] > div > div > button:focus,
 div[data-testid="stVerticalBlock"] > div > div > button:active,
 div[data-testid="stVerticalBlock"] > div > div > button:focus:not(:active){
+	width:auto !important;
+		 max-width: 90% !important;
     border-color: rgb(238, 255, 0);
     color: rgb(255, 230, 0);
     background-color: #000000;
@@ -61,8 +63,6 @@ div[data-testid="stVerticalBlock"] > div > div > button:focus:not(:active){
 
 
 div[data-testid="stVerticalBlock"]>div>div>button{
-	width:auto !important;
-		 max-width: 90% !important;
     display: flex;
     flex-direction: row;
     -moz-box-align: center;
