@@ -8,7 +8,7 @@ section {
 }
 
 .stSlider>div>div[data-testid="stTickBar"]{
-	display:hidden;
+	display:none;
 }
 
 div[data-testid="stAppViewContainer"]> section[data-testid="stSidebar"]{
