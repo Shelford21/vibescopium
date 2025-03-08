@@ -288,7 +288,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 	.transparent-container > div > h5,
 	.transparent-container > div > h4{
          max-width: 80%; /* Reduce width */
-         font-size: 8vw; /* Smaller font size */
+         font-size: 3rem; /* Smaller font size */
         padding: 10px; /* Reduce padding */
     }
 	  .transparent-container {
@@ -340,7 +340,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     width: auto;
         position:relative;
         font-family: "Brush Script MT", monospace;
-        font-size: 5rem;
+        font-size: 5vw;
         color: yellow;
         text-shadow: 5px 5px 10px #da9f5a;
         animation: myfirstclass 2s ease 0s 1 normal forwards;
