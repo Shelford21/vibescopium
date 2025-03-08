@@ -705,56 +705,56 @@ if st.session_state["current_page"] == "😀 Positive":
             st.error("Clean dataset is missing. Please run preprocessing first.")
     except Exception:
         st.write("_")
-try:
-    #st.write("### Most Frequent Words")
-    positive_tweets = st.session_state.get("positive_tweets")
-    vectorizer = TfidfVectorizer()
-    X = vectorizer.fit_transform(clean_df['text_akhir'])  # Sparse matrix
-    word_sums = np.array(X.sum(axis=0)).flatten()
-    tfidf_df = pd.DataFrame({'index': vectorizer.get_feature_names_out(), 'jumlah': word_sums})
-    tfidf_df = tfidf_df.sort_values('jumlah', ascending=False).head(20)
-    fig, ax = plt.subplots(figsize=(12, 6))
-    # sns.barplot(x='jumlah', y='index', data=tfidf_df, ax=ax)
-    # ax.set_title('Most Frequent Words')
-    # st.pyplot(fig)
-                # Set background color to black
-    fig.patch.set_facecolor('black')
-    ax.set_facecolor('black')
-    word_listpositive = st.session_state.get("word_listpositive")
-    #word_listpositive = ' '.join(word for tweet in positive_tweets['text_stopword'] for word in tweet).split()
-
-                
-    word_counts = Counter(word_listpositive)
-    top_words = word_counts.most_common(20)
-    df_top_words = pd.DataFrame(top_words, columns=['word', 'frequency'])
-
-    fig, ax = plt.subplots(figsize=(12, 6))
-
-                # Set background color to black
-    fig.patch.set_facecolor('black')
+    try:
+        #st.write("### Most Frequent Words")
+        positive_tweets = st.session_state.get("positive_tweets")
+        vectorizer = TfidfVectorizer()
+        X = vectorizer.fit_transform(clean_df['text_akhir'])  # Sparse matrix
+        word_sums = np.array(X.sum(axis=0)).flatten()
+        tfidf_df = pd.DataFrame({'index': vectorizer.get_feature_names_out(), 'jumlah': word_sums})
+        tfidf_df = tfidf_df.sort_values('jumlah', ascending=False).head(20)
+        fig, ax = plt.subplots(figsize=(12, 6))
+        # sns.barplot(x='jumlah', y='index', data=tfidf_df, ax=ax)
+        # ax.set_title('Most Frequent Words')
+        # st.pyplot(fig)
+                    # Set background color to black
+        fig.patch.set_facecolor('black')
+        ax.set_facecolor('black')
+        word_listpositive = st.session_state.get("word_listpositive")
+        #word_listpositive = ' '.join(word for tweet in positive_tweets['text_stopword'] for word in tweet).split()
     
-                # Seaborn barplot
-    sns.barplot(x='frequency', y='word', data=df_top_words, palette='Greens_r', ax=ax)
-
-                # Apply a glow effect on the borders
-    for spine in ax.spines.values():
-        spine.set_edgecolor("#00008B")  # Green neon effect
-        spine.set_linewidth(1)  # Thicker border for glow
-        spine.set_alpha(0.7)  # Semi-transparent for glow effect
-
-                # Title and labels
-    ax.set_title('Top 20 Most Frequent Positive Words', fontsize=16, color="white", weight="bold")
-    ax.set_xlabel("Frequency", fontsize=14, color="white")
-    ax.set_ylabel("Words", fontsize=14, color="white")
-
-                # Change ticks color
-    ax.tick_params(axis='x', colors='white')
-    ax.tick_params(axis='y', colors='white')
-
-                # Apply a glowing effect to grid lines (optional)
-    ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
-
-    st.pyplot(fig)
+                    
+        word_counts = Counter(word_listpositive)
+        top_words = word_counts.most_common(20)
+        df_top_words = pd.DataFrame(top_words, columns=['word', 'frequency'])
+    
+        fig, ax = plt.subplots(figsize=(12, 6))
+    
+                    # Set background color to black
+        fig.patch.set_facecolor('black')
+        
+                    # Seaborn barplot
+        sns.barplot(x='frequency', y='word', data=df_top_words, palette='Greens_r', ax=ax)
+    
+                    # Apply a glow effect on the borders
+        for spine in ax.spines.values():
+            spine.set_edgecolor("#00008B")  # Green neon effect
+            spine.set_linewidth(1)  # Thicker border for glow
+            spine.set_alpha(0.7)  # Semi-transparent for glow effect
+    
+                    # Title and labels
+        ax.set_title('Top 20 Most Frequent Positive Words', fontsize=16, color="white", weight="bold")
+        ax.set_xlabel("Frequency", fontsize=14, color="white")
+        ax.set_ylabel("Words", fontsize=14, color="white")
+    
+                    # Change ticks color
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white')
+    
+                    # Apply a glowing effect to grid lines (optional)
+        ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
+    
+        st.pyplot(fig)
             
                 
     #             # Most Frequent Positive Words
@@ -767,8 +767,8 @@ try:
     # sns.barplot(x='frequency', y='word', data=df_top_words, palette='Greens_r', ax=ax)
     # ax.set_title('Top 20 Most Frequent Positive Words')
     # st.pyplot(fig)
-except Exception:
-        st.write("_")
+    except Exception:
+            st.write("_")
     
 elif st.session_state["current_page"] == "😡 Negative":
     st.markdown(
