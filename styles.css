@@ -288,7 +288,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 	.transparent-container > div > h5,
 	.transparent-container > div > h4{
          max-width: 80%; /* Reduce width */
-         font-size: 3vw !important;/* Smaller font size ga ngaruh jims*/
+         font-size: 6vw !important;/* Smaller font size ga ngaruh jims*/
         padding: 10px; /* Reduce padding */
     }
 	  .transparent-container {
@@ -299,33 +299,6 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     }
 }
 
-/* Styles for Mobile Phones (480px and below) */
-@media only screen and (max-width: 480px) {
-    div[data-testid="stAppViewContainer"] {
-        background: url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=2093&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-	.transparent-container > div > h1{
-		font-size: 3vw !important;
-	}
-	.transparent-container > div > h2,
-	.transparent-container > div > h3,
-	.transparent-container > div > h5,
-	.transparent-container > div > h4{
-         max-width: 80%; /* Reduce width */
-           /* Smaller font size ga ngaruh jims*/
-        padding: 10px; /* Reduce padding */
-    }
-	  .transparent-container {
-		   max-width: 90%; 
-       padding: 10px !important;  
-    font-size: 8px !important;  
-    border-radius: 500px !important;
-    }
-}
 
 
 }
@@ -359,7 +332,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     width: auto;
         position:relative;
         font-family: "Brush Script MT", monospace;
-        font-size: 5vw;
+        font-size: 5rem;
         color: yellow;
         text-shadow: 5px 5px 10px #da9f5a;
         animation: myfirstclass 2s ease 0s 1 normal forwards;
