@@ -6,6 +6,9 @@ section {
 .withScreencast > div > header[data-testid="stHeader"] {
     display: none !important;
 }
+div[data-testid="stMarkdownContainer"] p {
+color:black;
+}
 
 div[data-baseweb="select"]{
 width:auto !important;
