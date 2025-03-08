@@ -1107,15 +1107,15 @@ if st.sidebar.button("🩺 Predict"):
     switch_page("🩺 Predict")
 
 if st.session_state["current_page"] == "🩺 Predict": 
-    st.markdown(
-        """
-        <div class="transparent-container">
-            <h3>🩺 Predict</h3>
-        </div>
-    
-        """,
-        unsafe_allow_html=True
-    )
+            st.markdown(
+                """
+                <div class="transparent-container">
+                    <h3>🩺 Predict</h3>
+                </div>
+            
+                """,
+                unsafe_allow_html=True
+            )
             clean_df= st.session_state["clean_df"]
             X = clean_df['text_akhir']
             y = clean_df['polarity']
