@@ -279,7 +279,9 @@ div[data-testid="stVerticalBlock"]>div>div>button:focus{
         background-repeat: no-repeat;
     }
 
-	 .transparent-container > div > h1 {
+	 .transparent-container > div > h1,
+	.transparent-container > div > h2,
+	.transparent-container > div > h4{
         font-size: 3.5rem; /* Adjust as needed */
     }
 }
