@@ -1084,28 +1084,28 @@ if st.sidebar.button("🩺 Predict"):
     switch_page("🩺 Predict")
 
 if st.session_state["current_page"] == "🩺 Predict": 
-    st.markdown(
+            st.markdown(
+                        """
+                        <div class="transparent-container">
+                            <h3>🩺 Predict</h3>
+                        </div>
+                    
+                        """,
+                        unsafe_allow_html=True
+                    )
+            try:
+                    clean_df= st.session_state["clean_df"]
+                    X = clean_df['text_akhir']
+            except Exception:
+                st.markdown(
                 """
                 <div class="transparent-container">
-                    <h3>🩺 Predict</h3>
+                    <h5>⚠️You have not done data scraping, please do scraping first.</h5>
                 </div>
             
                 """,
                 unsafe_allow_html=True
             )
-    try:
-            clean_df= st.session_state["clean_df"]
-            X = clean_df['text_akhir']
-    except Exception:
-        st.markdown(
-        """
-        <div class="transparent-container">
-            <h5>⚠️You have not done data scraping, please do scraping first.</h5>
-        </div>
-    
-        """,
-        unsafe_allow_html=True
-    )
             y = clean_df['polarity']
             data_size = len(clean_df)
                 
