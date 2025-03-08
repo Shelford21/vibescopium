@@ -20,7 +20,7 @@ div[data-testid="stHorizontalBlock"] > div > div > div > div > div > button:acti
 div[data-testid="stHorizontalBlock"] > div > div > div > div > div > button:focus:not(:active){
     border-color: rgb(238, 255, 0);
     color: rgb(255, 230, 0);
-    background-color: #000000;
+    background-color: rgba(77, 75, 69, 0.692);
 }
 
 div[data-testid="stVerticalBlock"] > div > div > button:hover,
@@ -29,7 +29,7 @@ div[data-testid="stVerticalBlock"] > div > div > button:active,
 div[data-testid="stVerticalBlock"] > div > div > button:focus:not(:active){
     border-color: rgb(238, 255, 0);
     color: rgb(255, 230, 0);
-    background-color: #000000;
+    background-color: rgba(77, 75, 69, 0.692);
 }
 
 
@@ -41,7 +41,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     line-height: 2;
-    background-color: rgba(77, 75, 69, 0.692);
+    background-color: #000000;
     color : rgb(240, 239, 236);
     gap: 0.5rem;
     border-radius: 0.25rem;
@@ -148,7 +148,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     line-height: 2;
-    background-color: rgba(77, 75, 69, 0.692);
+    background-color: #000000;
     color : rgb(240, 239, 236);
     gap: 0.5rem;
     border-radius: 0.25rem;
