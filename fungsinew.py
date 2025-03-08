@@ -302,31 +302,31 @@ if st.session_state["current_page"] == "DataFrames":
     
                 
           
-    reviews = st.session_state['reviews']        
-    app_reviews_df = pd.DataFrame(reviews)
-    st.session_state["app_reviews_df"] = app_reviews_df
-
-            # st.write("Dataset Shape:", app_reviews_df.shape)
-            # st.write("Sample Data:")
-            # st.write(app_reviews_df.head())
-
-            #app_reviews_df.to_csv('ulasan_aplikasi.csv', index=False)
-
-            # Fill missing values
-    placeholder_date = pd.to_datetime("1900-01-01")
-    app_reviews_df['repliedAt'] = app_reviews_df['repliedAt'].fillna(placeholder_date)
-    app_reviews_df['replyContent'] = app_reviews_df['replyContent'].fillna("No reply")
-    app_reviews_df['reviewCreatedVersion'] = app_reviews_df['reviewCreatedVersion'].fillna("1.1")
-    app_reviews_df['appVersion'] = app_reviews_df['appVersion'].fillna("1.1")
-
-            # Clean data
-    clean_df = app_reviews_df.dropna().drop_duplicates()
-    st.session_state["clean_df"] = clean_df  # Store cleaned dataset in session state
-
-            #st.write("Cleaned Dataset Shape:", clean_df.shape)
-            #st.write(clean_df.head())  # Show sample cleaned data
-
-            #clean_df.info()
+        reviews = st.session_state['reviews']        
+        app_reviews_df = pd.DataFrame(reviews)
+        st.session_state["app_reviews_df"] = app_reviews_df
+    
+                # st.write("Dataset Shape:", app_reviews_df.shape)
+                # st.write("Sample Data:")
+                # st.write(app_reviews_df.head())
+    
+                #app_reviews_df.to_csv('ulasan_aplikasi.csv', index=False)
+    
+                # Fill missing values
+        placeholder_date = pd.to_datetime("1900-01-01")
+        app_reviews_df['repliedAt'] = app_reviews_df['repliedAt'].fillna(placeholder_date)
+        app_reviews_df['replyContent'] = app_reviews_df['replyContent'].fillna("No reply")
+        app_reviews_df['reviewCreatedVersion'] = app_reviews_df['reviewCreatedVersion'].fillna("1.1")
+        app_reviews_df['appVersion'] = app_reviews_df['appVersion'].fillna("1.1")
+    
+                # Clean data
+        clean_df = app_reviews_df.dropna().drop_duplicates()
+        st.session_state["clean_df"] = clean_df  # Store cleaned dataset in session state
+    
+                #st.write("Cleaned Dataset Shape:", clean_df.shape)
+                #st.write(clean_df.head())  # Show sample cleaned data
+    
+                #clean_df.info()
     except KeyError:
         st.warning("You have not done data scraping, please do scraping first.")
 
