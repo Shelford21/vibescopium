@@ -674,36 +674,37 @@ if st.session_state["current_page"] == "😀 Positive":
 
         st.pyplot(fig)
 
-
-    # Ensure dataset is available
-    if "clean_df" in st.session_state:
-        clean_df = st.session_state["clean_df"]
-
-        if "polarity" in clean_df.columns and "text_stopword" in clean_df.columns:
+    try:
+        # Ensure dataset is available
+        if "clean_df" in st.session_state:
+            clean_df = st.session_state["clean_df"]
+    
+            if "polarity" in clean_df.columns and "text_stopword" in clean_df.columns:
+                        
+                # Generate word clouds only once
+                if "wordcloud_neg" not in st.session_state or "wordcloud_pos" not in st.session_state:
+    
                     
-            # Generate word clouds only once
-            if "wordcloud_neg" not in st.session_state or "wordcloud_pos" not in st.session_state:
-
-                
-                positive_tweets = clean_df[clean_df['polarity'] == 'positive']['text_stopword']
-                word_listpositive = ' '.join(word for tweet in positive_tweets for word in tweet).split()
-                st.session_state["word_listpositive"] = word_listpositive.copy()
-                if not positive_tweets.empty:
-                    st.session_state["wordcloud_pos"] = generate_wordcloud(positive_tweets)
+                    positive_tweets = clean_df[clean_df['polarity'] == 'positive']['text_stopword']
+                    word_listpositive = ' '.join(word for tweet in positive_tweets for word in tweet).split()
+                    st.session_state["word_listpositive"] = word_listpositive.copy()
+                    if not positive_tweets.empty:
+                        st.session_state["wordcloud_pos"] = generate_wordcloud(positive_tweets)
+                    else:
+                        st.session_state["wordcloud_pos"] = None
+    
+                # Display WordCloud for Positive Tweets (No Title, Smaller)
+                if st.session_state["wordcloud_pos"] is not None:
+                    display_glowing_wordcloud(st.session_state["wordcloud_pos"])
                 else:
-                    st.session_state["wordcloud_pos"] = None
-
-            # Display WordCloud for Positive Tweets (No Title, Smaller)
-            if st.session_state["wordcloud_pos"] is not None:
-                display_glowing_wordcloud(st.session_state["wordcloud_pos"])
+                    st.write("No positive tweets found.")
+    
             else:
-                st.write("No positive tweets found.")
-
+                st.error("Missing 'polarity' or 'text_stopword' column. Ensure sentiment analysis is completed first.")
         else:
-            st.error("Missing 'polarity' or 'text_stopword' column. Ensure sentiment analysis is completed first.")
-    else:
-        st.error("Clean dataset is missing. Please run preprocessing first.")
-        
+            st.error("Clean dataset is missing. Please run preprocessing first.")
+    except Exception:
+        st.write("_")
     #st.write("### Most Frequent Words")
     positive_tweets = st.session_state.get("positive_tweets")
     vectorizer = TfidfVectorizer()
