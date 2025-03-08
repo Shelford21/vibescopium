@@ -498,7 +498,7 @@ if st.session_state["current_page"] == "DataFrames":
             
 
 
-
+try:
     if "clean_df" in st.session_state:
         clean_df = st.session_state["clean_df"].copy()
 
@@ -514,7 +514,8 @@ if st.session_state["current_page"] == "DataFrames":
             st.session_state["clean_df"] = clean_df
         else:
             st.error("Column 'text_stopword' is missing. Ensure text preprocessing is completed first.")
-                
+except Exception:
+    st.write("_")
     
 # if st.sidebar.button("Word Cloud"):
 #     switch_page("Word Cloud")
