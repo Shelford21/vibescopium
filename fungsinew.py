@@ -57,7 +57,7 @@ if 'tfidf_vectorizer' not in st.session_state:
     
     
 st.set_page_config(page_title="Vibe Scopium",
-                   page_icon="🔍",
+                   page_icon="🎭",
                    layout="wide")
 
 nltk.download('punkt')
