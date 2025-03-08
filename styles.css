@@ -386,8 +386,8 @@ div[data-testid="stVerticalBlock"]>div>div>button{
             }
 
 .transparent-container >div>h5{
-                width: 1223.12px; 
-                max-width: 14000px !important;
+                max-width: 90%; /* Make it responsive */
+    width: auto; 
                 padding: 20px !important;
                 position:relative;
                 text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.8);
