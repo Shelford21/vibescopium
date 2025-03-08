@@ -23,7 +23,7 @@ div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button:hover{
 	border-color: rgb(238, 255, 0);
 }
 
-div[data-testid="stVerticalBlock"]>div>stButton>button{
+div[data-testid="stVerticalBlock"]>div>row-widget.stButton>button{
     display: flex;
     flex-direction: row;
     -moz-box-align: center;
