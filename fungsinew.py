@@ -825,86 +825,89 @@ elif st.session_state["current_page"] == "😡 Negative":
 
         st.pyplot(fig)
 
-
-    # Ensure dataset is available
-    if "clean_df" in st.session_state:
-        clean_df = st.session_state["clean_df"]
-
-        if "polarity" in clean_df.columns and "text_stopword" in clean_df.columns:
-                    
-            # Generate word clouds only once
-            if "wordcloud_neg" not in st.session_state or "wordcloud_pos" not in st.session_state:
-
-                
-                negative_tweets = clean_df[clean_df['polarity'] == 'negative']['text_stopword']
-                word_listnegative = ' '.join(word for tweet in negative_tweets for word in tweet).split()
-                st.session_state["word_listnegative"] = word_listnegative.copy()
-                if not negative_tweets.empty:
-                    st.session_state["wordcloud_pos"] = generate_wordcloud(negative_tweets)
-                else:
-                    st.session_state["wordcloud_pos"] = None
-
-            # Display WordCloud for negative Tweets (No Title, Smaller)
-            if st.session_state["wordcloud_pos"] is not None:
-                display_glowing_wordcloud(st.session_state["wordcloud_pos"])
-            else:
-                st.write("No negative tweets found.")
-
-        else:
-            st.error("Missing 'polarity' or 'text_stopword' column. Ensure sentiment analysis is completed first.")
-    else:
-        st.error("Clean dataset is missing. Please run preprocessing first.")
-        
-    #st.write("### Most Frequent Words")
-    negative_tweets = st.session_state.get("negative_tweets")
-    vectorizer = TfidfVectorizer()
-    X = vectorizer.fit_transform(clean_df['text_akhir'])  # Sparse matrix
-    word_sums = np.array(X.sum(axis=0)).flatten()
-    tfidf_df = pd.DataFrame({'index': vectorizer.get_feature_names_out(), 'jumlah': word_sums})
-    tfidf_df = tfidf_df.sort_values('jumlah', ascending=False).head(20)
-    fig, ax = plt.subplots(figsize=(12, 6))
-    # sns.barplot(x='jumlah', y='index', data=tfidf_df, ax=ax)
-    # ax.set_title('Most Frequent Words')
-    # st.pyplot(fig)
-                # Set background color to black
-    fig.patch.set_facecolor('black')
-    ax.set_facecolor('black')
-    word_listnegative = st.session_state.get("word_listnegative")
-    #word_listnegative = ' '.join(word for tweet in negative_tweets['text_stopword'] for word in tweet).split()
-
-                
-    word_counts = Counter(word_listnegative)
-    top_words = word_counts.most_common(20)
-    df_top_words = pd.DataFrame(top_words, columns=['word', 'frequency'])
-
-    fig, ax = plt.subplots(figsize=(12, 6))
-
-                # Set background color to black
-    fig.patch.set_facecolor('black')
+    try:
+        # Ensure dataset is available
+        if "clean_df" in st.session_state:
+            clean_df = st.session_state["clean_df"]
     
-                # Seaborn barplot
-    sns.barplot(x='frequency', y='word', data=df_top_words, palette='Reds_r', ax=ax)
-
-                # Apply a glow effect on the borders
-    for spine in ax.spines.values():
-        spine.set_edgecolor("#00008B")  # Green neon effect
-        spine.set_linewidth(1)  # Thicker border for glow
-        spine.set_alpha(0.7)  # Semi-transparent for glow effect
-
-                # Title and labels
-    ax.set_title('Top 20 Most Frequent Negative Words', fontsize=16, color="white", weight="bold")
-    ax.set_xlabel("Frequency", fontsize=14, color="white")
-    ax.set_ylabel("Words", fontsize=14, color="white")
-
-                # Change ticks color
-    ax.tick_params(axis='x', colors='white')
-    ax.tick_params(axis='y', colors='white')
-
-                # Apply a glowing effect to grid lines (optional)
-    ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
-
-    st.pyplot(fig)
-
+            if "polarity" in clean_df.columns and "text_stopword" in clean_df.columns:
+                        
+                # Generate word clouds only once
+                if "wordcloud_neg" not in st.session_state or "wordcloud_pos" not in st.session_state:
+    
+                    
+                    negative_tweets = clean_df[clean_df['polarity'] == 'negative']['text_stopword']
+                    word_listnegative = ' '.join(word for tweet in negative_tweets for word in tweet).split()
+                    st.session_state["word_listnegative"] = word_listnegative.copy()
+                    if not negative_tweets.empty:
+                        st.session_state["wordcloud_pos"] = generate_wordcloud(negative_tweets)
+                    else:
+                        st.session_state["wordcloud_pos"] = None
+    
+                # Display WordCloud for negative Tweets (No Title, Smaller)
+                if st.session_state["wordcloud_pos"] is not None:
+                    display_glowing_wordcloud(st.session_state["wordcloud_pos"])
+                else:
+                    st.write("No negative tweets found.")
+    
+            else:
+                st.error("Missing 'polarity' or 'text_stopword' column. Ensure sentiment analysis is completed first.")
+        else:
+            st.error("Clean dataset is missing. Please run preprocessing first.")
+    except Exception:
+            st.write("_") 
+    try:
+        #st.write("### Most Frequent Words")
+        negative_tweets = st.session_state.get("negative_tweets")
+        vectorizer = TfidfVectorizer()
+        X = vectorizer.fit_transform(clean_df['text_akhir'])  # Sparse matrix
+        word_sums = np.array(X.sum(axis=0)).flatten()
+        tfidf_df = pd.DataFrame({'index': vectorizer.get_feature_names_out(), 'jumlah': word_sums})
+        tfidf_df = tfidf_df.sort_values('jumlah', ascending=False).head(20)
+        fig, ax = plt.subplots(figsize=(12, 6))
+        # sns.barplot(x='jumlah', y='index', data=tfidf_df, ax=ax)
+        # ax.set_title('Most Frequent Words')
+        # st.pyplot(fig)
+                    # Set background color to black
+        fig.patch.set_facecolor('black')
+        ax.set_facecolor('black')
+        word_listnegative = st.session_state.get("word_listnegative")
+        #word_listnegative = ' '.join(word for tweet in negative_tweets['text_stopword'] for word in tweet).split()
+    
+                    
+        word_counts = Counter(word_listnegative)
+        top_words = word_counts.most_common(20)
+        df_top_words = pd.DataFrame(top_words, columns=['word', 'frequency'])
+    
+        fig, ax = plt.subplots(figsize=(12, 6))
+    
+                    # Set background color to black
+        fig.patch.set_facecolor('black')
+        
+                    # Seaborn barplot
+        sns.barplot(x='frequency', y='word', data=df_top_words, palette='Reds_r', ax=ax)
+    
+                    # Apply a glow effect on the borders
+        for spine in ax.spines.values():
+            spine.set_edgecolor("#00008B")  # Green neon effect
+            spine.set_linewidth(1)  # Thicker border for glow
+            spine.set_alpha(0.7)  # Semi-transparent for glow effect
+    
+                    # Title and labels
+        ax.set_title('Top 20 Most Frequent Negative Words', fontsize=16, color="white", weight="bold")
+        ax.set_xlabel("Frequency", fontsize=14, color="white")
+        ax.set_ylabel("Words", fontsize=14, color="white")
+    
+                    # Change ticks color
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white')
+    
+                    # Apply a glowing effect to grid lines (optional)
+        ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
+    
+        st.pyplot(fig)
+    except Exception:
+        st.write("_")
 
 if st.sidebar.button("🩻 Evaluation"):
     switch_page("🩻 Evaluation")
