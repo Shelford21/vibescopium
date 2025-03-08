@@ -31,9 +31,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patheffects as path_effects
 from wordcloud import WordCloud
 import streamlit as st
-st.set_page_config(
-    page_icon="🔍"  # You can also use an image URL or a file path
-)
+
 if 'app_options' not in st.session_state:
     st.session_state['app_options'] = {}
 if 'app_id' not in st.session_state:
@@ -54,7 +52,9 @@ if 'word_listnegative' not in st.session_state:
     st.session_state['word_listnegative'] = None
     
     
-st.set_page_config(layout="wide")
+st.set_page_config(page_title="Vibe Scopium",
+                   page_icon="🔍",
+                   layout="wide")
 
 nltk.download('punkt')
 nltk.download('stopwords')
