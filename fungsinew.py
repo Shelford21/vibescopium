@@ -498,24 +498,24 @@ if st.session_state["current_page"] == "DataFrames":
             
 
 
-try:
-    if "clean_df" in st.session_state:
-        clean_df = st.session_state["clean_df"].copy()
-
-        if "text_stopword" in clean_df.columns:
-            if "polarity_score" not in clean_df.columns or "polarity" not in clean_df.columns:
-                scores, polarities = sentiment_analysis_lexicon_indonesia(clean_df['text_stopword'])
-                clean_df['polarity_score'] = scores
-                clean_df['polarity'] = polarities
+    try:
+        if "clean_df" in st.session_state:
+            clean_df = st.session_state["clean_df"].copy()
+    
+            if "text_stopword" in clean_df.columns:
+                if "polarity_score" not in clean_df.columns or "polarity" not in clean_df.columns:
+                    scores, polarities = sentiment_analysis_lexicon_indonesia(clean_df['text_stopword'])
+                    clean_df['polarity_score'] = scores
+                    clean_df['polarity'] = polarities
+                    st.session_state["clean_df"] = clean_df
+    
+                #st.write(clean_df[['content', 'text_stopword', 'polarity_score', 'polarity']].head())  
+                st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword', 'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
                 st.session_state["clean_df"] = clean_df
-
-            #st.write(clean_df[['content', 'text_stopword', 'polarity_score', 'polarity']].head())  
-            st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword', 'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
-            st.session_state["clean_df"] = clean_df
-        else:
-            st.error("Column 'text_stopword' is missing. Ensure text preprocessing is completed first.")
-except Exception:
-    st.write("_")
+            else:
+                st.error("Column 'text_stopword' is missing. Ensure text preprocessing is completed first.")
+    except Exception:
+        st.write("_")
     
 # if st.sidebar.button("Word Cloud"):
 #     switch_page("Word Cloud")
