@@ -279,26 +279,6 @@ div[data-testid="stVerticalBlock"]>div>div>button:focus{
         background-repeat: no-repeat;
     }
 
-    .transparent-container >div>h1,
-    .transparent-container >div>h2,
-    .transparent-container >div>h3{
-        font-size: 24px; /* Adjust font size for tablets */
-        text-align: center;
-        color: yellow;
-        text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.8);
-    }
-
-    div[data-testid="stAppViewContainer"] button {
-        background-color: rgba(77, 75, 69, 0.9);
-        color: rgb(240, 239, 236);
-        padding: 14px;
-        font-size: 18px;
-    }
-
-    div[data-testid="stAppViewContainer"] .stDataFrameContainer {
-        width: 100% !important;
-        overflow-x: auto;
-    }
 	div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button:focus{
 	border-color: rgb(238, 255, 0);
     	color : rgb(255, 230, 0);
@@ -320,26 +300,7 @@ div[data-testid="stVerticalBlock"]>div>div>button:focus{
         background-repeat: no-repeat;
     }
 
-    div[data-testid="stAppViewContainer"] h1,
-    div[data-testid="stAppViewContainer"] h2,
-    div[data-testid="stAppViewContainer"] h3 {
-        font-size: 18px; /* Smaller text for phones */
-        text-align: center;
-        color: yellow;
-        text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.8);
-    }
 
-    div[data-testid="stAppViewContainer"] button {
-        background-color: rgba(77, 75, 69, 0.9);
-        color: rgb(240, 239, 236);
-        padding: 12px;
-        font-size: 16px;
-    }
-
-    div[data-testid="stAppViewContainer"] .stDataFrameContainer {
-        width: 100% !important;
-        overflow-x: auto;
-    }
 }
 
 
