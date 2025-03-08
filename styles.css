@@ -62,7 +62,7 @@ div[data-testid="stVerticalBlock"] > div > div > button:focus:not(:active){
 
 
 div[data-testid="stVerticalBlock"]>div>div>button{
-	animation: myAnim 1s ease 0s 1 normal forwards;
+animation: jello 1s ease 0s 1 normal forwards;
     display: flex;
     flex-direction: row;
     -moz-box-align: center;
