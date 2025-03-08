@@ -50,6 +50,10 @@ if 'word_listpositive' not in st.session_state:
     st.session_state['word_listpositive'] = None
 if 'word_listnegative' not in st.session_state:
     st.session_state['word_listnegative'] = None
+if 'word_listnegative' not in st.session_state:
+    st.session_state['word_listnegative'] = None
+if 'tfidf_vectorizer' not in st.session_state:
+    st.session_state['tfidf_vectorizer'] = None
     
     
 st.set_page_config(page_title="Vibe Scopium",
