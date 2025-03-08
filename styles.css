@@ -7,6 +7,10 @@ section {
     display: none !important;
 }
 
+div[data-baseweb="slider"]>div>div>div{
+background-color: #FFFFFF;
+}
+
 .stSlider>div>div[data-testid="stTickBar"]{
 	display:none;
 }
