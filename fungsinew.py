@@ -1246,7 +1246,7 @@ if st.session_state["current_page"] == "🩺 Predict":
                             st.write(f"😡 The sentiment of the sentences is **{hasil_sentimen}**.")
             # if st.session_state.hasil_sentimen:
             #     st.write(f"🔹 Sentimen kalimat baru adalah **{st.session_state.hasil_sentimen}**.")
-             st.markdown(
+            st.markdown(
                 """
                 <div class="transparent-container">
                     <h5>Example of positive or negative sentiment:
