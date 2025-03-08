@@ -1254,7 +1254,9 @@ if st.session_state["current_page"] == "🩺 Predict":
         _
         
         Saya suka aplikasi ini! Kualitasnya luar biasa, dan melebihi ekspektasi saya.
+        
         or
+        
         Ini adalah pengalaman terburuk yang pernah saya alami. Banyak sekali bug dan error di dalamnya!
         </h5>
                 </div>
