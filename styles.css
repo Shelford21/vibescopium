@@ -287,12 +287,12 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 	.transparent-container > div > h3,
 	.transparent-container > div > h5,
 	.transparent-container > div > h4{
-         max-width: 80%; /* Reduce width */
-         font-size: 6vw !important;/* Smaller font size ga ngaruh jims*/
-        padding: 10px; /* Reduce padding */
+         max-width: 80% !important; /* Reduce width */
+         font-size: 10vw !important;/* Smaller font size ga ngaruh jims*/
+        padding: 10px !important; /* Reduce padding */
     }
 	  .transparent-container {
-		   max-width: 90%; 
+		   max-width: 90% !important; 
        padding: 10px !important;  
     font-size: 8px !important;  
     border-radius: 500px !important;
