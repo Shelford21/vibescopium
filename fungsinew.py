@@ -1103,6 +1103,15 @@ if st.sidebar.button("🩺 Predict"):
     switch_page("🩺 Predict")
 
 if st.session_state["current_page"] == "🩺 Predict": 
+    st.markdown(
+        """
+        <div class="transparent-container">
+            <h3>🩺 Predict</h3>
+        </div>
+    
+        """,
+        unsafe_allow_html=True
+    )
     try:
             clean_df= st.session_state["clean_df"]
             X = clean_df['text_akhir']
@@ -1170,9 +1179,8 @@ if st.session_state["current_page"] == "🩺 Predict":
                 st.session_state.hasil_sentimen = None
     
                 # Sentiment Prediction
-            st.subheader("Predict Sentiment")
-            kalimat_baru = st.text_input("Masukkan kalimat baru:")
-            if st.button("jalankan prediksi"):
+            kalimat_baru = st.text_input("Insert Sentences to Predict:")
+            if st.button("Start Predictions"):
                 with st.spinner("predicting"):
                     if kalimat_baru:
                         # Preprocessing
