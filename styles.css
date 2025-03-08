@@ -292,7 +292,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 	.transparent-container > div > h5,
 	.transparent-container > div > h4{
          max-width: 80% !important; /* Reduce width */
-         font-size: 5vw !important;/* Smaller font size ga ngaruh jims*/
+         font-size: 2vw !important;/* Smaller font size ga ngaruh jims*/
         padding: 10px !important; /* Reduce padding */
     }
 	  
