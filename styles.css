@@ -23,6 +23,22 @@ div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button:hover{
 	border-color: rgb(238, 255, 0);
 }
 
+div[data-testid="stVerticalBlock"]>div>stButton>button{
+    display: flex;
+    flex-direction: row;
+    -moz-box-align: center;
+    align-items: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    line-height: 2;
+    background-color: rgba(77, 75, 69, 0.692);
+    color : rgb(240, 239, 236);
+    gap: 0.5rem;
+    border-radius: 0.25rem;
+    margin: 0.125rem 1rem;
+    width: 250px;
+}
+
 /* Make the dataframe container wider */
 .stDataFrameContainer {
     width: 100% !important;
