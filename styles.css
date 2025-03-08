@@ -7,7 +7,7 @@ section {
     display: none !important;
 }
 
-div[data-testid="stAppViewContainer"]> div[data-testid="stSidebar"]{
+div[data-testid="stAppViewContainer"]> section[data-testid="stSidebar"]{
 	background-color:rgb(8, 8, 9);
 }
 
