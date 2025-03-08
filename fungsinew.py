@@ -1246,7 +1246,22 @@ if st.session_state["current_page"] == "🩺 Predict":
                             st.write(f"😡 The sentiment of the sentences is **{hasil_sentimen}**.")
             # if st.session_state.hasil_sentimen:
             #     st.write(f"🔹 Sentimen kalimat baru adalah **{st.session_state.hasil_sentimen}**.")
+     st.markdown(
+        """
+        <div class="transparent-container">
+            <h5>Example of positive or negative sentiment:
+
+_
+
+Saya suka aplikasi ini! Kualitasnya luar biasa, dan melebihi ekspektasi saya.
+or
+Ini adalah pengalaman terburuk yang pernah saya alami. Banyak sekali bug dan error di dalamnya!
+</h5>
+        </div>
     
+        """,
+        unsafe_allow_html=True
+    )
 if st.sidebar.button("👨‍✈️ About Me"):
     switch_page("👨‍✈️ About Me")
 
