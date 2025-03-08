@@ -286,7 +286,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 	.transparent-container > div > h3{
 		 max-width: 80% !important; /* Reduce width */
          font-size: 10vw !important;/* Smaller font size ga ngaruh jims*/
-        padding: 1px !important; /* Reduce padding */
+        padding: 10px !important; /* Reduce padding */
 	}
 	.transparent-container > div > h2,
 	.transparent-container > div > h5,
@@ -295,12 +295,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
          font-size: 5vw !important;/* Smaller font size ga ngaruh jims*/
         padding: 10px !important; /* Reduce padding */
     }
-	  .transparent-container {
-		   max-width: 90% !important; 
-       padding: 10px !important;  
-    font-size: 5vw !important;  
-    border-radius: 500px !important;
-    }
+	  
 }
 
 
