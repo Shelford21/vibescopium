@@ -7,6 +7,10 @@ section {
     display: none !important;
 }
 
+.stSlide>div>div[data-testid="stTickBar"]{
+	display:hidden;
+}
+
 div[data-testid="stAppViewContainer"]> section[data-testid="stSidebar"]{
 	background-color:rgb(8, 8, 9,0.76);
 }
