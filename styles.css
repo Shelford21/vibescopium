@@ -8,7 +8,7 @@ section {
 }
 
 div[data-testid="stAppViewContainer"]> section[data-testid="stSidebar"]{
-	background-color:rgb(8, 8, 9);
+	background-color:rgb(8, 8, 9,0.76);
 }
 
 .block-container {
@@ -54,7 +54,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     line-height: 2;
-    background-color: #000000;
+    background-color: #0f0e0e;
     color : rgb(240, 239, 236);
     gap: 0.5rem;
     border-radius: 0.25rem;
@@ -141,7 +141,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         line-height: 2;
-        background-color: rgba(77, 75, 69, 0.692);
+        background-color: #0f0e0e;
         color : rgb(250, 250, 249);
         gap: 0.5rem;
         border-radius: 0.25rem;
@@ -161,7 +161,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     line-height: 2;
-    background-color: #000000;
+    background-color: #0f0e0e;
     color : rgb(240, 239, 236);
     gap: 0.5rem;
     border-radius: 0.25rem;
