@@ -7,7 +7,7 @@ section {
     display: none !important;
 }
 
-block-container {
+.block-container {
     border: 0px solid #ccc; /* Optional border */
     border-radius: 8px; 
     color: rgb(252, 252, 252);
