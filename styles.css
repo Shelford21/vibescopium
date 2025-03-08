@@ -24,6 +24,10 @@ div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button:hover{
 	
 	color : rgb(255, 230, 0);
 }
+div[data-testid="stHorizontalBlock"] > div> div> div> div> div>button:active{
+	border-color: rgb(238, 255, 0);
+    	color : rgb(255, 230, 0);
+}
 
 div[data-testid="stVerticalBlock"]>div>div>button{
     display: flex;
