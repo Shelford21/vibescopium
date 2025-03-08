@@ -273,7 +273,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
   
    
 /* Styles for Tablets (768px and below) */
-@media only screen and (max-width: 2408px) {
+@media only screen and (max-width: 768px) {
     div[data-testid="stAppViewContainer"] {
         background: url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=2093&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
         background-size: cover;
