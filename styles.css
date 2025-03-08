@@ -291,7 +291,11 @@ div[data-testid="stVerticalBlock"]>div>div>button{
         border-color: rgb(238, 255, 0); /* Change border color to blue on hover */
     }
   
-   
+   img {
+        width: auto !important;
+        max-width: 60% !important;
+        border: 2px solid rgb(51, 51, 51) !important; /* Test if it's being applied */
+    }
 /* Styles for Tablets (768px and below) */
 @media only screen and (max-width: 768px) {
     div[data-testid="stAppViewContainer"] {
@@ -330,7 +334,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 }
 
 
-    div.stImage img {
+img {
         width: auto !important;
         max-width: 60% !important;
         border: 2px solid rgb(51, 51, 51) !important; /* Test if it's being applied */
