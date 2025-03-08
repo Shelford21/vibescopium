@@ -279,9 +279,9 @@ div[data-testid="stVerticalBlock"]>div>div>button:focus{
         background-repeat: no-repeat;
     }
 
-    div[data-testid="stAppViewContainer"] h1,
-    div[data-testid="stAppViewContainer"] h2,
-    div[data-testid="stAppViewContainer"] h3 {
+    .transparent-container >div>h1,
+    .transparent-container >div>h2,
+    .transparent-container >div>h3{
         font-size: 24px; /* Adjust font size for tablets */
         text-align: center;
         color: yellow;
