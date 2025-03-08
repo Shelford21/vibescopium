@@ -872,13 +872,14 @@ if st.sidebar.button("🩻 Evaluation"):
 
 if st.session_state["current_page"] == "🩻 Evaluation": 
         # Preprocessing
-        
+        try:
             clean_df= st.session_state["clean_df"]
             X = clean_df['text_akhir']
             y = clean_df['polarity']
             data_size = len(clean_df)
                 
-               
+        except TypeError:
+            st.warning("You have not done data scraping, please do scraping first.")  
             #tfidf_vectorizer = TfidfVectorizer(max_features=10000, min_df=5, max_df=0.7, ngram_range=(1,2))
 
             @st.cache_resource
