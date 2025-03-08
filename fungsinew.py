@@ -1241,9 +1241,9 @@ if st.session_state["current_page"] == "🩺 Predict":
                         st.session_state.hasil_sentimen = hasil_sentimen
                         # Tampilkan hasil dengan emoji
                         if hasil_sentimen == "POSITIF":
-                            st.write(f"😃 Sentimen kalimat baru adalah **{hasil_sentimen}**.")
+                            st.write(f"😃 The sentiment of the sentences is **{hasil_sentimen}**.")
                         else:
-                            st.write(f"😡 Sentimen kalimat baru adalah **{hasil_sentimen}**.")
+                            st.write(f"😡 The sentiment of the sentences is **{hasil_sentimen}**.")
             # if st.session_state.hasil_sentimen:
             #     st.write(f"🔹 Sentimen kalimat baru adalah **{st.session_state.hasil_sentimen}**.")
     
