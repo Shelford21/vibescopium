@@ -300,7 +300,7 @@ if st.session_state["current_page"] == "DataFrames":
         else:
             st.warning("You have not done data scraping, please do scraping first.")
     except KeyError:
-    st.warning("You have not done data scraping, please do scraping first.")
+        st.warning("You have not done data scraping, please do scraping first.")
                 
           
     reviews = st.session_state['reviews']        
