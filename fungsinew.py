@@ -149,18 +149,8 @@ if st.session_state["current_page"] == "Vibe Scopium":
         <div class="transparent-container">
             <h1>🎭 VibeScopium</h1>
             <h2>Exploring Sentiments, Unveiling Insights</h2>
-            <h4>Welcome to VibeScopium, your go-to sentiment analysis platform for Play Store apps! 📱✨
-
-_
-
-💡 Note: VibeScopium focuses exclusively on analyzing reviews written in Bahasa Indonesia, ensuring precise sentiment insights tailored to the Indonesian market. 🇮🇩
-
-Whether you're a developer tracking user feedback, a marketer analyzing trends, or just curious about an app’s reputation, VibeScopium helps you dive deep into Play Store reviews. Our interactive dashboard scans and processes user feedback, revealing sentiment trends—positive, or negative—so you can understand what users truly think.
-
-Simply enter an app name, explore real-time insights, and uncover valuable data through sentiment scores, keyword trends, and visual analytics 🔍📊.
-
-So, get started, analyze app sentiments, and make informed decisions with VibeScopium. Let the data guide you! 🚀
-
+            <h4>
+    Welcome to VibeScopium, your go-to sentiment analysis platform for Play Store apps! 📱✨<br><br>💡 Note: VibeScopium focuses exclusively on analyzing reviews written in Bahasa Indonesia, ensuring precise sentiment insights tailored to the Indonesian market. 🇮🇩<br><br>Whether you're a developer tracking user feedback, a marketer analyzing trends, or just curious about an app’s reputation, VibeScopium helps you dive deep into Play Store reviews. Our interactive dashboard scans and processes user feedback, revealing sentiment trends—positive, or negative—so you can understand what users truly think.<br><br>Simply enter an app name, explore real-time insights, and uncover valuable data through sentiment scores, keyword trends, and visual analytics 🔍📊.<br><br>So, get started, analyze app sentiments, and make informed decisions with VibeScopium. Let the data guide you! 🚀
 </h4>
     
         """,
