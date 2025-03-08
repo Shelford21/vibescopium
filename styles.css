@@ -61,6 +61,8 @@ div[data-testid="stVerticalBlock"] > div > div > button:focus:not(:active){
 
 
 div[data-testid="stVerticalBlock"]>div>div>button{
+	width:auto !important;
+		 max-width: 90% !important;
     display: flex;
     flex-direction: row;
     -moz-box-align: center;
