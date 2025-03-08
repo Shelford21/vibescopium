@@ -291,7 +291,6 @@ div[data-testid="stVerticalBlock"]>div>div>button{
         position:relative;
         font-family: "Brush Script MT", monospace;
         font-size: 5rem;
-	    margin-left:5%;
         color: yellow;
         text-shadow: 5px 5px 10px #da9f5a;
         animation: myfirstclass 2s ease 0s 1 normal forwards;
@@ -355,8 +354,6 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     font-size: 2rem;
     color: yellow;
     text-align: center;
-	    
-	margin-left:7%;
     animation: myfirstclass 2s ease 0s 1 normal forwards;
     }
 
