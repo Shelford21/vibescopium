@@ -45,8 +45,7 @@ div[data-testid="stHorizontalBlock"] > div > div > div > div > div > button:hove
 div[data-testid="stHorizontalBlock"] > div > div > div > div > div > button:focus,
 div[data-testid="stHorizontalBlock"] > div > div > div > div > div > button:active,
 div[data-testid="stHorizontalBlock"] > div > div > div > div > div > button:focus:not(:active){
-	width:auto !important;
-		 max-width: 90% !important;
+	animation: myAnim 1s ease 0s 1 normal forwards;
     border-color: rgb(238, 255, 0);
     color: rgb(255, 230, 0);
     background-color: #000000;
@@ -56,7 +55,7 @@ div[data-testid="stVerticalBlock"] > div > div > button:hover,
 div[data-testid="stVerticalBlock"] > div > div > button:focus,
 div[data-testid="stVerticalBlock"] > div > div > button:active,
 div[data-testid="stVerticalBlock"] > div > div > button:focus:not(:active){
-	
+	animation: myAnim 1s ease 0s 1 normal forwards;
     border-color: rgb(238, 255, 0);
     color: rgb(255, 230, 0);
     background-color: #000000;
@@ -459,5 +458,35 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 	100% {
 		opacity: 1;
 		transform: scale(1);
+	}
+}
+
+@keyframes jello {
+	0% {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(0.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, 0.95, 1);
+	}
+
+	100% {
+		transform: scale3d(1, 1, 1);
 	}
 }
