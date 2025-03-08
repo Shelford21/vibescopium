@@ -881,7 +881,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
         try:
             clean_df= st.session_state["clean_df"]
             X = clean_df['text_akhir']
-        except KeyError:
+        except Exception:
             st.warning("u")
             
             y = clean_df['polarity']
