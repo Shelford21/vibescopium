@@ -334,7 +334,8 @@ if st.session_state["current_page"] == "DataFrames":
 
 
 
-
+    except Exception:
+        st.write("_")
     def cleaning_text(text):
                 text = re.sub(r'@[A-Za-z0-9]+', '', text)  # Remove mentions
                 text = re.sub(r'#[A-Za-z0-9]+', '', text)  # Remove hashtags
@@ -581,8 +582,7 @@ if st.session_state["current_page"] == "DataFrames":
 #             st.error("Missing 'polarity' or 'text_stopword' column. Ensure sentiment analysis is completed first.")
 #     else:
 #         st.error("Clean dataset is missing. Please run preprocessing first.")
-    except Exception:
-        st.write("_")
+    
 
 
 
