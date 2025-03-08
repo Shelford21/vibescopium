@@ -331,8 +331,8 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 
 
     div[data-testid="stImage"] img {
-        width: 800px !important;
-        max-width: 100% !important;
+        width: auto !important;
+        max-width: 80% !important;
         height: auto !important;
         position: relative;
         border: 2px solid rgb(51, 51, 51) !important; /* Test if it's being applied */
