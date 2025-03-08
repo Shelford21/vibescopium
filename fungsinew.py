@@ -1243,7 +1243,7 @@ if st.session_state["current_page"] == "🩺 Predict":
                         """,
                         unsafe_allow_html=True
                     )
-                    except Exception:
+            except Exception:
                         st.markdown(
                         """
                         <div class="transparent-container">
