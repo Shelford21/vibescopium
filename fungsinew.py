@@ -878,9 +878,12 @@ if st.sidebar.button("🩻 Evaluation"):
 
 if st.session_state["current_page"] == "🩻 Evaluation": 
         # Preprocessing
-        
+        try:
             clean_df= st.session_state["clean_df"]
             X = clean_df['text_akhir']
+        except KeyError:
+            st.warning("u")
+            
             y = clean_df['polarity']
             data_size = len(clean_df)
 
