@@ -408,7 +408,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     width: auto; 
                 padding: 20px !important;
                 position:relative;
-                text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.8);
+                /*text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.8);*/
                 font-size: 1.3rem;
                 border: 1px solid #ccc; /* Optional border */
                 border-radius: 8px; 
