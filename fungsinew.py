@@ -408,9 +408,11 @@ if st.session_state["current_page"] == "DataFrames":
     if "clean_df" not in st.session_state:
         st.error("Clean dataset is missing. Please load and clean data first.")
     else:
-                # Load and preprocess data using cache
-        clean_df = load_and_process_data(st.session_state["clean_df"])
-        st.session_state["clean_df"] = clean_df
+        try:# Load and preprocess data using cache
+            clean_df = load_and_process_data(st.session_state["clean_df"])
+            st.session_state["clean_df"] = clean_df
+        except Exception:
+             st.write("_")
                 
 
                 # Display processed data
