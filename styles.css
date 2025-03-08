@@ -311,7 +311,9 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 	.transparent-container > div > h3,
 	.transparent-container > div > h5,
 	.transparent-container > div > h4{
-         font-size: 5vw; /* Adjust based on viewport width */
+         max-width: 80%; /* Reduce width */
+        font-size: 1rem; /* Smaller font size */
+        padding: 10px; /* Reduce padding */
     }
 	  .transparent-container {
 		   max-width: 90%; 
