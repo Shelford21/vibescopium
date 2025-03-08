@@ -339,7 +339,9 @@ if st.session_state["current_page"] == "DataFrames":
 
 
 
-    
+    except Exception:
+        st.write("_")
+try:
     def cleaning_text(text):
                 text = re.sub(r'@[A-Za-z0-9]+', '', text)  # Remove mentions
                 text = re.sub(r'#[A-Za-z0-9]+', '', text)  # Remove hashtags
@@ -408,7 +410,7 @@ if st.session_state["current_page"] == "DataFrames":
                 #st.write(clean_df.head())
 
 
-    except Exception:
+except Exception:
         st.write("_")
     @st.cache_data
     def fetch_lexicon(url):
