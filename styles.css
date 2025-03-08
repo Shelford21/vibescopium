@@ -39,6 +39,15 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     width: 250px;
 }
 
+div[data-testid="stVerticalBlock"]>div>div>button:hover{
+   border-color: rgb(238, 255, 0);
+}
+
+div[data-testid="stVerticalBlock"]>div>div>button:focus{
+    border-color: rgb(238, 255, 0);
+    color : rgb(255, 230, 0);
+}
+
 /* Make the dataframe container wider */
 .stDataFrameContainer {
     width: 100% !important;
