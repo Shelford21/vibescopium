@@ -229,10 +229,12 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 		 max-width: 90% !important; 
 }
     .stTextInput > div[data-baseweb="input"] > div::before {
+
         content: "Find apps"; /* Your placeholder text */
         color: gray; /* Placeholder text color */
         position: absolute;
-        right: 20px;  
+        width:auto !important;
+	max-width: 90% !important;  
         pointer-events: none; /* Ensures it doesn’t interfere with typing */
         font-size: 14px;
     }
