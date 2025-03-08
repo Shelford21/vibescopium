@@ -169,7 +169,10 @@ if st.session_state["current_page"] == "Input App ID":
         """
         <div class="transparent-container">
             <h3>🔍 Start Scraping!</h3>
-        </div>
+            <div class="transparent-container">
+            <h5>
+⚠️ Reviews that are below 500 - 5000 are considered low on data , therefore the prediction may be less accurate</h4>
+
     
         """,
         unsafe_allow_html=True
