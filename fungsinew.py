@@ -927,6 +927,16 @@ if st.sidebar.button("🩻 Evaluation"):
 
 if st.session_state["current_page"] == "🩻 Evaluation": 
         # Preprocessing
+    with st.container():
+                st.markdown(
+        """
+        <div class="transparent-container">
+            <h3>🩻 Model Evaluation</h3>
+        </div>
+    
+        """,
+        unsafe_allow_html=True
+    )
     try:
             clean_df= st.session_state["clean_df"]
             X = clean_df['text_akhir']
@@ -988,16 +998,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             acc_test_lr, prec_test_lr, rec_test_lr, f1_test_lr = evaluate_model(y_test, y_pred_test_lr, "Logistic Regression (Test)")
 
             # Create a container
-            with st.container():
-                st.markdown(
-        """
-        <div class="transparent-container">
-            <h3>🩻 Model Evaluation</h3>
-        </div>
-    
-        """,
-        unsafe_allow_html=True
-    )
+            
                 
                 evaluation_data = {
                 "Metric": ["Accuracy", "Precision", "Recall", "F1 Score"],
@@ -1083,6 +1084,7 @@ if st.sidebar.button("🩺 Predict"):
     switch_page("🩺 Predict")
 
 if st.session_state["current_page"] == "🩺 Predict": 
+   
             st.markdown(
                 """
                 <div class="transparent-container">
@@ -1092,8 +1094,19 @@ if st.session_state["current_page"] == "🩺 Predict":
                 """,
                 unsafe_allow_html=True
             )
+    try:
             clean_df= st.session_state["clean_df"]
             X = clean_df['text_akhir']
+    except Exception:
+        st.markdown(
+        """
+        <div class="transparent-container">
+            <h5>⚠️You have not done data scraping, please do scraping first.</h5>
+        </div>
+    
+        """,
+        unsafe_allow_html=True
+    )
             y = clean_df['polarity']
             data_size = len(clean_df)
                 
