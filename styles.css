@@ -225,6 +225,8 @@ div[data-testid="stVerticalBlock"]>div>div>button{
         border-color: rgb(238, 255, 0); 
     }
     .stTextInput > div[data-baseweb="input"] > div::before {
+	    width:auto !important;
+		 max-width: 90% !important; 
         content: "Find apps"; /* Your placeholder text */
         color: gray; /* Placeholder text color */
         position: absolute;
