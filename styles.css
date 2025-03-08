@@ -23,6 +23,15 @@ div[data-testid="stHorizontalBlock"] > div > div > div > div > div > button:focu
     background-color: #000000;
 }
 
+div[data-testid="stVerticalBlock"] > div > div > button:hover,
+div[data-testid="stVerticalBlock"] > div > div > button:focus,
+div[data-testid="stVerticalBlock"] > div > div > button:active,
+div[data-testid="stVerticalBlock"] > div > div > button:focus:not(:active){
+    border-color: rgb(238, 255, 0);
+    color: rgb(255, 230, 0);
+    background-color: #000000;
+}
+
 
 div[data-testid="stVerticalBlock"]>div>div>button{
     display: flex;
@@ -40,16 +49,6 @@ div[data-testid="stVerticalBlock"]>div>div>button{
     width: 250px;
 }
 
-div[data-testid="stVerticalBlock"]>div>div>button:hover{
-   border-color: rgb(238, 255, 0);
-
-	color : rgb(255, 230, 0);
-}
-
-div[data-testid="stVerticalBlock"]>div>div>button:focus{
-    border-color: rgb(238, 255, 0);
-    color : rgb(255, 230, 0);
-}
 
 /* Make the dataframe container wider */
 .stDataFrameContainer {
