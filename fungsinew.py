@@ -289,18 +289,18 @@ if st.session_state["current_page"] == "DataFrames":
         unsafe_allow_html=True
     )
     try:
-    if st.session_state['csv'] is not None:
-        csv_bytes = st.session_state['csv']
-        st.download_button(
-            label="Download Original Reviews",
-            data=csv_bytes,
-            file_name="Application_Reviews.csv",
-            mime="text/csv"
-        )
-    else:
-        st.warning("You have not done data scraping, please do scraping first.")
-except KeyError:
-st.warning("You have not done data scraping, please do scraping first.")
+        if st.session_state['csv'] is not None:
+            csv_bytes = st.session_state['csv']
+            st.download_button(
+                label="Download Original Reviews",
+                data=csv_bytes,
+                file_name="Application_Reviews.csv",
+                mime="text/csv"
+            )
+        else:
+            st.warning("You have not done data scraping, please do scraping first.")
+    except KeyError:
+    st.warning("You have not done data scraping, please do scraping first.")
                 
           
     reviews = st.session_state['reviews']        
