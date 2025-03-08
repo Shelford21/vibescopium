@@ -271,31 +271,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
         border-color: rgb(238, 255, 0); /* Change border color to blue on hover */
     }
   
-    .transparent-container {
-        background: rgba(0,0,0,0.0);  
-        padding: 20px;
-        border-radius: 1000px;
-        text-align: center;
-        width: 100%;
-        margin: auto;
-        font-family: "Brush Script MT", monospace;
-        font-size: 10px;
-        color: gold;
-        
-    }
-
-    .transparent-container >div>h1{
-        text-align: center;
-        max-width: 90%; /* Make it responsive */
-    width: auto;
-        position:relative;
-        font-family: "Brush Script MT", monospace;
-        font-size: 5rem;
-        color: yellow;
-        text-shadow: 5px 5px 10px #da9f5a;
-        animation: myfirstclass 2s ease 0s 1 normal forwards;
-        
-    }
+   
 /* Styles for Tablets (768px and below) */
 @media only screen and (max-width: 768px) {
     div[data-testid="stAppViewContainer"] {
@@ -305,7 +281,13 @@ div[data-testid="stVerticalBlock"]>div>div>button{
         background-repeat: no-repeat;
     }
 
-	 .transparent-container > div > h1,
+	 .transparent-container > div > h1{
+		  max-width: 80%; /
+        font-size: 3rem; 
+        padding: 10px; 
+		 font-family: "Brush Script MT", cursive;
+	 }
+	
 	.transparent-container > div > h2,
 	.transparent-container > div > h3,
 	.transparent-container > div > h5,
@@ -344,7 +326,31 @@ div[data-testid="stVerticalBlock"]>div>div>button{
         margin-left: 200px;
     }
     
-    
+     .transparent-container {
+        background: rgba(0,0,0,0.0);  
+        padding: 20px;
+        border-radius: 1000px;
+        text-align: center;
+        width: 100%;
+        margin: auto;
+        font-family: "Brush Script MT", monospace;
+        font-size: 10px;
+        color: gold;
+        
+    }
+
+    .transparent-container >div>h1{
+        text-align: center;
+        max-width: 90%; /* Make it responsive */
+    width: auto;
+        position:relative;
+        font-family: "Brush Script MT", monospace;
+        font-size: 5rem;
+        color: yellow;
+        text-shadow: 5px 5px 10px #da9f5a;
+        animation: myfirstclass 2s ease 0s 1 normal forwards;
+        
+    }
     .transparent-container >div>h2{
      max-width: 90%; /* Make it responsive */
     width: auto;
