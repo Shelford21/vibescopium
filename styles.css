@@ -271,16 +271,65 @@ div[data-testid="stVerticalBlock"]>div>div>button:focus{
         animation: myfirstclass 2s ease 0s 1 normal forwards;
         
     }
-/* Responsive adjustments */
-@media screen and (max-width: 768px) {
-    div[data-testid="stAppViewContainer"]{
-        font-size: 3rem; /* Reduce size for smaller screens */
+/* Styles for Tablets (768px and below) */
+@media only screen and (max-width: 768px) {
+    div[data-testid="stAppViewContainer"] {
+        background: url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=2093&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    div[data-testid="stAppViewContainer"] h1,
+    div[data-testid="stAppViewContainer"] h2,
+    div[data-testid="stAppViewContainer"] h3 {
+        font-size: 24px; /* Adjust font size for tablets */
+        text-align: center;
+        color: yellow;
+        text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.8);
+    }
+
+    div[data-testid="stAppViewContainer"] button {
+        background-color: rgba(77, 75, 69, 0.9);
+        color: rgb(240, 239, 236);
+        padding: 14px;
+        font-size: 18px;
+    }
+
+    div[data-testid="stAppViewContainer"] .stDataFrameContainer {
+        width: 100% !important;
+        overflow-x: auto;
     }
 }
 
-@media screen and (max-width: 480px) {
-    div[data-testid="stAppViewContainer"]{
-        font-size: 2rem; /* Even smaller for very small phones */
+/* Styles for Mobile Phones (480px and below) */
+@media only screen and (max-width: 480px) {
+    div[data-testid="stAppViewContainer"] {
+        background: url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=2093&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    div[data-testid="stAppViewContainer"] h1,
+    div[data-testid="stAppViewContainer"] h2,
+    div[data-testid="stAppViewContainer"] h3 {
+        font-size: 18px; /* Smaller text for phones */
+        text-align: center;
+        color: yellow;
+        text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.8);
+    }
+
+    div[data-testid="stAppViewContainer"] button {
+        background-color: rgba(77, 75, 69, 0.9);
+        color: rgb(240, 239, 236);
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    div[data-testid="stAppViewContainer"] .stDataFrameContainer {
+        width: 100% !important;
+        overflow-x: auto;
     }
 }
 
