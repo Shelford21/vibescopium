@@ -14,9 +14,12 @@ width:auto !important;
 
 
 div[data-baseweb="slider"]>div>div>div{
-	width:auto !important;
-		 max-width: 90% !important;
 background-color: #FFFFFF;
+}
+
+div[data-baseweb="slider"]{
+width:auto !important;
+		 max-width: 90% !important;
 }
 
 div[data-baseweb="slider"]>div>div>div>div{
