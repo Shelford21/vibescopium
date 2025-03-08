@@ -327,8 +327,7 @@ if st.session_state["current_page"] == "DataFrames":
                 #st.write(clean_df.head())  # Show sample cleaned data
     
                 #clean_df.info()
-    except Exception:
-        st.warning("You have not done data scraping, please do scraping first.")
+    
 
 
 
@@ -582,7 +581,8 @@ if st.session_state["current_page"] == "DataFrames":
 #             st.error("Missing 'polarity' or 'text_stopword' column. Ensure sentiment analysis is completed first.")
 #     else:
 #         st.error("Clean dataset is missing. Please run preprocessing first.")
-
+    except Exception:
+        st.write("_")
 
 
 
