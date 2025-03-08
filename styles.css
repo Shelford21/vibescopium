@@ -7,7 +7,7 @@ section {
     display: none !important;
 }
 
-header{
+header[data-testid="stHeader"]{
 	display: none ;
 }
 main{
