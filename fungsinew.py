@@ -327,7 +327,7 @@ if st.session_state["current_page"] == "DataFrames":
                 #st.write(clean_df.head())  # Show sample cleaned data
     
                 #clean_df.info()
-    except KeyError:
+    except Exception:
         st.warning("You have not done data scraping, please do scraping first.")
 
 
