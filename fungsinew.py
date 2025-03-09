@@ -92,9 +92,9 @@ def check_reviews_threshold(num_reviews):
     if num_reviews == 0:
         return "🚨 There are no reviews. Analysis could not be performed."
     elif num_reviews < THRESHOLD_LOW:
-        return f"⚠️ Only {num_reviews} reviews found. Analysis may be less accurate. To load the dataframes, please navigate to Dataframes on the sidebar"
+        return f"⚠️ Only {num_reviews} reviews found. Analysis may be less accurate. To load the dataframes, please ac to Dataframes on the sidebar"
     elif num_reviews < THRESHOLD_MEDIUM:
-        return f"⚠️ {num_reviews} reviews found. Analysis can be performed, but results may be limited. To load the dataframes, please navigate to Dataframes on the sidebar"
+        return f"⚠️ {num_reviews} reviews found. Analysis can be performed, but results may be limited. To load the dataframes, please access Dataframes on the sidebar"
     else:
         return f"🎯 {num_reviews} reviews found. Perform sentiment analysis with enough data! . To load the dataframes, please navigate to Dataframes on the sidebar"
     
