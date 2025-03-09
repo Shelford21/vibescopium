@@ -426,10 +426,10 @@ if st.session_state["current_page"] == "DataFrames":
 
             # Load lexicons only once
     if "lexicon_positive" not in st.session_state:
-        st.session_state["lexicon_positive"] = fetch_lexicon('https://raw.githubusercontent.com/angelmetanosaa/dataset/main/lexicon_positive.csv')
+        st.session_state["lexicon_positive"] = fetch_lexicon('https://raw.githubusercontent.com/Shelford21/vibescopium/main/lexicon_positive.csv')
 
     if "lexicon_negative" not in st.session_state:
-        st.session_state["lexicon_negative"] = fetch_lexicon('https://raw.githubusercontent.com/angelmetanosaa/dataset/main/lexicon_negative.csv')
+        st.session_state["lexicon_negative"] = fetch_lexicon('https://raw.githubusercontent.com/Shelford21/vibescopium/main/lexicon_negative.csv')
 
     lexicon_positive = st.session_state["lexicon_positive"]
     lexicon_negative = st.session_state["lexicon_negative"]
