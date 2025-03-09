@@ -375,7 +375,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
         max-width: 90%; /* Make it responsive */
     width: auto;
         position:relative;
-        font-family: "Brush Script MT", monospace;
+        font-family: "Brush Script MT", cursive;
         font-size: 5rem;
         color: yellow;
         text-shadow: 5px 5px 10px #da9f5a;
