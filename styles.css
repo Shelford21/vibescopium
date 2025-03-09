@@ -265,7 +265,7 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 }
     .stTextInput > div[data-baseweb="input"] > div::before {
 
-        content: "Find apps"; /* Your placeholder text */
+        /*content: "Find apps";  Your placeholder text */
         color: gray; /* Placeholder text color */
         position: absolute;
         width:auto !important;
