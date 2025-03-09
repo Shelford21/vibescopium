@@ -7,8 +7,13 @@ section {
     display: none !important;
 }
 
+section[data-testid="stSidebar"]{
+border: 2px solid #ccc; /* Optional border */
+    border-radius: 8px; 
+    color: rgb(252, 252, 252);
+	
+}
 section[data-testid="stSidebar"]>div>div>button{
-	color:white;
 	border: 2px solid #ccc; /* Optional border */
     border-radius: 8px; 
     color: rgb(252, 252, 252);
