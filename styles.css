@@ -416,7 +416,8 @@ div[data-testid="stVerticalBlock"]>div>div>button{
             padding: 20px !important;
             position:relative;
             /*text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.8);*/
-            font-size: 1rem;
+            line-height: 1.5;
+		font-size: 1.2rem;
             border: 1px solid #ccc; /* Optional border */
             border-radius: 8px; 
             color: rgb(252, 252, 252);
@@ -434,7 +435,8 @@ div[data-testid="stVerticalBlock"]>div>div>button{
 	 text-align: center;
                 position:relative;
                 /*text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.8);*/
-                font-size: 1rem;
+                line-height: 1.5;
+font-size: 1.4rem;
                 border: 1px solid #ccc; /* Optional border */
                 border-radius: 8px; 
                 color: rgb(252, 252, 252);
