@@ -1118,7 +1118,17 @@ if st.session_state["current_page"] == "🩻 Evaluation":
                 conclusion = "Positive and Negative sentiments are balanced."
 
             st.write(conclusion)
+            st.markdown(
+            """
+            <div class="transparent-container">
+                <h5>If the graph shows that positive sentiment polarity is dominant 😊, it suggests that most of the collected text expresses favorable opinions, indicating satisfaction, strong brand loyalty, or positive engagement. This can be beneficial for businesses or entities as it reflects a good reputation, but it's important to check for potential biases in the dataset. <br><br>
 
+Conversely, if negative sentiment is more prevalent 😟, it signals widespread dissatisfaction or criticism, which may require further analysis to identify the root causes. While negative feedback can be concerning, it also presents an opportunity for improvement by addressing common complaints and enhancing overall sentiment.</h5>
+            </div>
+        
+            """,
+            unsafe_allow_html=True
+        )
       
         
             
