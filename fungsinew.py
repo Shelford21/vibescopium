@@ -1099,7 +1099,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
                 spine.set_alpha(0.7)  # Semi-transparent for glow effect
 
                 # Title and labels
-            ax.set_title("Distribution of Sentiment Polarity", fontsize=16, color="white", weight="bold")
+            #ax.set_title("Distribution of Sentiment Polarity", fontsize=16, color="white", weight="bold")
             ax.set_xlabel("Sentiment", fontsize=14, color="white")
             ax.set_ylabel("Count", fontsize=14, color="white")
 
