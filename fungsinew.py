@@ -1087,7 +1087,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
 
                 # Seaborn barplot
             sns.barplot(x=sentiment_counts.index, y=sentiment_counts.values, 
-            palette=sns.color_palette(["#00FF00", "#33FF33", "#66FF66"]), ax=ax)
+            palette=sns.color_palette(["#05ffea", "#ff05ee"]), ax=ax)
 
 
 
