@@ -1086,7 +1086,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             ax.set_facecolor('black')
 
                 # Seaborn barplot
-            sns.barplot(x=sentiment_counts.index, y=sentiment_counts.values, palette='Purples', ax=ax)
+            sns.barplot(x=sentiment_counts.index, y=sentiment_counts.values, palette='Cyan', ax=ax)
 
 
                 # Apply a glow effect on the borders
