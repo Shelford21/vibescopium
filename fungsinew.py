@@ -1066,6 +1066,15 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             # Create two columns
             st.pyplot(fig)
 
+            st.markdown(
+                """
+                <div class="transparent-container">
+                    <h3>🗽 Sentiment Polairuty Distribution</h3>
+                </div>
+            
+                """,
+                unsafe_allow_html=True
+            )
         # Hitung jumlah setiap kategori sentimen
             sentiment_counts = clean_df['polarity'].value_counts()
 
@@ -1077,7 +1086,8 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             ax.set_facecolor('black')
 
                 # Seaborn barplot
-            sns.barplot(x=sentiment_counts.index, y=sentiment_counts.values, palette='Greens_r', ax=ax)
+            sns.barplot(x=sentiment_counts.index, y=sentiment_counts.values, 
+            palette='Greens', ax=ax, alpha=0.7)
 
                 # Apply a glow effect on the borders
             for spine in ax.spines.values():
