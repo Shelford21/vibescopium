@@ -1066,6 +1066,49 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             # Create two columns
             st.pyplot(fig)
 
+        # Hitung jumlah setiap kategori sentimen
+            sentiment_counts = clean_df['polarity'].value_counts()
+
+                # Plot data dengan efek glowing dan latar belakang hitam
+            fig, ax = plt.subplots(figsize=(12, 6))
+
+                # Set background color to black
+            fig.patch.set_facecolor('black')
+            ax.set_facecolor('black')
+
+                # Seaborn barplot
+            sns.barplot(x=sentiment_counts.index, y=sentiment_counts.values, palette='Greens_r', ax=ax)
+
+                # Apply a glow effect on the borders
+            for spine in ax.spines.values():
+                spine.set_edgecolor("#00008B")  # Deep blue neon effect
+                spine.set_linewidth(1.5)  # Thicker border for glow
+                spine.set_alpha(0.7)  # Semi-transparent for glow effect
+
+                # Title and labels
+            ax.set_title("Distribution of Sentiment Polarity", fontsize=16, color="white", weight="bold")
+            ax.set_xlabel("Sentiment", fontsize=14, color="white")
+            ax.set_ylabel("Count", fontsize=14, color="white")
+
+                # Change ticks color
+            ax.tick_params(axis='x', colors='white')
+            ax.tick_params(axis='y', colors='white')
+
+                # Apply a glowing effect to grid lines (optional)
+                #ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
+
+            st.pyplot(fig)
+
+                # Menentukan kesimpulan
+            if sentiment_counts.get('positive', 0) > sentiment_counts.get('negative', 0):
+                conclusion = "Positive sentiments are dominant."
+            elif sentiment_counts.get('negative', 0) > sentiment_counts.get('positive', 0):
+                conclusion = "Negative sentiments are dominant."
+            else:
+                conclusion = "Positive and Negative sentiments are balanced."
+
+            st.write(conclusion)
+
       
         
             
