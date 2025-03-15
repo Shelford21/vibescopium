@@ -1117,7 +1117,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             else:
                 conclusion = "-"
 
-            st.write(conclusion)
+            #st.write(conclusion)
             st.markdown(
             """
             <div class="transparent-container">
