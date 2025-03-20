@@ -395,7 +395,7 @@ if st.session_state["current_page"] == "DataFrames":
                 clean_df['text_slang_fixed'] = clean_df['text_casefolding'].apply(fix_slang_words)
                 clean_df['text_tokenized'] = clean_df['text_slang_fixed'].apply(tokenizing_text)
                 clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
-                clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemmingText)
+                clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_Text)
                 clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence)
                 return clean_df  # Return processed DataFrame
 
