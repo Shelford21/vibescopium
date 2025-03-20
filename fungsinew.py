@@ -395,8 +395,8 @@ if st.session_state["current_page"] == "DataFrames":
                 clean_df['text_slang_fixed'] = clean_df['text_casefolding'].apply(fix_slang_words)
                 clean_df['text_tokenized'] = clean_df['text_slang_fixed'].apply(tokenizing_text)
                 clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
-                clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_Text)
-                clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence)
+                #clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_Text)
+                clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence)
                 return clean_df  # Return processed DataFrame
 
             # Ensure clean_df is loaded before using it
@@ -505,7 +505,7 @@ if st.session_state["current_page"] == "DataFrames":
                     st.session_state["clean_df"] = clean_df
     
                 #st.write(clean_df[['content', 'text_stopword', 'polarity_score', 'polarity']].head())  
-                st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword', 'text_stemming','text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
+                st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword','text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
                 st.session_state["clean_df"] = clean_df
             else:
                 st.error("Column 'text_stopword' is missing. Ensure text preprocessing is completed first.")
@@ -1274,8 +1274,8 @@ if st.session_state["current_page"] == "🩺 Predict":
                                 kalimat_baru_slangfixed = fix_slang_words(kalimat_baru_casefolded)
                                 kalimat_baru_tokenized = tokenizing_text(kalimat_baru_slangfixed)
                                 kalimat_baru_filtered = filtering_text(kalimat_baru_tokenized)
-                                kalimat_baru_stemmered = stemming_text(kalimat_baru_filtered)
-                                kalimat_baru_final = to_sentence(kalimat_baru_stemmered)
+                                #kalimat_baru_stemmered = stemming_text(kalimat_baru_filtered)
+                                kalimat_baru_final = to_sentence(kalimat_baru_filtered)
         
                                     # Predict
                                 tfidf_vectorizer = st.session_state.tfidf_vectorizer
