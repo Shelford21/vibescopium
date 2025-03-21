@@ -497,7 +497,7 @@ if st.session_state["current_page"] == "DataFrames":
         if "clean_df" in st.session_state:
             clean_df = st.session_state["clean_df"].copy()
     
-            if "text_stopword" in clean_df.columns:
+            if "text_stemming" in clean_df.columns:
                 if "polarity_score" not in clean_df.columns or "polarity" not in clean_df.columns:
                     scores, polarities = sentiment_analysis_lexicon_indonesia(clean_df['text_stopword'])
                     clean_df['polarity_score'] = scores
