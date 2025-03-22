@@ -405,7 +405,7 @@ if st.session_state["current_page"] == "DataFrames":
             # Function to load and process data (cached)
     @st.cache_data
     def load_and_process_data(df):
-                clean_df = df.copy(deep=True)  # Ensure deep copy
+                clean_df = df.copy  # Ensure deep copy
                 clean_df['text_clean'] = clean_df['content'].apply(cleaning_text)
                 clean_df['text_casefolding'] = clean_df['text_clean'].apply(case_folding_text)
                 clean_df['text_slang_fixed'] = clean_df['text_casefolding'].apply(fix_slang_words)
