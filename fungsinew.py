@@ -372,7 +372,8 @@ if st.session_state["current_page"] == "DataFrames":
     def stemming_text(text):
                 factory = StemmerFactory()
                 stemmer = factory.create_stemmer()
-                return ' '.join(stemmer.stem(word) for word in text.split())
+                # Apply stemming on each word in the list
+                return [stemmer.stem(word) for word in text_list]
 
     # def stemmingText(text): # Reducing a word to its word stem that affixes to suffixes and prefixes or to the roots of words
     # # Membuat objek stemmer
@@ -414,9 +415,10 @@ if st.session_state["current_page"] == "DataFrames":
                 clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
                 #clean_df['text_stopwords'] = clean_df['text_stopword'].apply(to_sentence)
                 #clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
-                clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence)
                 clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
+                clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence)
                 return clean_df  # Return processed DataFrame
+                
 
             # Ensure clean_df is loaded before using it
     if "clean_df" not in st.session_state:
