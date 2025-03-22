@@ -368,26 +368,26 @@ if st.session_state["current_page"] == "DataFrames":
                 list_stopwords.update(custom_stopwords)
                 return [word for word in text if word not in list_stopwords]
 
-    # def stemming_text(text):
-    #             factory = StemmerFactory()
-    #             stemmer = factory.create_stemmer()
-    #             return ' '.join(stemmer.stem(word) for word in text.split())
-
-    def stemmingText(text): # Reducing a word to its word stem that affixes to suffixes and prefixes or to the roots of words
-    # Membuat objek stemmer
+    def stemming_text(text):
                 factory = StemmerFactory()
                 stemmer = factory.create_stemmer()
+                return ' '.join(stemmer.stem(word) for word in text.split())
+
+    # def stemmingText(text): # Reducing a word to its word stem that affixes to suffixes and prefixes or to the roots of words
+    # # Membuat objek stemmer
+    #             factory = StemmerFactory()
+    #             stemmer = factory.create_stemmer()
             
-                # Memecah teks menjadi daftar kata
-                words = text.split()
+    #             # Memecah teks menjadi daftar kata
+    #             words = text.split()
             
-                # Menerapkan stemming pada setiap kata dalam daftar
-                stemmed_words = [stemmer.stem(word) for word in words]
+    #             # Menerapkan stemming pada setiap kata dalam daftar
+    #             stemmed_words = [stemmer.stem(word) for word in words]
             
-                # Menggabungkan kata-kata yang telah distem
-                stemmed_text = ' '.join(stemmed_words)
+    #             # Menggabungkan kata-kata yang telah distem
+    #             stemmed_text = ' '.join(stemmed_words)
             
-                return stemmed_text
+    #             return stemmed_text
 
     def to_sentence(list_words):
                 return ' '.join(list_words)
@@ -412,8 +412,8 @@ if st.session_state["current_page"] == "DataFrames":
                 clean_df['text_tokenized'] = clean_df['text_slang_fixed'].apply(tokenizing_text)
                 clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
                 #clean_df['text_stopwords'] = clean_df['text_stopword'].apply(to_sentence)
-                #clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_Text)
-                clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence)
+                clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
+                clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence)
                 return clean_df  # Return processed DataFrame
 
             # Ensure clean_df is loaded before using it
