@@ -525,6 +525,7 @@ if st.session_state["current_page"] == "DataFrames":
                 st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword','text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
                 st.session_state["clean_df"] = clean_df
             else:
+                st.write(clean_df.columns)
                 st.error("Column 'text_stopword' is missing. Ensure text preprocessing is completed first.")
     except Exception:
         st.write("_")
