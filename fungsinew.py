@@ -369,7 +369,7 @@ if st.session_state["current_page"] == "DataFrames":
                 list_stopwords.update(custom_stopwords)
                 return [word for word in text if word not in list_stopwords]
     @st.cache_data
-    def stemming_text(text):
+    def stemming_text(text_list):
                 factory = StemmerFactory()
                 stemmer = factory.create_stemmer()
                 # Apply stemming on each word in the list
