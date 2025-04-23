@@ -419,9 +419,9 @@ if st.session_state["current_page"] == "DataFrames":
                 clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
                 #clean_df['text_stopwords'] = clean_df['text_stopword'].apply(to_sentence)
                 #clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
-                clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text) #klau stem pake ini
-                #clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence) #klau ngga stem
-                clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence) #dan ini stem
+                #clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text) #klau stem pake ini
+                clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence) #klau ngga stem
+                #clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence) #dan ini stem
                 return clean_df  # Return processed DataFrame
                 
 
@@ -532,7 +532,7 @@ if st.session_state["current_page"] == "DataFrames":
     
                 #st.write(clean_df[['content', 'text_stopword', 'polarity_score', 'polarity']].head())  
                 st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
-                                       'text_stemming',
+                                       #'text_stemming',
                                        'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
                 st.session_state["clean_df"] = clean_df
             else:
