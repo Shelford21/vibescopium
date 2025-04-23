@@ -372,8 +372,12 @@ if st.session_state["current_page"] == "DataFrames":
     factory = StemmerFactory()
     stemmer = factory.create_stemmer()
     def stemming_text(text_list):
-                # Apply stemming on each word in the list
-                return [stemmer.stem(word) for word in text_list]
+        sentence = ' '.join(text_list)
+        return stemmer.stem(sentence).split()
+
+    # def stemming_text(text_list):
+    #             # Apply stemming on each word in the list
+    #             return [stemmer.stem(word) for word in text_list]
 
     # def stemmingText(text): # Reducing a word to its word stem that affixes to suffixes and prefixes or to the roots of words
     # # Membuat objek stemmer
