@@ -368,10 +368,10 @@ if st.session_state["current_page"] == "DataFrames":
                 custom_stopwords = {'iya', 'yaa', 'gak', 'nya', 'na', 'sih', 'ku', 'di', 'ga', 'ya', 'gaa', 'loh', 'kah', 'woi', 'woii', 'woy'}
                 list_stopwords.update(custom_stopwords)
                 return [word for word in text if word not in list_stopwords]
-
+        
+    factory = StemmerFactory()
+    stemmer = factory.create_stemmer()
     def stemming_text(text_list):
-                factory = StemmerFactory()
-                stemmer = factory.create_stemmer()
                 # Apply stemming on each word in the list
                 return [stemmer.stem(word) for word in text_list]
 
