@@ -742,43 +742,89 @@ if st.session_state["current_page"] == "😀 Positive":
         # ax.set_title('Most Frequent Words')
         # st.pyplot(fig)
                     # Set background color to black
+
+        
+        
+        # Assuming word_listpositive is already a list of words
+        word_listpositive = st.session_state.get("word_listpositive")
+        
+        # Combine every 3 consecutive words into a trigram
+        trigrams = [' '.join(word_listpositive[i:i+3]) for i in range(len(word_listpositive)-2)]
+        
+        # Count trigrams
+        trigram_counts = Counter(trigrams)
+        top_trigrams = trigram_counts.most_common(20)
+        df_top_trigrams = pd.DataFrame(top_trigrams, columns=['trigram', 'frequency'])
+        
+        # Plotting
+        fig, ax = plt.subplots(figsize=(12, 6))
+        
+        # Set background color to black
         fig.patch.set_facecolor('black')
         ax.set_facecolor('black')
-        word_listpositive = st.session_state.get("word_listpositive")
-        #word_listpositive = ' '.join(word for tweet in positive_tweets['text_stopword'] for word in tweet).split()
-    
-                    
-        word_counts = Counter(word_listpositive)
-        top_words = word_counts.most_common(20)
-        df_top_words = pd.DataFrame(top_words, columns=['word', 'frequency'])
-    
-        fig, ax = plt.subplots(figsize=(12, 6))
-    
-                    # Set background color to black
-        fig.patch.set_facecolor('black')
         
-                    # Seaborn barplot
-        sns.barplot(x='frequency', y='word', data=df_top_words, palette='Greens_r', ax=ax)
-    
-                    # Apply a glow effect on the borders
+        # Seaborn barplot
+        sns.barplot(x='frequency', y='trigram', data=df_top_trigrams, palette='Greens_r', ax=ax)
+        
+        # Apply a glow effect on the borders
         for spine in ax.spines.values():
-            spine.set_edgecolor("#00008B")  # Green neon effect
-            spine.set_linewidth(1)  # Thicker border for glow
-            spine.set_alpha(0.7)  # Semi-transparent for glow effect
-    
-                    # Title and labels
-        ax.set_title('Top 20 Most Frequent Positive Words', fontsize=16, color="white", weight="bold")
+            spine.set_edgecolor("#00008B")
+            spine.set_linewidth(1)
+            spine.set_alpha(0.7)
+        
+        # Title and labels
+        ax.set_title('Top 20 Most Frequent Positive Trigrams', fontsize=16, color="white", weight="bold")
         ax.set_xlabel("Frequency", fontsize=14, color="white")
-        ax.set_ylabel("Words", fontsize=14, color="white")
-    
-                    # Change ticks color
+        ax.set_ylabel("Trigrams", fontsize=14, color="white")
+        
+        # Change ticks color
         ax.tick_params(axis='x', colors='white')
         ax.tick_params(axis='y', colors='white')
-    
-                    # Apply a glowing effect to grid lines (optional)
+        
+        # Apply a glowing effect to grid lines (optional)
         ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
-    
+        
         st.pyplot(fig)
+
+
+
+        # fig.patch.set_facecolor('black')
+        # ax.set_facecolor('black')
+        # word_listpositive = st.session_state.get("word_listpositive")
+        # #word_listpositive = ' '.join(word for tweet in positive_tweets['text_stopword'] for word in tweet).split()
+    
+                    
+        # word_counts = Counter(word_listpositive)
+        # top_words = word_counts.most_common(20)
+        # df_top_words = pd.DataFrame(top_words, columns=['word', 'frequency'])
+    
+        # fig, ax = plt.subplots(figsize=(12, 6))
+    
+        #             # Set background color to black
+        # fig.patch.set_facecolor('black')
+        
+        #             # Seaborn barplot
+        # sns.barplot(x='frequency', y='word', data=df_top_words, palette='Greens_r', ax=ax)
+    
+        #             # Apply a glow effect on the borders
+        # for spine in ax.spines.values():
+        #     spine.set_edgecolor("#00008B")  # Green neon effect
+        #     spine.set_linewidth(1)  # Thicker border for glow
+        #     spine.set_alpha(0.7)  # Semi-transparent for glow effect
+    
+        #             # Title and labels
+        # ax.set_title('Top 20 Most Frequent Positive Words', fontsize=16, color="white", weight="bold")
+        # ax.set_xlabel("Frequency", fontsize=14, color="white")
+        # ax.set_ylabel("Words", fontsize=14, color="white")
+    
+        #             # Change ticks color
+        # ax.tick_params(axis='x', colors='white')
+        # ax.tick_params(axis='y', colors='white')
+    
+        #             # Apply a glowing effect to grid lines (optional)
+        # ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
+    
+        # st.pyplot(fig)
 
         st.markdown(
             """
