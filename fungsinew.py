@@ -749,11 +749,11 @@ if st.session_state["current_page"] == "😀 Positive":
         word_listpositive = st.session_state.get("word_listpositive")
         
         # Combine every 3 consecutive words into a trigram
-        trigrams = [' '.join(word_listpositive[i:i+3]) for i in range(len(word_listpositive)-2)]
+        trigrams = [' '.join(word_listpositive[i:i+5]) for i in range(len(word_listpositive)-2)]
         
         # Count trigrams
         trigram_counts = Counter(trigrams)
-        top_trigrams = trigram_counts.most_common(20)
+        top_trigrams = trigram_counts.most_common(50)
         df_top_trigrams = pd.DataFrame(top_trigrams, columns=['trigram', 'frequency'])
         
         # Plotting
