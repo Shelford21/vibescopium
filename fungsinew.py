@@ -776,7 +776,7 @@ if st.session_state["current_page"] == "😀 Positive":
             spine.set_alpha(0.7)
         
         # Title and labels
-        ax.set_title('Top 20 Most Frequent Positive Trigrams (Excluding "game")', fontsize=16, color="white", weight="bold")
+        ax.set_title('Top 20 Most Frequent Positive', fontsize=16, color="white", weight="bold")
         ax.set_xlabel("Frequency", fontsize=14, color="white")
         ax.set_ylabel("Trigrams", fontsize=14, color="white")
         
@@ -956,7 +956,7 @@ elif st.session_state["current_page"] == "😡 Negative":
         word_listpositive = st.session_state.get("word_listnegative")
         
         # Combine every 3 consecutive words into a trigram
-        trigrams = [' '.join(word_listnegative[i:i+2]) for i in range(len(word_listpositive)-2)]
+        trigrams = [' '.join(word_listnegative[i:i+2]) for i in range(len(word_listnegative)-2)]
         
         # Exclude trigrams that contain the word 'game'
         trigrams = [trigram for trigram in trigrams if 'game' not in trigram.lower()]
@@ -974,7 +974,7 @@ elif st.session_state["current_page"] == "😡 Negative":
         ax.set_facecolor('black')
         
         # Seaborn barplot
-        sns.barplot(x='frequency', y='trigram', data=df_top_trigrams, palette='Greens_r', ax=ax)
+        sns.barplot(x='frequency', y='trigram', data=df_top_trigrams, palette='Reds_r', ax=ax)
         
         # Apply a glow effect on the borders
         for spine in ax.spines.values():
@@ -983,7 +983,7 @@ elif st.session_state["current_page"] == "😡 Negative":
             spine.set_alpha(0.7)
         
         # Title and labels
-        ax.set_title('Top 20 Most Frequent Negative Trigrams (Excluding "game")', fontsize=16, color="white", weight="bold")
+        ax.set_title('Top 20 Most Frequent Negative', fontsize=16, color="white", weight="bold")
         ax.set_xlabel("Frequency", fontsize=14, color="white")
         ax.set_ylabel("Trigrams", fontsize=14, color="white")
         
