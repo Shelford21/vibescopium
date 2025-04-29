@@ -749,7 +749,7 @@ if st.session_state["current_page"] == "😀 Positive":
         word_listpositive = st.session_state.get("word_listpositive")
         
         # Combine every 3 consecutive words into a trigram
-        trigrams = [' '.join(word_listpositive[i:i+2]) for i in range(len(word_listpositive)-2)]
+        trigrams = [' '.join(word_listpositive[i:i+1]) for i in range(len(word_listpositive)-2)]
         
         # Exclude trigrams that contain the word 'game'
         trigrams = [trigram for trigram in trigrams if 'game' not in trigram.lower()]
