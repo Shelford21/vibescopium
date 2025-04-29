@@ -749,7 +749,10 @@ if st.session_state["current_page"] == "😀 Positive":
         word_listpositive = st.session_state.get("word_listpositive")
         
         # Combine every 3 consecutive words into a trigram
-        trigrams = [' '.join(word_listpositive[i:i+2]) for i in range(len(word_listpositive)-2)]
+        trigrams = [' '.join(word_listpositive[i:i+3]) for i in range(len(word_listpositive)-2)]
+        
+        # Exclude trigrams that contain the word 'game'
+        trigrams = [trigram for trigram in trigrams if 'game' not in trigram.lower()]
         
         # Count trigrams
         trigram_counts = Counter(trigrams)
@@ -773,7 +776,7 @@ if st.session_state["current_page"] == "😀 Positive":
             spine.set_alpha(0.7)
         
         # Title and labels
-        ax.set_title('Top 20 Most Frequent Positive Trigrams', fontsize=16, color="white", weight="bold")
+        ax.set_title('Top 20 Most Frequent Positive Trigrams (Excluding "game")', fontsize=16, color="white", weight="bold")
         ax.set_xlabel("Frequency", fontsize=14, color="white")
         ax.set_ylabel("Trigrams", fontsize=14, color="white")
         
