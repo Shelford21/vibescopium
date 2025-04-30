@@ -160,6 +160,25 @@ def load_and_process_data(df):
                         #clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence) #dan ini stem
                         return clean_df  # Return processed DataFrame
 
+@st.cache_data
+def fetch_lexicon(url):
+        response = requests.get(url)
+        if response.status_code == 200:
+            reader = csv.reader(StringIO(response.text), delimiter=',')
+            return {row[0]: int(row[1]) for row in reader}
+        else:
+            st.error(f"Failed to fetch lexicon data from {url}")
+            return {}
+
+@st.cache_data
+def sentiment_analysis_lexicon_indonesia(text_list):
+            results = []
+            for text in text_list:
+                score = sum(lexicon_positive.get(word, 0) for word in text)
+                score += sum(lexicon_negative.get(word, 0) for word in text)
+                polarity = 'positive' if score >= 0 else 'negative'
+                results.append((score, polarity))
+            return list(zip(*results))  # Returns tuple: (scores_list, polarity_list)
 
 #st.markdown(page_bg_img, unsafe_allow_html=True)
 def switch_page(page):
@@ -441,8 +460,8 @@ if st.session_state["current_page"] == "DataFrames":
             clean_df = load_and_process_data(st.session_state["clean_df"])
             st.session_state["clean_df"] = clean_df
             #st.dataframe(clean_df)
-        except Exception as e:
-             st.write(e)
+        except Exception:
+             st.write("_")
                 
 
                 # Display processed data
@@ -450,16 +469,7 @@ if st.session_state["current_page"] == "DataFrames":
                 #st.write(clean_df.head())
 
 
-    @st.cache_data
-    def fetch_lexicon(url):
-        response = requests.get(url)
-        if response.status_code == 200:
-            reader = csv.reader(StringIO(response.text), delimiter=',')
-            return {row[0]: int(row[1]) for row in reader}
-        else:
-            st.error(f"Failed to fetch lexicon data from {url}")
-            return {}
-
+    
             # Load lexicons only once
     if "lexicon_positive" not in st.session_state:
         st.session_state["lexicon_positive"] = fetch_lexicon('https://raw.githubusercontent.com/Shelford21/vibescopium/main/lexicon_positive.csv')
@@ -506,16 +516,7 @@ if st.session_state["current_page"] == "DataFrames":
             
             
             # Cache the sentiment analysis function
-    @st.cache_data
-    def sentiment_analysis_lexicon_indonesia(text_list):
-                results = []
-                for text in text_list:
-                    score = sum(lexicon_positive.get(word, 0) for word in text)
-                    score += sum(lexicon_negative.get(word, 0) for word in text)
-                    polarity = 'positive' if score >= 0 else 'negative'
-                    results.append((score, polarity))
-                
-                return list(zip(*results))  # Returns tuple: (scores_list, polarity_list)
+    
 
             
 
