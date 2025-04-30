@@ -278,10 +278,9 @@ Press the Find App button to search for apps matching your input.\n
 Choose one of the 5 apps listed based on your search.\n
 5.🔢 Specify the number of reviews to scrape -
 Select how many user reviews you’d like to collect (e.g., 100, 500, 1000).\n
-6.📥 Click the "Fetch Reviews" button -
-Press the Fetch Reviews button to start scraping the reviews.\n
+6.📥 Click the "Fetch Reviews" button -To start scraping the reviews.\n
 7.✅ Done! Your data has been scraped successfully -
-You can now visit other sections like DataFrames or Analysis to explore visualizations and sentiment results.
+You can now visit other sections like DataFrames or Evaluation to explore visualizations and sentiment results.
 </h5>
         </div>
     
