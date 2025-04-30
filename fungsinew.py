@@ -942,7 +942,9 @@ elif st.session_state["current_page"] == "😡 Negative":
     # Function to generate WordCloud (cached)
     @st.cache_data
     def generate_wordcloud(text_list):
-        text = ' '.join(word for tweet in text_list for word in tweet)  # Flatten list
+        excluded_words = {'game', 'bagus'}
+        filtered_words = [word for tweet in text_list for word in tweet if word.lower() not in excluded_words]
+        text = ' '.join(filtered_words)
         return WordCloud(
             width=800,  # Smaller width
             height=400,  # Smaller height
