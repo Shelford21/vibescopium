@@ -269,7 +269,7 @@ if st.session_state["current_page"] == "How to use":
 
         
 1.🔍 Navigate to the "Input App ID" section
-Go to the section labeled Input App ID on the sidebar or main screen.
+Go to the section labeled Input App ID on the sidebar or main screen.\n
 2.⌨️ Type the name of the app you want to analyze
 In the input field, enter the name of the app whose reviews you’d like to scrape.
 3.🟦 Click the "Find App" button
