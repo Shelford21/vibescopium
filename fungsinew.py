@@ -266,6 +266,8 @@ if st.session_state["current_page"] == "How to use":
         <div class="transparent-container">
         <h3>❓ How to Use</h3>
         <h5> _
+
+        
 1.	🔍 Navigate to the "Input App ID" section\n
 Go to the section labeled Input App ID on the sidebar or main screen.
     \n\n2.	⌨️ Type the name of the app you want to analyze
