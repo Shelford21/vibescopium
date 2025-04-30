@@ -105,7 +105,6 @@ def tokenizing_text(text):
 #                     list_stopwords.update(custom_stopwords)
 #                     return [word for word in text if word not in list_stopwords]
 
-from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
 # Create stopword list from Sastrawi
 factoryz = StopWordRemoverFactory()
