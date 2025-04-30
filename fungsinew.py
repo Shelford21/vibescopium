@@ -381,7 +381,7 @@ if st.session_state["current_page"] == "Input App ID":
             app_reviews_df['reviewCreatedVersion'] = app_reviews_df['reviewCreatedVersion'].fillna("1.1")
             app_reviews_df['appVersion'] = app_reviews_df['appVersion'].fillna("1.1")
         except Exception:
-            st.write("_")
+            st.write("")
                     # Clean data
         clean_df = app_reviews_df.dropna().drop_duplicates()
         st.session_state["clean_df"] = clean_df  # Store cleaned dataset in session state
@@ -395,7 +395,7 @@ if st.session_state["current_page"] == "Input App ID":
                 st.session_state["clean_df"] = clean_df
                 #st.dataframe(clean_df)
             except Exception:
-                 st.write("_")
+                 st.write("")
 
 
          # Load lexicons only once
@@ -421,7 +421,8 @@ if st.session_state["current_page"] == "Input App ID":
         
                     #st.write(clean_df[['content', 'text_stopword', 'polarity_score', 'polarity']].head())  
                 else:
-                    st.dataframe(clean_df)
+                    st.write("")
+                    #st.dataframe(clean_df)
                     #st.error("Column 'text_stopword' is missing. Ensure text preprocessing is completed first.")
         except Exception:
             st.write("_")
