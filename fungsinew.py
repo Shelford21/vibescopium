@@ -813,7 +813,7 @@ if st.session_state["current_page"] == "😀 Positive":
             if len(word_listpositive) >= ngram_size:
                 ngrams = [' '.join(word_listpositive[i:i+ngram_size]) for i in range(len(word_listpositive) - ngram_size + 1)]
         
-                excluded_words = ['game', 'tolong', 'bug', 'perbaiki']
+                excluded_words = ['game', 'tolong', 'bug', 'perbaiki','lag','frezee','freeze','force','close']
                 ngrams = [gram for gram in ngrams if all(word not in gram.lower() for word in excluded_words)]
         
                 # Count and get top 20
