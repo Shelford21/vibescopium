@@ -356,7 +356,7 @@ if st.session_state["current_page"] == "Input App ID":
         # User input for the number of reviews to scrape
         count = st.slider("Number of reviews to fetch:", min_value=0, max_value=500000, step=1000, value=10000)
         if st.button("Fetch reviews") :
-            with st.spinner("Fetching reviews... (If there are many reviews, then scraping will take 1-2 minutes)"):
+            with st.spinner("Fetching reviews... (If there are many reviews, then scraping will take 1-5 minutes)"):
                 reviews,_ = reviews(
                     app_id,
                     lang='id',
