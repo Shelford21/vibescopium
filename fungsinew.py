@@ -1497,7 +1497,7 @@ if st.session_state["current_page"] == "🩺 Predict":
                 
                 _
                 
-                Saya suka aplikasi ini! Kualitasnya luar biasa, dan melebihi ekspektasi saya.
+                Saya suka ini! Kualitasnya luar biasa, dan melebihi ekspektasi saya.
                 
                 _
                 
