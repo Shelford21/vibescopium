@@ -107,9 +107,9 @@ def filtering_text(text):
                 
 factory = StemmerFactory()
 stemmer = factory.create_stemmer()
-# def stemming_text(text_list):
-#             sentence = ' '.join(text_list)
-#             return stemmer.stem(sentence).split()
+def stemming_text(text_list):
+            sentence = ' '.join(text_list)
+            return stemmer.stem(sentence).split()
 
 stem_cache = {}
 def stemming_text(text_list):
@@ -165,32 +165,6 @@ def fix_slang_words(text):
 #                         clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence) #dan ini stem
 #                         return clean_df  # Return processed DataFrame
 
-from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
-import multiprocessing
-
-factory = StemmerFactory()
-stemmer = factory.create_stemmer()
-
-def stem_review(review):
-    sentence = ' '.join(review)
-    return stemmer.stem(sentence).split()
-
-def load_and_process_data(df):
-    clean_df = df.copy(deep=True)
-    clean_df['text_clean'] = clean_df['content'].apply(cleaning_text)
-    clean_df['text_casefolding'] = clean_df['text_clean'].apply(case_folding_text)
-    clean_df['text_slang_fixed'] = clean_df['text_casefolding'].apply(fix_slang_words)
-    clean_df['text_tokenized'] = clean_df['text_slang_fixed'].apply(tokenizing_text)
-    clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
-
-    # Parallel stemming
-    with multiprocessing.Pool(processes=multiprocessing.cpu_count()) as pool:
-        stemmed = pool.map(stem_review, clean_df['text_stopword'].tolist())
-    
-    clean_df['text_stemming'] = stemmed
-    clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence)
-
-    return clean_df
 
 @st.cache_data
 def fetch_lexicon(url):
