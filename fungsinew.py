@@ -437,6 +437,7 @@ if st.session_state["current_page"] == "DataFrames":
         try:# Load and preprocess data using cache
             clean_df = load_and_process_data(st.session_state["clean_df"])
             st.session_state["clean_df"] = clean_df
+            st.dataframe(clean_df)
         except Exception:
              st.write("_")
                 
@@ -541,7 +542,7 @@ if st.session_state["current_page"] == "DataFrames":
                                        'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
                 st.session_state["clean_df"] = clean_df
             else:
-                st.dataframe(clean_df)
+                #st.dataframe(clean_df)
                 st.error("Column 'text_stopword' is missing. Ensure text preprocessing is completed first.")
     except Exception:
         st.write("_")
