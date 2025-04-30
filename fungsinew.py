@@ -204,7 +204,7 @@ global tfidf_vectorizer
 global best_lr
 global reset
 THRESHOLD_LOW = 500
-THRESHOLD_MEDIUM = 5000
+THRESHOLD_MEDIUM = 5001
 import streamlit as st
 
 import streamlit as st
