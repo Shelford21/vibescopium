@@ -271,15 +271,15 @@ if st.session_state["current_page"] == "How to use":
 1.🔍 Navigate to the "Input App ID" section
 Go to the section labeled Input App ID on the sidebar or main screen.\n
 2.⌨️ Type the name of the app you want to analyze
-In the input field, enter the name of the app whose reviews you’d like to scrape.
+In the input field, enter the name of the app whose reviews you’d like to scrape.\n
 3.🟦 Click the "Find App" button
-Press the Find App button to search for apps matching your input.
+Press the Find App button to search for apps matching your input.\n
 4.📱 Select an app from the search results
-Choose one of the 5 apps listed based on your search.
+Choose one of the 5 apps listed based on your search.\n
 5.🔢 Specify the number of reviews to scrape
-Select how many user reviews you’d like to collect (e.g., 100, 500, 1000).
+Select how many user reviews you’d like to collect (e.g., 100, 500, 1000).\n
 6.📥 Click the "Fetch Reviews" button
-Press the Fetch Reviews button to start scraping the reviews.
+Press the Fetch Reviews button to start scraping the reviews.\n
 7.✅ Done! Your data has been scraped successfully
 You can now visit other sections like DataFrames or Analysis to explore visualizations and sentiment results.
 </h5>
