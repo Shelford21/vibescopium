@@ -1272,7 +1272,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
       
         
             
-    except Exception:
+    except Exception as e:
          st.markdown(
         """
         <div class="transparent-container">
@@ -1282,6 +1282,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
         """,
         unsafe_allow_html=True
     )
+        st.write(e)
     
 if st.sidebar.button("🩺 Predict"):
     switch_page("🩺 Predict")
