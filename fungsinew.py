@@ -422,7 +422,7 @@ if st.session_state["current_page"] == "Input App ID":
                     #st.write(clean_df[['content', 'text_stopword', 'polarity_score', 'polarity']].head())  
                 else:
                     st.dataframe(clean_df)
-                    st.error("Column 'text_stopword' is missing. Ensure text preprocessing is completed first.")
+                    #st.error("Column 'text_stopword' is missing. Ensure text preprocessing is completed first.")
         except Exception:
             st.write("_")
                         #st.write("Cleaned Dataset Shape:", clean_df.shape)
