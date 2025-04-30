@@ -99,12 +99,26 @@ def case_folding_text(text):
 def tokenizing_text(text):
                     return word_tokenize(text)
         
+# def filtering_text(text):
+#                     list_stopwords = set(stopwords.words('indonesian')).union(set(stopwords.words('english')))
+#                     custom_stopwords = {'iya', 'yaa', 'gak', 'nya', 'na', 'sih', 'ku', 'di', 'ga', 'ya', 'gaa', 'loh', 'kah', 'woi', 'woii', 'woy'}
+#                     list_stopwords.update(custom_stopwords)
+#                     return [word for word in text if word not in list_stopwords]
+
+from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+
+# Create stopword list from Sastrawi
+factoryz = StopWordRemoverFactory()
+sastrawi_stopwords = set(factoryz.get_stop_words())
+
+# Add your custom stopwords
+custom_stopwords = {'iya', 'yaa', 'gak', 'nya', 'na', 'sih', 'ku', 'di', 'ga', 'ya', 'gaa', 'loh', 'kah', 'woi', 'woii', 'woy'}
+stopword_set = sastrawi_stopwords.union(custom_stopwords)
+
+# Filtering function
 def filtering_text(text):
-                    list_stopwords = set(stopwords.words('indonesian')).union(set(stopwords.words('english')))
-                    custom_stopwords = {'iya', 'yaa', 'gak', 'nya', 'na', 'sih', 'ku', 'di', 'ga', 'ya', 'gaa', 'loh', 'kah', 'woi', 'woii', 'woy'}
-                    list_stopwords.update(custom_stopwords)
-                    return [word for word in text if word not in list_stopwords]
-                
+    return [word for word in text if word not in stopword_set]
+
 factory = StemmerFactory()
 stemmer = factory.create_stemmer()
 # def stemming_text(text_list):
