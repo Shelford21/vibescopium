@@ -374,12 +374,14 @@ if st.session_state["current_page"] == "Input App ID":
                     #app_reviews_df.to_csv('ulasan_aplikasi.csv', index=False)
         
                     # Fill missing values
-        placeholder_date = pd.to_datetime("1900-01-01")
-        app_reviews_df['repliedAt'] = app_reviews_df['repliedAt'].fillna(placeholder_date)
-        app_reviews_df['replyContent'] = app_reviews_df['replyContent'].fillna("No reply")
-        app_reviews_df['reviewCreatedVersion'] = app_reviews_df['reviewCreatedVersion'].fillna("1.1")
-        app_reviews_df['appVersion'] = app_reviews_df['appVersion'].fillna("1.1")
-        
+        try:
+            placeholder_date = pd.to_datetime("1900-01-01")
+            app_reviews_df['repliedAt'] = app_reviews_df['repliedAt'].fillna(placeholder_date)
+            app_reviews_df['replyContent'] = app_reviews_df['replyContent'].fillna("No reply")
+            app_reviews_df['reviewCreatedVersion'] = app_reviews_df['reviewCreatedVersion'].fillna("1.1")
+            app_reviews_df['appVersion'] = app_reviews_df['appVersion'].fillna("1.1")
+        except Exception:
+            st.write("_")
                     # Clean data
         clean_df = app_reviews_df.dropna().drop_duplicates()
         st.session_state["clean_df"] = clean_df  # Store cleaned dataset in session state
