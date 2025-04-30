@@ -427,7 +427,7 @@ if st.session_state["current_page"] == "DataFrames":
 
 
     except Exception as e:
-        st.write(e)
+        st.write("_")
 
     
             # Ensure clean_df is loaded before using it
@@ -439,7 +439,7 @@ if st.session_state["current_page"] == "DataFrames":
             st.session_state["clean_df"] = clean_df
             st.dataframe(clean_df)
         except Exception:
-             st.write("_")
+             st.write(e)
                 
 
                 # Display processed data
