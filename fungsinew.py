@@ -1282,7 +1282,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
         """,
         unsafe_allow_html=True
     )
-        st.write(e)
+         st.write(e)
     
 if st.sidebar.button("🩺 Predict"):
     switch_page("🩺 Predict")
