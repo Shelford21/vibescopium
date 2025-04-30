@@ -813,7 +813,7 @@ if st.session_state["current_page"] == "😀 Positive":
             if len(word_listpositive) >= ngram_size:
                 ngrams = [' '.join(word_listpositive[i:i+ngram_size]) for i in range(len(word_listpositive) - ngram_size + 1)]
         
-                excluded_words = ['game', 'tolong', 'bug', 'perbaiki','lag','frezee','freeze','force','close']
+                excluded_words = ['game', 'tolong', 'bug', 'perbaiki','lag','frezee','freeze','force','close','sulit']
                 ngrams = [gram for gram in ngrams if all(word not in gram.lower() for word in excluded_words)]
         
                 # Count and get top 20
@@ -1014,48 +1014,58 @@ elif st.session_state["current_page"] == "😡 Negative":
                     # Set background color to black
         
         # Assuming word_listpositive is already a list of words
-        word_listpositive = st.session_state.get("word_listnegative")
+        word_listnegative = st.session_state.get("word_listnegative")
         
-        # Combine every 3 consecutive words into a trigram
-        trigrams = [' '.join(word_listnegative[i:i+2]) for i in range(len(word_listnegative)-2)]
+        # Make sure the word list is valid
+        if word_listnegative and len(word_listnegative) >= 1:
         
-        # Exclude trigrams that contain the word 'game'
-        trigrams = [trigram for trigram in trigrams if 'game' not in trigram.lower()]
+            # Selectbox shown later, but declared here to get selected value early
+            ngram_size = st.selectbox(
+                "🔄 Want to change N-gram size?",
+                options=[1, 2, 3, 4, 5],
+                index=2,
+                help="Choose how many words to combine in a phrase"
+            )
         
-        # Count trigrams
-        trigram_counts = Counter(trigrams)
-        top_trigrams = trigram_counts.most_common(50)
-        df_top_trigrams = pd.DataFrame(top_trigrams, columns=['trigram', 'frequency'])
+            # Create dynamic n-grams
+            if len(word_listnegative) >= ngram_size:
+                ngrams = [' '.join(word_listnegative[i:i+ngram_size]) for i in range(len(word_listnegative) - ngram_size + 1)]
         
-        # Plotting
-        fig, ax = plt.subplots(figsize=(12, 6))
+                excluded_words = ['bagus']
+                ngrams = [gram for gram in ngrams if all(word not in gram.lower() for word in excluded_words)]
         
-        # Set background color to black
-        fig.patch.set_facecolor('black')
-        ax.set_facecolor('black')
+                # Count and get top 20
+                ngram_counts = Counter(ngrams)
+                top_ngrams = ngram_counts.most_common(30)
+                df_top_ngrams = pd.DataFrame(top_ngrams, columns=['ngram', 'frequency'])
         
-        # Seaborn barplot
-        sns.barplot(x='frequency', y='trigram', data=df_top_trigrams, palette='Reds_r', ax=ax)
+                # Plotting
+                fig, ax = plt.subplots(figsize=(12, 6))
+                fig.patch.set_facecolor('black')
+                ax.set_facecolor('black')
         
-        # Apply a glow effect on the borders
-        for spine in ax.spines.values():
-            spine.set_edgecolor("#00008B")
-            spine.set_linewidth(1)
-            spine.set_alpha(0.7)
+                sns.barplot(x='frequency', y='ngram', data=df_top_ngrams, palette='Reds_r', ax=ax)
         
-        # Title and labels
-        ax.set_title('Top 20 Most Frequent Negative', fontsize=16, color="white", weight="bold")
-        ax.set_xlabel("Frequency", fontsize=14, color="white")
-        ax.set_ylabel("Trigrams", fontsize=14, color="white")
+                for spine in ax.spines.values():
+                    spine.set_edgecolor("#00008B")
+                    spine.set_linewidth(1)
+                    spine.set_alpha(0.7)
         
-        # Change ticks color
-        ax.tick_params(axis='x', colors='white')
-        ax.tick_params(axis='y', colors='white')
+                ax.set_title(f'Top 30 Most Frequent Negative {ngram_size}-grams', fontsize=16, color="white", weight="bold")
+                ax.set_xlabel("Frequency", fontsize=14, color="white")
+                ax.set_ylabel("Words", fontsize=14, color="white")
+                ax.tick_params(axis='x', colors='white')
+                ax.tick_params(axis='y', colors='white')
+                ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
         
-        # Apply a glowing effect to grid lines (optional)
-        ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
+                # Show plot
+                st.pyplot(fig)
+            else:
+                st.warning(f"⚠️ Not enough words to form {ngram_size}-grams.")
         
-        st.pyplot(fig)
+        else:
+            st.warning("⚠️ Word list not available or empty.")
+
         
         # fig.patch.set_facecolor('black')
         # ax.set_facecolor('black')
