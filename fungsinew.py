@@ -818,7 +818,7 @@ if st.session_state["current_page"] == "😀 Positive":
         
                 # Count and get top 20
                 ngram_counts = Counter(ngrams)
-                top_ngrams = ngram_counts.most_common(20)
+                top_ngrams = ngram_counts.most_common(30)
                 df_top_ngrams = pd.DataFrame(top_ngrams, columns=['ngram', 'frequency'])
         
                 # Plotting
@@ -833,9 +833,9 @@ if st.session_state["current_page"] == "😀 Positive":
                     spine.set_linewidth(1)
                     spine.set_alpha(0.7)
         
-                ax.set_title(f'Top 20 Most Frequent Positive {ngram_size}-grams', fontsize=16, color="white", weight="bold")
+                ax.set_title(f'Top 30 Most Frequent Positive {ngram_size}-grams', fontsize=16, color="white", weight="bold")
                 ax.set_xlabel("Frequency", fontsize=14, color="white")
-                ax.set_ylabel("N-grams", fontsize=14, color="white")
+                ax.set_ylabel("Words", fontsize=14, color="white")
                 ax.tick_params(axis='x', colors='white')
                 ax.tick_params(axis='y', colors='white')
                 ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
