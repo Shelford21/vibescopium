@@ -797,12 +797,12 @@ if st.session_state["current_page"] == "😀 Positive":
         # Retrieve word list from session state
         word_listpositive = st.session_state.get("word_listpositive")
         
-        # Let user select n-gram size
-        ngram_size = st.selectbox("Select N-gram Size", options=[1, 2, 3, 4, 5], index=2, help="Choose how many words to combine")
-        
         # Proceed only if word list exists and is long enough
-        if word_listpositive and len(word_listpositive) >= ngram_size:
-            # Create dynamic n-grams
+        if word_listpositive and len(word_listpositive) >= 1:
+            
+            # Default ngram size
+            ngram_size = 3  # default to trigram
+            # Create n-grams with default value
             ngrams = [' '.join(word_listpositive[i:i+ngram_size]) for i in range(len(word_listpositive) - ngram_size + 1)]
         
             # Exclude n-grams that contain the word "game"
@@ -827,14 +827,23 @@ if st.session_state["current_page"] == "😀 Positive":
         
             ax.set_title(f'Top 50 Most Frequent Positive {ngram_size}-grams', fontsize=16, color="white", weight="bold")
             ax.set_xlabel("Frequency", fontsize=14, color="white")
-            ax.set_ylabel("N-grams", fontsize=14, color="white")
+            ax.set_ylabel("Words", fontsize=14, color="white")
             ax.tick_params(axis='x', colors='white')
             ax.tick_params(axis='y', colors='white')
             ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
         
             st.pyplot(fig)
+        
+            # Now place the selectbox below the plot
+            ngram_size = st.selectbox(
+                "🔄 Want to change N-gram size?",
+                options=[1, 2, 3, 4, 5],
+                index=2,
+                help="Choose how many words to combine in a phrase"
+            )
+        
         else:
-            st.warning(f"Not enough words to form {ngram_size}-grams.")
+            st.warning("⚠️ Not enough words to form n-grams.")
 
 
 
