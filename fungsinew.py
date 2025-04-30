@@ -265,21 +265,23 @@ if st.session_state["current_page"] == "How to use":
         """
         <div class="transparent-container">
         <h3>❓ How to Use</h3>
-            <h4>
+            <h5>
     
-    1.Navigate to the "Input App ID" section,Begin by going to the section labeled Input App ID on the sidebar or main interface.
-
-    2.Type the name of the app you want to analyze,In the empty input field, enter the name of the app whose reviews you want to scrape.
-
-    3.Click the "Find App" button,Press the Find App button to search for apps matching your input.
-
-    4.Select an app from the search results,From the list of up to 5 matching apps, choose the one that best matches your intended target.
-
-    5.Specify the number of reviews to scrape,Choose how many user reviews you’d like to collect for analysis (e.g., 100, 500, 1000).
-
-    6.Click the "Fetch Reviews" button,Press the Fetch Reviews button to start scraping reviews from the selected app.
-
-    7.Done! Reviews have been successfully scraped,You can now explore the other sections (like DataFrames or Analysis) to view visualizations, processed text, and sentiment classification results.</h4>
+    1.	🔍 Navigate to the "Input App ID" section
+Go to the section labeled Input App ID on the sidebar or main screen.
+2.	⌨️ Type the name of the app you want to analyze
+In the input field, enter the name of the app whose reviews you’d like to scrape.
+3.	🟦 Click the "Find App" button
+Press the Find App button to search for apps matching your input.
+4.	📱 Select an app from the search results
+Choose one of the 5 apps listed based on your search.
+5.	🔢 Specify the number of reviews to scrape
+Select how many user reviews you’d like to collect (e.g., 100, 500, 1000).
+6.	📥 Click the "Fetch Reviews" button
+Press the Fetch Reviews button to start scraping the reviews.
+7.	✅ Done! Your data has been scraped successfully
+You can now visit other sections like DataFrames or Analysis to explore visualizations and sentiment results.
+</h5>
         </div>
     
         """,
