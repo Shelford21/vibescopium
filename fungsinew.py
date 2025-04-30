@@ -794,49 +794,48 @@ if st.session_state["current_page"] == "😀 Positive":
 
         
         
-        # Assuming word_listpositive is already a list of words
+        # Retrieve word list from session state
         word_listpositive = st.session_state.get("word_listpositive")
         
-        # Combine every 3 consecutive words into a trigram
-        trigrams = [' '.join(word_listpositive[i:i+2]) for i in range(len(word_listpositive)-2)]
+        # Let user select n-gram size
+        ngram_size = st.selectbox("Select N-gram Size", options=[1, 2, 3, 4, 5], index=2, help="Choose how many words to combine")
         
-        # Exclude trigrams that contain the word 'game'
-        trigrams = [trigram for trigram in trigrams if 'game' not in trigram.lower()]
+        # Proceed only if word list exists and is long enough
+        if word_listpositive and len(word_listpositive) >= ngram_size:
+            # Create dynamic n-grams
+            ngrams = [' '.join(word_listpositive[i:i+ngram_size]) for i in range(len(word_listpositive) - ngram_size + 1)]
         
-        # Count trigrams
-        trigram_counts = Counter(trigrams)
-        top_trigrams = trigram_counts.most_common(50)
-        df_top_trigrams = pd.DataFrame(top_trigrams, columns=['trigram', 'frequency'])
+            # Exclude n-grams that contain the word "game"
+            ngrams = [gram for gram in ngrams if 'game' not in gram.lower()]
         
-        # Plotting
-        fig, ax = plt.subplots(figsize=(12, 6))
+            # Count and get top 50
+            ngram_counts = Counter(ngrams)
+            top_ngrams = ngram_counts.most_common(50)
+            df_top_ngrams = pd.DataFrame(top_ngrams, columns=['ngram', 'frequency'])
         
-        # Set background color to black
-        fig.patch.set_facecolor('black')
-        ax.set_facecolor('black')
+            # Plotting
+            fig, ax = plt.subplots(figsize=(12, 6))
+            fig.patch.set_facecolor('black')
+            ax.set_facecolor('black')
         
-        # Seaborn barplot
-        sns.barplot(x='frequency', y='trigram', data=df_top_trigrams, palette='Greens_r', ax=ax)
+            sns.barplot(x='frequency', y='ngram', data=df_top_ngrams, palette='Greens_r', ax=ax)
         
-        # Apply a glow effect on the borders
-        for spine in ax.spines.values():
-            spine.set_edgecolor("#00008B")
-            spine.set_linewidth(1)
-            spine.set_alpha(0.7)
+            for spine in ax.spines.values():
+                spine.set_edgecolor("#00008B")
+                spine.set_linewidth(1)
+                spine.set_alpha(0.7)
         
-        # Title and labels
-        ax.set_title('Top 20 Most Frequent Positive', fontsize=16, color="white", weight="bold")
-        ax.set_xlabel("Frequency", fontsize=14, color="white")
-        ax.set_ylabel("Trigrams", fontsize=14, color="white")
+            ax.set_title(f'Top 50 Most Frequent Positive {ngram_size}-grams', fontsize=16, color="white", weight="bold")
+            ax.set_xlabel("Frequency", fontsize=14, color="white")
+            ax.set_ylabel("N-grams", fontsize=14, color="white")
+            ax.tick_params(axis='x', colors='white')
+            ax.tick_params(axis='y', colors='white')
+            ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
         
-        # Change ticks color
-        ax.tick_params(axis='x', colors='white')
-        ax.tick_params(axis='y', colors='white')
-        
-        # Apply a glowing effect to grid lines (optional)
-        ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
-        
-        st.pyplot(fig)
+            st.pyplot(fig)
+        else:
+            st.warning(f"Not enough words to form {ngram_size}-grams.")
+
 
 
 
