@@ -801,7 +801,7 @@ if st.session_state["current_page"] == "😀 Positive":
         if word_listpositive and len(word_listpositive) >= 1:
             
             # Default ngram size
-            ngram_size = 3  # default to trigram
+            ngram_size = 1  # default to trigram
             # Create n-grams with default value
             ngrams = [' '.join(word_listpositive[i:i+ngram_size]) for i in range(len(word_listpositive) - ngram_size + 1)]
         
@@ -810,7 +810,7 @@ if st.session_state["current_page"] == "😀 Positive":
         
             # Count and get top 50
             ngram_counts = Counter(ngrams)
-            top_ngrams = ngram_counts.most_common(50)
+            top_ngrams = ngram_counts.most_common(20)
             df_top_ngrams = pd.DataFrame(top_ngrams, columns=['ngram', 'frequency'])
         
             # Plotting
@@ -825,7 +825,7 @@ if st.session_state["current_page"] == "😀 Positive":
                 spine.set_linewidth(1)
                 spine.set_alpha(0.7)
         
-            ax.set_title(f'Top 50 Most Frequent Positive {ngram_size}-grams', fontsize=16, color="white", weight="bold")
+            ax.set_title(f'Top 20 Most Frequent Positive {ngram_size}-grams', fontsize=16, color="white", weight="bold")
             ax.set_xlabel("Frequency", fontsize=14, color="white")
             ax.set_ylabel("Words", fontsize=14, color="white")
             ax.tick_params(axis='x', colors='white')
