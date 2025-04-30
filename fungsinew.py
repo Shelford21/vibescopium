@@ -394,8 +394,36 @@ if st.session_state["current_page"] == "Input App ID":
                 #st.dataframe(clean_df)
             except Exception:
                  st.write("_")
+
+
+         # Load lexicons only once
+        if "lexicon_positive" not in st.session_state:
+            st.session_state["lexicon_positive"] = fetch_lexicon('https://raw.githubusercontent.com/Shelford21/vibescopium/main/lexicon_positive.csv')
+    
+        if "lexicon_negative" not in st.session_state:
+            st.session_state["lexicon_negative"] = fetch_lexicon('https://raw.githubusercontent.com/Shelford21/vibescopium/main/lexicon_negative.csv')
+    
+        lexicon_positive = st.session_state["lexicon_positive"]
+        lexicon_negative = st.session_state["lexicon_negative"]
+
+        try:
+            if "clean_df" in st.session_state:
+                clean_df = st.session_state["clean_df"].copy()
         
-                    #st.write("Cleaned Dataset Shape:", clean_df.shape)
+                if "text_stopword" in clean_df.columns:
+                    if "polarity_score" not in clean_df.columns or "polarity" not in clean_df.columns:
+                        scores, polarities = sentiment_analysis_lexicon_indonesia(clean_df['text_stopword'])
+                        clean_df['polarity_score'] = scores
+                        clean_df['polarity'] = polarities
+                        st.session_state["clean_df"] = clean_df
+        
+                    #st.write(clean_df[['content', 'text_stopword', 'polarity_score', 'polarity']].head())  
+                else:
+                    st.dataframe(clean_df)
+                    st.error("Column 'text_stopword' is missing. Ensure text preprocessing is completed first.")
+        except Exception:
+            st.write("_")
+                        #st.write("Cleaned Dataset Shape:", clean_df.shape)
                     #st.write(clean_df.head())  # Show sample cleaned data
         
                     #clean_df.info()
@@ -472,16 +500,7 @@ if st.session_state["current_page"] == "DataFrames":
 
 
     
-            # Load lexicons only once
-    if "lexicon_positive" not in st.session_state:
-        st.session_state["lexicon_positive"] = fetch_lexicon('https://raw.githubusercontent.com/Shelford21/vibescopium/main/lexicon_positive.csv')
-
-    if "lexicon_negative" not in st.session_state:
-        st.session_state["lexicon_negative"] = fetch_lexicon('https://raw.githubusercontent.com/Shelford21/vibescopium/main/lexicon_negative.csv')
-
-    lexicon_positive = st.session_state["lexicon_positive"]
-    lexicon_negative = st.session_state["lexicon_negative"]
-
+           
             # Sentiment analysis function
             
             
@@ -528,30 +547,14 @@ if st.session_state["current_page"] == "DataFrames":
             # Initialize session state for navigation
             # if "current_page" not in st.session_state:
             #     st.session_state["current_page"] = "Vibe Scopium"  # Default page
-            
-
-
-    try:
-        if "clean_df" in st.session_state:
-            clean_df = st.session_state["clean_df"].copy()
-    
-            if "text_stopword" in clean_df.columns:
-                if "polarity_score" not in clean_df.columns or "polarity" not in clean_df.columns:
-                    scores, polarities = sentiment_analysis_lexicon_indonesia(clean_df['text_stopword'])
-                    clean_df['polarity_score'] = scores
-                    clean_df['polarity'] = polarities
-                    st.session_state["clean_df"] = clean_df
-    
-                #st.write(clean_df[['content', 'text_stopword', 'polarity_score', 'polarity']].head())  
-                st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
+    try:        
+    clean_df = st.session_state["clean_df"].copy()
+    st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
                                        #'text_stemming',
                                        'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
-                st.session_state["clean_df"] = clean_df
-            else:
-                #st.dataframe(clean_df)
-                st.error("Column 'text_stopword' is missing. Ensure text preprocessing is completed first.")
     except Exception:
         st.write("_")
+    
     
 # if st.sidebar.button("Word Cloud"):
 #     switch_page("Word Cloud")
