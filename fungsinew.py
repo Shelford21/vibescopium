@@ -1391,7 +1391,7 @@ if st.session_state["current_page"] == "🩺 Predict":
                     
                     # Define Logistic Regression parameters with explicit regularization
                     lr_params = {
-                        'C': [0.01, 0.1, 1, 10],  # Smaller C means stronger regularization
+                        'C': [0.001, 0.01, 0.1, 1],  # Smaller C means stronger regularization
                         'solver': ['liblinear', 'lbfgs'],  
                         'penalty': ['l1', 'l2']  # L1 for sparsity, L2 for generalization (liblinear supports both, lbfgs only L2)
                     }
