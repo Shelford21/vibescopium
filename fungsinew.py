@@ -426,8 +426,9 @@ if st.session_state["current_page"] == "DataFrames":
 
 
 
-    except Exception:
+    except Exception as e:
         st.write("_")
+        st.write(e)
 
     
             # Ensure clean_df is loaded before using it
