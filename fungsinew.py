@@ -264,7 +264,7 @@ if st.session_state["current_page"] == "How to use":
     st.markdown(
         """
         <div class="transparent-container">
-            <h4>📘 How to Use the Sentiment Analysis App
+            <h4>📘 How to Use the Sentiment Analysis App\n
 
     1.Navigate to the "Input App ID" section,Begin by going to the section labeled Input App ID on the sidebar or main interface.
 
