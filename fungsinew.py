@@ -107,9 +107,14 @@ def filtering_text(text):
                 
 factory = StemmerFactory()
 stemmer = factory.create_stemmer()
+# def stemming_text(text_list):
+#             sentence = ' '.join(text_list)
+#             return stemmer.stem(sentence).split()
+
+stem_cache = {}
 def stemming_text(text_list):
-            sentence = ' '.join(text_list)
-            return stemmer.stem(sentence).split()
+    return [stem_cache.setdefault(word, stemmer.stem(word)) for word in text_list]
+
         
             # def stemming_text(text_list):
             #             # Apply stemming on each word in the list
