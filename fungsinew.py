@@ -438,7 +438,7 @@ if st.session_state["current_page"] == "DataFrames":
             clean_df = load_and_process_data(st.session_state["clean_df"])
             st.session_state["clean_df"] = clean_df
             st.dataframe(clean_df)
-        except Exception:
+        except Exception as e:
              st.write(e)
                 
 
