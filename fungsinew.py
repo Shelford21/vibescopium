@@ -107,9 +107,9 @@ def filtering_text(text):
                 
 factory = StemmerFactory()
 stemmer = factory.create_stemmer()
-def stemming_text(text_list):
-            sentence = ' '.join(text_list)
-            return stemmer.stem(sentence).split()
+# def stemming_text(text_list):
+#             sentence = ' '.join(text_list)
+#             return stemmer.stem(sentence).split()
 
 stem_cache = {}
 def stemming_text(text_list):
