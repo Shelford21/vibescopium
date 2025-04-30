@@ -150,20 +150,20 @@ def fix_slang_words(text):
                    
         
                     # Function to load and process data (cached)
-# @st.cache_data
-# def load_and_process_data(df):
-#                         clean_df = df.copy(deep=True)  # Ensure deep copy
-#                         clean_df['text_clean'] = clean_df['content'].apply(cleaning_text)
-#                         clean_df['text_casefolding'] = clean_df['text_clean'].apply(case_folding_text)
-#                         clean_df['text_slang_fixed'] = clean_df['text_casefolding'].apply(fix_slang_words)
-#                         clean_df['text_tokenized'] = clean_df['text_slang_fixed'].apply(tokenizing_text)
-#                         clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
-#                         #clean_df['text_stopwords'] = clean_df['text_stopword'].apply(to_sentence)
-#                         #clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
-#                         clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text) #klau stem pake ini
-#                         #clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence) #klau ngga stem
-#                         clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence) #dan ini stem
-#                         return clean_df  # Return processed DataFrame
+@st.cache_data
+def load_and_process_data(df):
+                        clean_df = df.copy(deep=True)  # Ensure deep copy
+                        clean_df['text_clean'] = clean_df['content'].apply(cleaning_text)
+                        clean_df['text_casefolding'] = clean_df['text_clean'].apply(case_folding_text)
+                        clean_df['text_slang_fixed'] = clean_df['text_casefolding'].apply(fix_slang_words)
+                        clean_df['text_tokenized'] = clean_df['text_slang_fixed'].apply(tokenizing_text)
+                        clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
+                        #clean_df['text_stopwords'] = clean_df['text_stopword'].apply(to_sentence)
+                        #clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
+                        clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text) #klau stem pake ini
+                        #clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence) #klau ngga stem
+                        clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence) #dan ini stem
+                        return clean_df  # Return processed DataFrame
 
 
 @st.cache_data
