@@ -266,26 +266,19 @@ if st.session_state["current_page"] == "How to use":
         <div class="transparent-container">
             <h4>📘 How to Use the Sentiment Analysis App
 
-    1.Navigate to the "Input App ID" section\n
-    Begin by going to the section labeled Input App ID on the sidebar or main interface.
+    1.Navigate to the "Input App ID" section,Begin by going to the section labeled Input App ID on the sidebar or main interface.
 
-    2.Type the name of the app you want to analyze
-    In the empty input field, enter the name of the app whose reviews you want to scrape.
+    2.Type the name of the app you want to analyze,In the empty input field, enter the name of the app whose reviews you want to scrape.
 
-    Click the "Find App" button
-    Press the Find App button to search for apps matching your input.
+    3.Click the "Find App" button,Press the Find App button to search for apps matching your input.
 
-    Select an app from the search results
-    From the list of up to 5 matching apps, choose the one that best matches your intended target.
+    4.Select an app from the search results,From the list of up to 5 matching apps, choose the one that best matches your intended target.
 
-    Specify the number of reviews to scrape
-    Choose how many user reviews you’d like to collect for analysis (e.g., 100, 500, 1000).
+    5.Specify the number of reviews to scrape,Choose how many user reviews you’d like to collect for analysis (e.g., 100, 500, 1000).
 
-    Click the "Fetch Reviews" button
-    Press the Fetch Reviews button to start scraping reviews from the selected app.
+    6.Click the "Fetch Reviews" button,Press the Fetch Reviews button to start scraping reviews from the selected app.
 
-    Done! Reviews have been successfully scraped
-    You can now explore the other sections (like DataFrames or Analysis) to view visualizations, processed text, and sentiment classification results.</h4>
+    7.Done! Reviews have been successfully scraped,You can now explore the other sections (like DataFrames or Analysis) to view visualizations, processed text, and sentiment classification results.</h4>
         </div>
     
         """,
