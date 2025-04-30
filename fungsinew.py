@@ -265,9 +265,7 @@ if st.session_state["current_page"] == "How to use":
         """
         <div class="transparent-container">
         <h3>❓ How to Use</h3>
-        <h5>
-
-    1.	🔍 Navigate to the "Input App ID" section
+        <h5>    1.	🔍 Navigate to the "Input App ID" section
 Go to the section labeled Input App ID on the sidebar or main screen.
     2.	⌨️ Type the name of the app you want to analyze
 In the input field, enter the name of the app whose reviews you’d like to scrape.
