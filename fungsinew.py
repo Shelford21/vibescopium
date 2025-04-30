@@ -548,10 +548,10 @@ if st.session_state["current_page"] == "DataFrames":
             # if "current_page" not in st.session_state:
             #     st.session_state["current_page"] = "Vibe Scopium"  # Default page
     try:        
-    clean_df = st.session_state["clean_df"].copy()
-    st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
-                                       #'text_stemming',
-                                       'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
+        clean_df = st.session_state["clean_df"].copy()
+        st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
+                                           #'text_stemming',
+                                           'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
     except Exception:
         st.write("_")
     
