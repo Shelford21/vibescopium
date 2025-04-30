@@ -111,9 +111,12 @@ stemmer = factory.create_stemmer()
 #             sentence = ' '.join(text_list)
 #             return stemmer.stem(sentence).split()
 
-stem_cache = {}
+# stem_cache = {}
+# def stemming_text(text_list):
+#     return [stem_cache.setdefault(word, stemmer.stem(word)) for word in text_list]
+
 def stemming_text(text_list):
-    return [stem_cache.setdefault(word, stemmer.stem(word)) for word in text_list]
+    return [stemmer.stem(word) for word in text_list]
 
         
             # def stemming_text(text_list):
