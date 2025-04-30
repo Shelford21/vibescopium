@@ -454,10 +454,10 @@ if st.session_state["current_page"] == "How to use":
         <div class="transparent-container">
             <h5>📘 How to Use the Sentiment Analysis App
 
-    Navigate to the "Input App ID" section
+    1.Navigate to the "Input App ID" section\n
     Begin by going to the section labeled Input App ID on the sidebar or main interface.
 
-    Type the name of the app you want to analyze
+    2.Type the name of the app you want to analyze
     In the empty input field, enter the name of the app whose reviews you want to scrape.
 
     Click the "Find App" button
