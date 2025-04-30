@@ -427,7 +427,6 @@ if st.session_state["current_page"] == "DataFrames":
 
 
     except Exception as e:
-        st.write("_")
         st.write(e)
 
     
