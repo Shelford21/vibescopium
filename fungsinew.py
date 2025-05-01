@@ -177,7 +177,7 @@ def load_and_process_data(df):
     clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
 
     # Check if stemming is enabled
-    if st.session_state.get('do_stemming_choice' == "No"):  # Default to True if not set
+    if st.session_state.get('do_stemming_choice' == "No"):  
         clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence)
     else:
         clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
@@ -395,7 +395,7 @@ if st.session_state["current_page"] == "Input App ID":
         st.selectbox(
             "Do you want to apply stemming to the text?",
             options=["No", "Yes"],
-            index=0,
+            index=1,
             key="do_stemming_choice"
         )
 
