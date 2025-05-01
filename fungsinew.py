@@ -394,8 +394,8 @@ if st.session_state["current_page"] == "Input App ID":
         # Selectbox for stemming choice with a session state key
         st.selectbox(
             "Do you want to apply stemming to the text?",
-            options=["Yes", "No"],
-            index=1,
+            options=["No", "Yes"],
+            index=0,
             key="do_stemming_choice"
         )
 
