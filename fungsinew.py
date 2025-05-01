@@ -398,6 +398,13 @@ if st.session_state["current_page"] == "Input App ID":
             key="stemming_choice"
         ) == "Yes"  # This will store True for Yes, False for No
         # Ensure app_id is set before fetching reviews
+
+        # Convert string choice to boolean and store in session state
+        st.session_state['do_stemming'] = stemming_choice == "Yes"
+        
+        # Show a warning if user chooses stemming
+        if st.session_state['do_stemming']:
+            st.warning("⚠️ Enabling stemming may significantly increase processing time, especially for large review datasets. It could take 10-60 mins")
     
     if st.session_state['app_id'] :
         app_id = st.session_state['app_id']
