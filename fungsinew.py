@@ -320,10 +320,14 @@ In the input field, enter the name of the app whose reviews you’d like to scra
 Press the Find App button to search for apps matching your input.\n
 4.📱 Select an app from the search results -
 Choose one of the 5 apps listed based on your search.\n
-5.🔢 Specify the number of reviews to scrape -
+5.⚙️ Decide whether to apply stemming
+Choose Yes or No in the stemming option.
+Yes will apply a linguistic normalization process (slower, more accurate),
+No will skip it and process faster.\n
+6.🔢 Specify the number of reviews to scrape -
 Select how many user reviews you’d like to collect (e.g., 100, 500, 1000).\n
-6.📥 Click the "Fetch Reviews" button -To start scraping the reviews.\n
-7.✅ Done! Your data has been scraped successfully -
+7.📥 Click the "Fetch Reviews" button -To start scraping the reviews.\n
+8.✅ Done! Your data has been scraped successfully -
 You can now visit other sections like DataFrames or Evaluation to explore visualizations and sentiment results.
 </h5>
         </div>
