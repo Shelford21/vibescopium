@@ -54,6 +54,8 @@ if 'word_listnegative' not in st.session_state:
     st.session_state['word_listnegative'] = None
 if 'tfidf_vectorizer' not in st.session_state:
     st.session_state['tfidf_vectorizer'] = None
+if 'do_stemming_choice' not in st.session_state:
+    st.session_state['do_stemming_choice'] = None
     
     
 st.set_page_config(page_title="Vibe Scopium",
@@ -177,11 +179,11 @@ def load_and_process_data(df):
     clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
 
     # Check if stemming is enabled
-    if st.session_state.get('do_stemming_choice' == "No"):  
-        clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence)
-    else:
+    if st.session_state["do_stemming_choice"]: 
         clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
         clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence)
+    else:
+        clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence)
 
     return clean_df
 
@@ -391,19 +393,21 @@ if st.session_state["current_page"] == "Input App ID":
             st.session_state['app_id'] = st.session_state['app_options'][selected_app]
             
           # NEW: Stemming option selectbox
-        # Selectbox for stemming choice with a session state key
-        st.selectbox(
+    
+        # Show the selectbox
+        stemming_choice = st.selectbox(
             "Do you want to apply stemming to the text?",
             options=["No", "Yes"],
-            index=1,
-            key="do_stemming_choice"
+            index=0,
         )
-
-
         
-        # Show warning only if the user chooses "Yes"
-        if st.session_state["do_stemming_choice"] == "Yes":
-            st.warning("⚠️ Enabling stemming may significantly increase processing time, especially for large review datasets.")
+        # Set session state accordingly
+        if stemming_choice == "Yes":
+            st.session_state["do_stemming_choice"] = True
+            st.warning("⚠️ Enabling stemming may significantly increase processing time.")
+        else:
+            st.session_state["do_stemming_choice"] = None
+
     
     if st.session_state['app_id'] :
         app_id = st.session_state['app_id']
