@@ -402,9 +402,9 @@ if st.session_state["current_page"] == "Input App ID":
         # Convert string choice to boolean and store in session state
         st.session_state['do_stemming'] = stemming_choice == "Yes"
         
-        # Show a warning if user chooses stemming
-        if st.session_state['do_stemming']:
-            st.warning("⚠️ Enabling stemming may significantly increase processing time, especially for large review datasets. It could take 10-60 mins")
+        # Show warning only if the user chooses "Yes"
+        if stemming_choice == "Yes":
+            st.warning("⚠️ Enabling stemming may significantly increase processing time, especially for large review datasets.")
     
     if st.session_state['app_id'] :
         app_id = st.session_state['app_id']
