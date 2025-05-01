@@ -168,18 +168,38 @@ def fix_slang_words(text):
                     # Function to load and process data (cached)
 @st.cache_data
 def load_and_process_data(df):
-                        clean_df = df.copy(deep=True)  # Ensure deep copy
-                        clean_df['text_clean'] = clean_df['content'].apply(cleaning_text)
-                        clean_df['text_casefolding'] = clean_df['text_clean'].apply(case_folding_text)
-                        clean_df['text_slang_fixed'] = clean_df['text_casefolding'].apply(fix_slang_words)
-                        clean_df['text_tokenized'] = clean_df['text_slang_fixed'].apply(tokenizing_text)
-                        clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
-                        #clean_df['text_stopwords'] = clean_df['text_stopword'].apply(to_sentence)
-                        #clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
-                        clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text) #klau stem pake ini
-                        #clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence) #klau ngga stem
-                        clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence) #dan ini stem
-                        return clean_df  # Return processed DataFrame
+    clean_df = df.copy(deep=True)  # Ensure deep copy
+
+    clean_df['text_clean'] = clean_df['content'].apply(cleaning_text)
+    clean_df['text_casefolding'] = clean_df['text_clean'].apply(case_folding_text)
+    clean_df['text_slang_fixed'] = clean_df['text_casefolding'].apply(fix_slang_words)
+    clean_df['text_tokenized'] = clean_df['text_slang_fixed'].apply(tokenizing_text)
+    clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
+
+    # Check if stemming is enabled
+    if st.session_state.get('do_stemming', False):  # Default to True if not set
+        clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence)
+    else:
+        clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
+        clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence)
+
+    return clean_df
+
+
+# @st.cache_data
+# def load_and_process_data(df):
+#                         clean_df = df.copy(deep=True)  # Ensure deep copy
+#                         clean_df['text_clean'] = clean_df['content'].apply(cleaning_text)
+#                         clean_df['text_casefolding'] = clean_df['text_clean'].apply(case_folding_text)
+#                         clean_df['text_slang_fixed'] = clean_df['text_casefolding'].apply(fix_slang_words)
+#                         clean_df['text_tokenized'] = clean_df['text_slang_fixed'].apply(tokenizing_text)
+#                         clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
+#                         #clean_df['text_stopwords'] = clean_df['text_stopword'].apply(to_sentence)
+#                         #clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
+#                         clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text) #klau stem pake ini
+#                         #clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence) #klau ngga stem
+#                         clean_df['text_akhir'] = clean_df['text_stemming'].apply(to_sentence) #dan ini stem
+#                         return clean_df  # Return processed DataFrame
 
 
 @st.cache_data
@@ -370,8 +390,15 @@ if st.session_state["current_page"] == "Input App ID":
         if selected_app:
             st.session_state['app_id'] = st.session_state['app_options'][selected_app]
             
-
-    # Ensure app_id is set before fetching reviews
+          # NEW: Stemming option selectbox
+        st.session_state['do_stemming'] = st.selectbox(
+            "Do you want to apply stemming on the reviews?",
+            ["Yes", "No"],
+            index=0,
+            key="stemming_choice"
+        ) == "Yes"  # This will store True for Yes, False for No
+        # Ensure app_id is set before fetching reviews
+    
     if st.session_state['app_id'] :
         app_id = st.session_state['app_id']
         st.write(f"App ID: {app_id}")
