@@ -177,7 +177,7 @@ def load_and_process_data(df):
     clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
 
     # Check if stemming is enabled
-    if st.session_state.get('do_stemming_choice', False):  # Default to True if not set
+    if st.session_state.get('do_stemming_choice' == "No"):  # Default to True if not set
         clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence)
     else:
         clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
@@ -638,7 +638,7 @@ if st.session_state["current_page"] == "DataFrames":
             #     st.session_state["current_page"] = "Vibe Scopium"  # Default page
     try:        
         clean_df = st.session_state["clean_df"].copy()
-        if st.session_state.get('do_stemming_choice', True):
+        if st.session_state.get('do_stemming_choice'== "Yes"):
             st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
                                            'text_stemming',
                                            'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
@@ -647,7 +647,7 @@ if st.session_state["current_page"] == "DataFrames":
                                            #'text_stemming',
                                            'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
     except Exception as e:
-        st.write(e)
+        st.write("_")
     
     
 # if st.sidebar.button("Word Cloud"):
