@@ -177,7 +177,7 @@ def load_and_process_data(df):
     clean_df['text_stopword'] = clean_df['text_tokenized'].apply(filtering_text)
 
     # Check if stemming is enabled
-    if st.session_state.get('do_stemming', False):  # Default to True if not set
+    if st.session_state.get('do_stemming_choice', False):  # Default to True if not set
         clean_df['text_akhir'] = clean_df['text_stopword'].apply(to_sentence)
     else:
         clean_df['text_stemming'] = clean_df['text_stopword'].apply(stemming_text)
@@ -391,19 +391,18 @@ if st.session_state["current_page"] == "Input App ID":
             st.session_state['app_id'] = st.session_state['app_options'][selected_app]
             
           # NEW: Stemming option selectbox
-        st.session_state['do_stemming'] = st.selectbox(
-            "Do you want to apply stemming on the reviews?",
-            ["Yes", "No"],
+        # Selectbox for stemming choice with a session state key
+        st.selectbox(
+            "Do you want to apply stemming to the text?",
+            options=["Yes", "No"],
             index=0,
-            key="stemming_choice"
-        ) == "Yes"  # This will store True for Yes, False for No
-        # Ensure app_id is set before fetching reviews
+            key="do_stemming_choice"
+        )
 
-        # Convert string choice to boolean and store in session state
-        st.session_state['do_stemming'] = stemming_choice == "Yes"
+
         
         # Show warning only if the user chooses "Yes"
-        if stemming_choice == "Yes":
+        if st.session_state["do_stemming_choice"] == "Yes":
             st.warning("⚠️ Enabling stemming may significantly increase processing time, especially for large review datasets.")
     
     if st.session_state['app_id'] :
