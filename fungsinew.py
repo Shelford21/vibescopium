@@ -654,26 +654,24 @@ if st.session_state["current_page"] == "DataFrames":
             
              
         else:
-            # st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
-            #                                #'text_stemming',
-            #                                'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000) 
-            columns = ['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
-           'text_stemming', 'text_akhir', 'polarity_score', 'polarity']
-
-            # Select column to search in
-            selected_column = st.selectbox("Choose column to search in:", columns)
+             st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
+                                            #'text_stemming',
+                                            'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000) 
+           # Let user select the column to filter by
+            selected_column = st.selectbox("Choose column to filter by:", columns_to_show)
             
-            # Input value to search
-            search_value = st.text_input(f"Enter value to search in '{selected_column}':")
+            # Let user input the search value
+            search_value = st.text_input(f"Enter value to filter '{selected_column}' by:")
             
-            # Filter DataFrame
+            # Filter the DataFrame based on search
             if search_value:
-                filtered_df = df[df[selected_column].astype(str).str.contains(search_value, case=False, na=False)]
+                filtered_df = clean_df[clean_df[selected_column].astype(str).str.contains(search_value, case=False, na=False)]
             else:
-                filtered_df = df
+                filtered_df = clean_df
             
-            # Display filtered DataFrame
-            st.dataframe(filtered_df)
+            # Show the filtered DataFrame but keep all columns
+            st.dataframe(filtered_df[columns_to_show], use_container_width=True, height=6000)
+
     except Exception as e:
         st.write("_")
     
