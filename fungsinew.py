@@ -654,9 +654,9 @@ if st.session_state["current_page"] == "DataFrames":
             
              
         else:
-            st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
-                                           #'text_stemming',
-                                           'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000) 
+            # st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
+            #                                #'text_stemming',
+            #                                'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000) 
             columns = ['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
            'text_stemming', 'text_akhir', 'polarity_score', 'polarity']
 
