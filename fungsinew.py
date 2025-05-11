@@ -651,6 +651,12 @@ if st.session_state["current_page"] == "DataFrames":
             #                                'text_stemming',
             #                                'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000) 
             
+            
+             
+        else:
+            st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
+                                           #'text_stemming',
+                                           'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000) 
             columns = ['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
            'text_stemming', 'text_akhir', 'polarity_score', 'polarity']
 
@@ -668,11 +674,6 @@ if st.session_state["current_page"] == "DataFrames":
             
             # Display filtered DataFrame
             st.dataframe(filtered_df)
-             
-        else:
-            st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
-                                           #'text_stemming',
-                                           'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
     except Exception as e:
         st.write("_")
     
