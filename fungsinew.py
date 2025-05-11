@@ -647,9 +647,27 @@ if st.session_state["current_page"] == "DataFrames":
     try:        
         clean_df = st.session_state["clean_df"].copy()
         if st.session_state.get('do_stemming_choice'== "Yes"):
-             st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
-                                            'text_stemming',
-                                            'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000) 
+            # st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
+            #                                'text_stemming',
+            #                                'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000) 
+            columns_to_show = ['content', 'score','thumbsUpCount','at','appVersion',
+                   'text_clean', 'text_casefolding','text_slang_fixed','text_tokenized',
+                   'text_stopword', 'text_stemming','text_akhir', 'polarity_score', 'polarity']
+           # Let user select the column to filter by
+            selected_column = st.selectbox("Choose column to filter by:", columns_to_show)
+            
+            # Let user input the search value
+            search_value = st.text_input(f"Enter value to filter '{selected_column}' by:")
+            
+            # Filter the DataFrame based on search
+            if search_value:
+                filtered_df = clean_df[clean_df[selected_column].astype(str).str.contains(search_value, case=False, na=False)]
+            else:
+                filtered_df = clean_df
+            
+            # Show the filtered DataFrame but keep all columns
+            st.dataframe(filtered_df[columns_to_show], use_container_width=True, height=6000)
+           
             
             
              
