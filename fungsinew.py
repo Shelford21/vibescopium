@@ -649,7 +649,26 @@ if st.session_state["current_page"] == "DataFrames":
         if st.session_state.get('do_stemming_choice'== "Yes"):
             st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
                                            'text_stemming',
-                                           'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000)  
+                                           'text_akhir', 'polarity_score', 'polarity']],use_container_width=True , height=6000) 
+            
+            columns = ['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
+           'text_stemming', 'text_akhir', 'polarity_score', 'polarity']
+
+            # Select column to search in
+            selected_column = st.selectbox("Choose column to search in:", columns)
+            
+            # Input value to search
+            search_value = st.text_input(f"Enter value to search in '{selected_column}':")
+            
+            # Filter DataFrame
+            if search_value:
+                filtered_df = df[df[selected_column].astype(str).str.contains(search_value, case=False, na=False)]
+            else:
+                filtered_df = df
+            
+            # Display filtered DataFrame
+            st.dataframe(filtered_df)
+             
         else:
             st.dataframe(clean_df[['content', 'score','thumbsUpCount','at','appVersion','text_clean', 'text_casefolding','text_slang_fixed','text_tokenized','text_stopword',
                                            #'text_stemming',
