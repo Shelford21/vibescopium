@@ -1417,6 +1417,38 @@ if st.session_state["current_page"] == "🩻 Evaluation":
                 #ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
 
             st.pyplot(fig)
+            
+                        # Hitung distribusi skor rating
+            score_counts = clean_df['score'].value_counts().sort_index()
+            
+            # Buat plot
+            fig, ax = plt.subplots(figsize=(12, 6))
+            
+            # Latar belakang hitam
+            fig.patch.set_facecolor('black')
+            ax.set_facecolor('black')
+            
+            # Barplot dengan palet warna neon
+            sns.barplot(x=score_counts.index, y=score_counts.values,
+                        palette=sns.color_palette(["#00FFFF", "#ff00ff", "#39FF14", "#FFA500", "#FF3131"]),
+                        ax=ax)
+            
+            # Glow efek di border
+            for spine in ax.spines.values():
+                spine.set_edgecolor("#00FFFF")  # Neon cyan
+                spine.set_linewidth(1.5)
+                spine.set_alpha(0.7)
+            
+            # Judul dan label sumbu
+            ax.set_xlabel("Rating Score", fontsize=14, color="white")
+            ax.set_ylabel("Count", fontsize=14, color="white")
+            
+            # Warna ticks
+            ax.tick_params(axis='x', colors='white')
+            ax.tick_params(axis='y', colors='white')
+            
+            # Tampilkan plot di Streamlit
+            st.pyplot(fig)
 
                 # Menentukan kesimpulan
             if sentiment_counts.get('positive', 0) > sentiment_counts.get('negative', 0):
