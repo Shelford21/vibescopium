@@ -1417,7 +1417,16 @@ if st.session_state["current_page"] == "🩻 Evaluation":
                 #ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
 
             st.pyplot(fig)
+
+            st.markdown(
+                """
+                <div class="transparent-container">
+                    <h3>⭐ Ratings</h3>
+                </div>
             
+                """,
+                unsafe_allow_html=True
+            )
                         # Hitung distribusi skor rating
             score_counts = clean_df['score'].value_counts().sort_index()
             
