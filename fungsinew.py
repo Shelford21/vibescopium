@@ -1444,7 +1444,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             
             # Glow efek di border
             for spine in ax.spines.values():
-                spine.set_edgecolor("#00FFFF")  # Neon cyan
+                spine.set_edgecolor("#00008B")  # 
                 spine.set_linewidth(1.5)
                 spine.set_alpha(0.7)
             
