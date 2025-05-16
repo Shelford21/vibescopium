@@ -458,7 +458,7 @@ if st.session_state["current_page"] == "Input App ID":
                             csv_writer.writerow([review['content']])
                         return output.getvalue().encode('utf-8')
                 
-                csv_bytes = generate_csv(reviews)
+                    csv_bytes = generate_csv(reviews)
             
             if 'csv' not in st.session_state or st.session_state['csv'] is None:
                     st.session_state['csv'] = generate_csv(reviews) 
