@@ -441,7 +441,7 @@ if st.session_state["current_page"] == "Input App ID":
                     st.session_state['reset'] = True 
         
                     if not reviews:
-                        st.error("🚨 No reviews found. Cannot proceed with analysis.")
+                        st.write("🚨 No reviews found. Cannot proceed with analysis.")
                 #st.success(f"Berhasil mengambil {len(reviews)} ulasan!")
 
         
@@ -453,17 +453,6 @@ if st.session_state["current_page"] == "Input App ID":
             # else:
             #     num_reviews = len(reviews)
             num_reviews = len(reviews)
-            if reviews is None:
-                st.warning("🚨 No reviews found (None returned)")
-            elif isinstance(reviews, list) and len(reviews) == 0:
-                st.warning("🚨 No reviews found (Empty list)")
-                message = check_reviews_threshold(0)
-                st.write(message)
-            else:
-                num_reviews = len(reviews)
-                st.success(f"✅ Found {num_reviews} reviews.")
-                message = check_reviews_threshold(num_reviews)
-                st.write(message)
         
             if num_reviews > 0:
                     # Simpan ke dalam buffer (tanpa menyimpan ke disk)
