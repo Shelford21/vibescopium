@@ -450,12 +450,13 @@ if st.session_state["current_page"] == "Input App ID":
             # else:
             #     num_reviews = len(reviews)
             num_reviews = len(reviews)
-            if num_reviews is None:
+            if reviews is None:
                 st.write("DEBUG: reviews is None")
             elif isinstance(reviews, list) and len(reviews) == 0:
                     st.write("DEBUG: reviews is empty list")
             else:
                     st.write(f"DEBUG: reviews found = {len(reviews)}")
+                    num_reviews = len(reviews)
                     message = check_reviews_threshold(num_reviews)
                     st.write(message)
         
