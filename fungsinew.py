@@ -447,7 +447,7 @@ if st.session_state["current_page"] == "Input App ID":
 
             if num_reviews == 0:
                 st.warning("🚨 There are no reviews. Analysis could not be performed.")
-            else if num_reviews > 0:
+            elif num_reviews > 0:
                     # Simpan ke dalam buffer (tanpa menyimpan ke disk)
                     @st.cache_data  # Cache the CSV to avoid rerun issues
                     def generate_csv(reviews):
