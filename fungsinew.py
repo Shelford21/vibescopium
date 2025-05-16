@@ -450,7 +450,15 @@ if st.session_state["current_page"] == "Input App ID":
             # else:
             #     num_reviews = len(reviews)
             num_reviews = len(reviews)
-            
+            if num_reviews is None:
+                st.write("DEBUG: reviews is None")
+            elif isinstance(reviews, list) and len(reviews) == 0:
+                    st.write("DEBUG: reviews is empty list")
+            else:
+                    st.write(f"DEBUG: reviews found = {len(reviews)}")
+                    message = check_reviews_threshold(num_reviews)
+                    st.write(message)
+        
             if num_reviews > 0:
                     # Simpan ke dalam buffer (tanpa menyimpan ke disk)
                     @st.cache_data  # Cache the CSV to avoid rerun issues
