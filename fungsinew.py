@@ -448,7 +448,7 @@ if st.session_state["current_page"] == "Input App ID":
             else:
                 num_reviews = len(reviews)
             #num_reviews = len(reviews)
-
+            st.write(num_reviews)
             if num_reviews > 0:
                     # Simpan ke dalam buffer (tanpa menyimpan ke disk)
                     @st.cache_data  # Cache the CSV to avoid rerun issues
