@@ -234,6 +234,8 @@ def switch_page(page):
 def check_reviews_threshold(num_reviews):
     if num_reviews is None:
         return "🚨 There are no reviews. Analysis could not be performed."
+    elif num_reviews == 0:
+        return "🚨 There are no reviews. Analysis could not be performed."
     elif num_reviews < THRESHOLD_LOW:
         return f"⚠️ Only {num_reviews} reviews found. Analysis may be less accurate."
     elif num_reviews < THRESHOLD_MEDIUM:
@@ -448,7 +450,6 @@ if st.session_state["current_page"] == "Input App ID":
             # else:
             #     num_reviews = len(reviews)
             num_reviews = len(reviews)
-            st.write(num_reviews)
             
             if num_reviews > 0:
                     # Simpan ke dalam buffer (tanpa menyimpan ke disk)
