@@ -352,7 +352,7 @@ if st.session_state["current_page"] == "Input App ID":
         """,
         unsafe_allow_html=True
     )
-    query = st.text_input("Masukkan nama aplikasi")
+    query = st.text_input("")
 
     # Create two columns
     col1, col2 ,a,s,d= st.columns(5)
