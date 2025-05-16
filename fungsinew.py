@@ -232,7 +232,7 @@ def switch_page(page):
     
 
 def check_reviews_threshold(num_reviews):
-    if num_reviews == 0:
+    if num_reviews < THRESHOLD_EMPTY:
         return "🚨 There are no reviews. Analysis could not be performed."
     elif num_reviews < THRESHOLD_LOW:
         return f"⚠️ Only {num_reviews} reviews found. Analysis may be less accurate."
@@ -247,6 +247,7 @@ def check_reviews_threshold(num_reviews):
 global tfidf_vectorizer 
 global best_lr
 global reset
+THRESHOLD_EMPTY = 1
 THRESHOLD_LOW = 500
 THRESHOLD_MEDIUM = 5001
 import streamlit as st
