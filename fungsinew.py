@@ -443,11 +443,8 @@ if st.session_state["current_page"] == "Input App ID":
         if 'reviews' in st.session_state and st.session_state['reviews']:
             reviews = st.session_state['reviews']
             num_reviews = len(reviews)
-            st.write(check_reviews_threshold(num_reviews))
 
-            if num_reviews == 0:
-                st.warning("🚨 There are no reviews. Analysis could not be performed.")
-            elif num_reviews > 0:
+            if num_reviews > 0:
                     # Simpan ke dalam buffer (tanpa menyimpan ke disk)
                     @st.cache_data  # Cache the CSV to avoid rerun issues
                     def generate_csv(reviews):
@@ -462,6 +459,8 @@ if st.session_state["current_page"] == "Input App ID":
             
             if 'csv' not in st.session_state or st.session_state['csv'] is None:
                     st.session_state['csv'] = generate_csv(reviews) 
+            
+            st.write(check_reviews_threshold(num_reviews))
 
         reviews = st.session_state['reviews']        
         app_reviews_df = pd.DataFrame(reviews)
