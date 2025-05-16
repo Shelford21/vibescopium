@@ -443,7 +443,11 @@ if st.session_state["current_page"] == "Input App ID":
         # Jika ulasan sudah ada di session state, tampilkan info & tombol download
         if 'reviews' in st.session_state and st.session_state['reviews']:
             reviews = st.session_state['reviews']
-            num_reviews = len(reviews)
+            if not reviews:
+                num_reviews = None
+            else:
+                num_reviews = len(reviews)
+            #num_reviews = len(reviews)
 
             if num_reviews > 0:
                     # Simpan ke dalam buffer (tanpa menyimpan ke disk)
