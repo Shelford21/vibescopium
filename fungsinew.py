@@ -450,17 +450,18 @@ if st.session_state["current_page"] == "Input App ID":
             # else:
             #     num_reviews = len(reviews)
             num_reviews = len(reviews)
-            st.write(f"Type of reviews: {type(reviews)}")
-
-            if reviews is None:
-                st.write("DEBUG: reviews is None")
-            elif isinstance(reviews, list) and len(reviews) == 0:
-                    st.write("DEBUG: reviews is empty list")
-            else:
-                    st.write(f"DEBUG: reviews found = {len(reviews)}")
+            try:
+                 if reviews is None:
+                    st.warning("❌ scrape_reviews() returned None")
+                elif isinstance(reviews, list) and len(reviews) == 0:
+                    st.warning("⚠️ scrape_reviews() returned an empty list")
+                else:
                     num_reviews = len(reviews)
-                    message = check_reviews_threshold(num_reviews)
-                    st.write(message)
+                    st.success(f"🎯 Found {num_reviews} reviews")
+                    st.write(check_reviews_threshold(num_reviews))
+            
+            except Exception as e:
+                st.error(f"❗ scrape_reviews() threw an error: {e}")
         
             if num_reviews > 0:
                     # Simpan ke dalam buffer (tanpa menyimpan ke disk)
