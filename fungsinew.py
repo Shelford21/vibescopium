@@ -439,6 +439,9 @@ if st.session_state["current_page"] == "Input App ID":
                 else:
                     st.session_state['reviews'] = reviews# Save reviews in session state
                     st.session_state['reset'] = True 
+        
+                    if not reviews:
+                        st.error("🚨 No reviews found. Cannot proceed with analysis.")
                 #st.success(f"Berhasil mengambil {len(reviews)} ulasan!")
 
         
