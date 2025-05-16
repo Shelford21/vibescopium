@@ -445,16 +445,18 @@ if st.session_state["current_page"] == "Input App ID":
             num_reviews = len(reviews)
             st.write(check_reviews_threshold(num_reviews))
 
-            if num_reviews > 0:
-                # Simpan ke dalam buffer (tanpa menyimpan ke disk)
-                @st.cache_data  # Cache the CSV to avoid rerun issues
-                def generate_csv(reviews):
-                    output = io.StringIO()
-                    csv_writer = csv.writer(output)
-                    csv_writer.writerow(['Review'])
-                    for review in reviews:
-                        csv_writer.writerow([review['content']])
-                    return output.getvalue().encode('utf-8')
+            if num_reviews == 0:
+                st.warning("🚨 There are no reviews. Analysis could not be performed.")
+            else if num_reviews > 0:
+                    # Simpan ke dalam buffer (tanpa menyimpan ke disk)
+                    @st.cache_data  # Cache the CSV to avoid rerun issues
+                    def generate_csv(reviews):
+                        output = io.StringIO()
+                        csv_writer = csv.writer(output)
+                        csv_writer.writerow(['Review'])
+                        for review in reviews:
+                            csv_writer.writerow([review['content']])
+                        return output.getvalue().encode('utf-8')
                 
                 csv_bytes = generate_csv(reviews)
             
