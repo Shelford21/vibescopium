@@ -352,28 +352,31 @@ if st.session_state["current_page"] == "Input App ID":
         """,
         unsafe_allow_html=True
     )
-    query = st.text_input("")
+    query = st.text_input("Masukkan nama aplikasi")
 
     # Create two columns
     col1, col2 ,a,s,d= st.columns(5)
 
     with col1:
-        if st.button("Find App"):
-            try:
-                results = search(query, lang='id', country='id')
+         if st.button("Find App"):
+            if not query or query.strip() == "":
+                st.warning("Silakan isi nama aplikasi terlebih dahulu.")
+            else:
+                try:
+                    results = search(query, lang='id', country='id')
 
-                if results:
-                    st.session_state['app_options'] = {app['title']: app['appId'] for app in results[:5]}
-                    st.session_state['app_id'] = None  # Reset app_id when new search is done
-                    st.session_state['reviews'] = None  # Reset reviews when new search is done
-                else:
+                    if results:
+                        st.session_state['app_options'] = {app['title']: app['appId'] for app in results[:5]}
+                        st.session_state['app_id'] = None  # Reset app_id when new search is done
+                        st.session_state['reviews'] = None  # Reset reviews when new search is done
+                    else:
+                        st.session_state['app_options'] = {}
+                        st.session_state['app_id'] = None
+                        st.write("Application not found.")
+                except TypeError:
                     st.session_state['app_options'] = {}
                     st.session_state['app_id'] = None
                     st.write("Application not found.")
-            except TypeError:
-                st.session_state['app_options'] = {}
-                st.session_state['app_id'] = None
-                st.write("Application not found.")
 
     with col2:
         if st.button("Reset Data"):
