@@ -450,6 +450,8 @@ if st.session_state["current_page"] == "Input App ID":
             # else:
             #     num_reviews = len(reviews)
             num_reviews = len(reviews)
+            if not reviews:
+                return []
             try:
                 if reviews is None:
                     st.warning("❌ scrape_reviews() returned None")
