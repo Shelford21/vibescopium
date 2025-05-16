@@ -450,6 +450,8 @@ if st.session_state["current_page"] == "Input App ID":
             # else:
             #     num_reviews = len(reviews)
             num_reviews = len(reviews)
+            st.write(f"Type of reviews: {type(reviews)}")
+
             if reviews is None:
                 st.write("DEBUG: reviews is None")
             elif isinstance(reviews, list) and len(reviews) == 0:
