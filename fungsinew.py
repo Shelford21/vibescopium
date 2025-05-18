@@ -462,7 +462,7 @@ if st.session_state["current_page"] == "Input App ID":
                         csv_writer = csv.writer(output)
                         csv_writer.writerow(['Review'])
                         for review in reviews:
-                            csv_writer.writerow([review['content', 'score','thumbsUpCount','at','appVersion']])
+                            csv_writer.writerow([review['content']])
                         return output.getvalue().encode('utf-8')
                 
                     csv_bytes = generate_csv(reviews)
