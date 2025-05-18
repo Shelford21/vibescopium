@@ -462,7 +462,7 @@ if st.session_state["current_page"] == "Input App ID":
                         csv_writer = csv.writer(output)
                         csv_writer.writerow(['Review'])
                         for review in reviews:
-                            csv_writer.writerow([review['content']])
+                            csv_writer.writerow([review['content','score']])
                         return output.getvalue().encode('utf-8')
                 
                     csv_bytes = generate_csv(reviews)
@@ -572,7 +572,7 @@ if st.session_state["current_page"] == "DataFrames":
             csv_bytes = st.session_state['csv']
             st.download_button(
                 label="Download Original Reviews",
-                data=clean_df,
+                data=csv_bytes,
                 file_name="Application_Reviews.csv",
                 mime="text/csv"
             )
