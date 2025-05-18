@@ -554,14 +554,14 @@ if st.session_state["current_page"] == "Input App ID":
                     
 
 
-if st.sidebar.button("📊 DataFrames"):
+if st.sidebar.button("📊 DataFrame"):
     switch_page("DataFrames")
 
 if st.session_state["current_page"] == "DataFrames": 
     st.markdown(
         """
         <div class="transparent-container">
-            <h3>📊 Dataframes</h3>
+            <h3>📊 Dataframe</h3>
         </div>
     
         """,
