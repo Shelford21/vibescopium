@@ -570,6 +570,7 @@ if st.session_state["current_page"] == "DataFrames":
     try:
         if st.session_state['csv'] is not None:
             #csv_bytes = st.session_state['csv'] #original reviews hanya ulasan tok 
+            clean_df = st.session_state["clean_df"].copy()
             csv_bytess = clean_df.to_csv(index=False).encode('utf-8') #keseluruhan df stelah preprocess
             st.download_button(
                 label="Download Original Reviews",
