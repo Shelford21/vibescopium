@@ -462,7 +462,7 @@ if st.session_state["current_page"] == "Input App ID":
                         csv_writer = csv.writer(output)
                         csv_writer.writerow(['Review'])
                         for review in reviews:
-                            csv_writer.writerow([review['content','score']])
+                            csv_writer.writerow([review['content']])
                         return output.getvalue().encode('utf-8')
                 
                     csv_bytes = generate_csv(reviews)
@@ -569,10 +569,11 @@ if st.session_state["current_page"] == "DataFrames":
     )
     try:
         if st.session_state['csv'] is not None:
-            csv_bytes = st.session_state['csv']
+            #csv_bytes = st.session_state['csv'] #original reviews hanya ulasan tok 
+            csv_bytess = clean_df.to_csv(index=False).encode('utf-8') #keseluruhan df stelah preprocess
             st.download_button(
                 label="Download Original Reviews",
-                data=csv_bytes,
+                data=csv_bytess,
                 file_name="Application_Reviews.csv",
                 mime="text/csv"
             )
