@@ -572,7 +572,7 @@ if st.session_state["current_page"] == "DataFrames":
             csv_bytes = st.session_state['csv']
             st.download_button(
                 label="Download Original Reviews",
-                data=csv_bytes,
+                data=clean_df,
                 file_name="Application_Reviews.csv",
                 mime="text/csv"
             )
