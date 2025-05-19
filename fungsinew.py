@@ -1349,6 +1349,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             best_lr = st.session_state["best_lr"]
             y_pred_test_lr = st.session_state["y_pred_test_lr"]
             df_evaluation = st.session_state['eval_df'].copy()
+            le = LabelEncoder()
             st.dataframe(df_evaluation.style.format(precision=6),use_container_width=True, width=50)  # Formats numbers to 6 decimal places
 
 
