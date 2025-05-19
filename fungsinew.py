@@ -1348,6 +1348,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
         unsafe_allow_html=True
     )
     try:
+            clean_df= st.session_state["clean_df"]
             y_test = st.session_state["y_test"]
             best_lr = st.session_state["best_lr"]
             y_pred_test_lr = st.session_state["y_pred_test_lr"]
