@@ -64,6 +64,9 @@ if 'y_test' not in st.session_state:
     st.session_state['y_test'] = None
 if 'y_pred_test_lr' not in st.session_state:
     st.session_state['y_pred_test_lr'] = None
+if 'le' not in st.session_state:
+    st.session_state['le'] = None
+
     
 st.set_page_config(page_title="Vibe Scopium",
                    page_icon="🎭",
@@ -568,7 +571,7 @@ if st.session_state["current_page"] == "Input App ID":
                 # Label encoding
             le = LabelEncoder()
             y = le.fit_transform(y)
-
+            st.session_state["le"] = le
                 # Split data
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
             st.session_state["y_test"] = y_test
@@ -1349,7 +1352,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             best_lr = st.session_state["best_lr"]
             y_pred_test_lr = st.session_state["y_pred_test_lr"]
             df_evaluation = st.session_state['eval_df'].copy()
-            le = LabelEncoder()
+            le = st.session_state["le"]
             st.dataframe(df_evaluation.style.format(precision=6),use_container_width=True, width=50)  # Formats numbers to 6 decimal places
 
 
