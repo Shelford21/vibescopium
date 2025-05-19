@@ -543,6 +543,82 @@ if st.session_state["current_page"] == "Input App ID":
             st.dataframe(clean_df,use_container_width=True , height=6000) 
         except Exception:
             st.write("_")
+
+        #modelling and evalu\
+        try:
+            clean_df= st.session_state["clean_df"]
+            X = clean_df['text_akhir']
+            y = clean_df['polarity']
+            data_size = len(clean_df)
+    
+            #tfidf_vectorizer = TfidfVectorizer(max_features=10000, min_df=5, max_df=0.7, ngram_range=(1,2))
+
+            @st.cache_resource
+            def preprocess_tfidf(df):
+                if "tfidf_vectorizer" not in st.session_state or st.session_state.tfidf_vectorizer is None:
+                    st.session_state.tfidf_vectorizer = TfidfVectorizer(max_features=5000, min_df=5, max_df=0.7, ngram_range=(1,2))  # Initialize
+                    X_tfidf = st.session_state.tfidf_vectorizer.fit_transform(df['text_akhir'])
+                else:
+                    X_tfidf = st.session_state.tfidf_vectorizer.transform(df['text_akhir'])
+                    #X_tfidf = tfidf_vectorizer.fit_transform(df['text_akhir'])
+                return X_tfidf, df['polarity']
+
+            X, y = preprocess_tfidf(clean_df)
+
+                # Label encoding
+            le = LabelEncoder()
+            y = le.fit_transform(y)
+
+                # Split data
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            st.session_state["y_test"] = y_test
+            # Define Logistic Regression parameters with explicit regularization
+            lr_params = {
+                'C': [0.001, 0.01, 0.1, 1],  # Smaller C means stronger regularization
+                'solver': ['liblinear', 'lbfgs'],  
+                'penalty': ['l1', 'l2']  # L1 for sparsity, L2 for generalization (liblinear supports both, lbfgs only L2)
+            }
+
+            # Grid Search with Cross-Validation
+            gs_lr = GridSearchCV(LogisticRegression(max_iter=500), lr_params, cv=5, scoring='accuracy', n_jobs=-1)
+            gs_lr.fit(X_train, y_train)
+
+            # Get the best model
+            best_lr = gs_lr.best_estimator_
+            st.session_state["best_lr"] = best_lr
+
+            # Predictions
+            y_pred_train_lr = best_lr.predict(X_train)
+            y_pred_test_lr = best_lr.predict(X_test)
+            st.session_state["y_pred_test_lr"] = y_pred_test_lr
+            # Evaluate Accuracy
+            accuracy_train_lr = accuracy_score(y_train, y_pred_train_lr)
+            accuracy_test_lr = accuracy_score(y_test, y_pred_test_lr)
+
+                # Evaluate model
+            def evaluate_model(y_true, y_pred, model_name):
+                accuracy = accuracy_score(y_true, y_pred)
+                precision = precision_score(y_true, y_pred, average='weighted')
+                recall = recall_score(y_true, y_pred, average='weighted')
+                f1 = f1_score(y_true, y_pred, average='weighted')
+                return accuracy, precision, recall, f1
+
+            acc_train_lr, prec_train_lr, rec_train_lr, f1_train_lr = evaluate_model(y_train, y_pred_train_lr, "Logistic Regression (Train)")
+            acc_test_lr, prec_test_lr, rec_test_lr, f1_test_lr = evaluate_model(y_test, y_pred_test_lr, "Logistic Regression (Test)")
+
+            # Create a container
+            
+                
+            evaluation_data = {
+                "Metric": ["Accuracy", "Precision", "Recall", "F1 Score"],
+                "Training Score": [acc_train_lr, prec_train_lr, rec_train_lr, f1_train_lr],
+                "Testing Score": [acc_test_lr, prec_test_lr, rec_test_lr, f1_test_lr]
+            }
+
+            # Convert to DataFrame
+            df_evaluation = pd.DataFrame(evaluation_data)
+            st.session_state["eval_df"] = df_evaluation
+            # Display in Streamlit
                         #st.write("Cleaned Dataset Shape:", clean_df.shape)
                     #st.write(clean_df.head())  # Show sample cleaned data
         
@@ -1268,79 +1344,8 @@ if st.session_state["current_page"] == "🩻 Evaluation":
         unsafe_allow_html=True
     )
     try:
-            clean_df= st.session_state["clean_df"]
-            X = clean_df['text_akhir']
-            y = clean_df['polarity']
-            data_size = len(clean_df)
-    
-            #tfidf_vectorizer = TfidfVectorizer(max_features=10000, min_df=5, max_df=0.7, ngram_range=(1,2))
-
-            @st.cache_resource
-            def preprocess_tfidf(df):
-                if "tfidf_vectorizer" not in st.session_state or st.session_state.tfidf_vectorizer is None:
-                    st.session_state.tfidf_vectorizer = TfidfVectorizer(max_features=5000, min_df=5, max_df=0.7, ngram_range=(1,2))  # Initialize
-                    X_tfidf = st.session_state.tfidf_vectorizer.fit_transform(df['text_akhir'])
-                else:
-                    X_tfidf = st.session_state.tfidf_vectorizer.transform(df['text_akhir'])
-                    #X_tfidf = tfidf_vectorizer.fit_transform(df['text_akhir'])
-                return X_tfidf, df['polarity']
-
-            X, y = preprocess_tfidf(clean_df)
-
-                # Label encoding
-            le = LabelEncoder()
-            y = le.fit_transform(y)
-
-                # Split data
-            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-            st.session_state["y_test"] = y_test
-            # Define Logistic Regression parameters with explicit regularization
-            lr_params = {
-                'C': [0.001, 0.01, 0.1, 1],  # Smaller C means stronger regularization
-                'solver': ['liblinear', 'lbfgs'],  
-                'penalty': ['l1', 'l2']  # L1 for sparsity, L2 for generalization (liblinear supports both, lbfgs only L2)
-            }
-
-            # Grid Search with Cross-Validation
-            gs_lr = GridSearchCV(LogisticRegression(max_iter=500), lr_params, cv=5, scoring='accuracy', n_jobs=-1)
-            gs_lr.fit(X_train, y_train)
-
-            # Get the best model
-            best_lr = gs_lr.best_estimator_
-            st.session_state["best_lr"] = best_lr
-
-            # Predictions
-            y_pred_train_lr = best_lr.predict(X_train)
-            y_pred_test_lr = best_lr.predict(X_test)
-            st.session_state["y_pred_test_lr"] = y_pred_test_lr
-            # Evaluate Accuracy
-            accuracy_train_lr = accuracy_score(y_train, y_pred_train_lr)
-            accuracy_test_lr = accuracy_score(y_test, y_pred_test_lr)
-
-                # Evaluate model
-            def evaluate_model(y_true, y_pred, model_name):
-                accuracy = accuracy_score(y_true, y_pred)
-                precision = precision_score(y_true, y_pred, average='weighted')
-                recall = recall_score(y_true, y_pred, average='weighted')
-                f1 = f1_score(y_true, y_pred, average='weighted')
-                return accuracy, precision, recall, f1
-
-            acc_train_lr, prec_train_lr, rec_train_lr, f1_train_lr = evaluate_model(y_train, y_pred_train_lr, "Logistic Regression (Train)")
-            acc_test_lr, prec_test_lr, rec_test_lr, f1_test_lr = evaluate_model(y_test, y_pred_test_lr, "Logistic Regression (Test)")
-
-            # Create a container
-            
-                
-            evaluation_data = {
-                "Metric": ["Accuracy", "Precision", "Recall", "F1 Score"],
-                "Training Score": [acc_train_lr, prec_train_lr, rec_train_lr, f1_train_lr],
-                "Testing Score": [acc_test_lr, prec_test_lr, rec_test_lr, f1_test_lr]
-            }
-
-            # Convert to DataFrame
-            df_evaluation = pd.DataFrame(evaluation_data)
-            st.session_state["eval_df"] = df_evaluation
-            # Display in Streamlit
+            y_test = st.session_state["y_test"]
+            best_lr = st.session_state["best_lr"]
             df_evaluation = st.session_state['eval_df'].copy()
             st.dataframe(df_evaluation.style.format(precision=6),use_container_width=True, width=50)  # Formats numbers to 6 decimal places
 
