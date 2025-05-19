@@ -1530,7 +1530,7 @@ if st.session_state["current_page"] == "🩺 Predict":
                         """,
                         unsafe_allow_html=True
                     )
-              try:
+            try:
             #         clean_df= st.session_state["clean_df"]
             #         X = clean_df['text_akhir']
                     
