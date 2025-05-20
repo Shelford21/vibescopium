@@ -623,10 +623,11 @@ if st.session_state["current_page"] == "Input App ID":
             
                 # Tambahkan akurasi (hanya 1 nilai di kolom Precision)
                 rows["Accuracy"] = {
-                    "Accuracy": accuracy,
+                    
                     "Precision": "-",
                     "Recall": "-",
-                    "F1-Score": "-"
+                    "F1-Score": "-",
+                    "Accuracy": accuracy
                     
                 }
             
