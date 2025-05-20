@@ -615,7 +615,7 @@ if st.session_state["current_page"] == "Input App ID":
                 rows = {}
                 for label in labels:
                     rows[label.capitalize()] = {
-                        "Accuracy": None,
+                        "Accuracy": "-",
                         "Precision": report[label]["precision"],
                         "Recall": report[label]["recall"],
                         "F1-Score": report[label]["f1-score"]
@@ -624,9 +624,9 @@ if st.session_state["current_page"] == "Input App ID":
                 # Tambahkan akurasi (hanya 1 nilai di kolom Precision)
                 rows["Accuracy"] = {
                     "Accuracy": accuracy,
-                    "Precision": None,
-                    "Recall": None,
-                    "F1-Score": None
+                    "Precision": "-",
+                    "Recall": "-",
+                    "F1-Score": "-"
                     
                 }
             
