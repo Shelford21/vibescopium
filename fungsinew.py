@@ -608,30 +608,29 @@ if st.session_state["current_page"] == "Input App ID":
             
                 accuracy = accuracy_score(y_true, y_pred)
             
-                # Buat DataFrame dari precision, recall, dan f1-score
-                df_metrics = pd.DataFrame({
-                    "Precision": {
-                        "Positif": report["positif"]["precision"],
-                        "Negatif": report["negatif"]["precision"]
-                    },
-                    "Recall": {
-                        "Positif": report["positif"]["recall"],
-                        "Negatif": report["negatif"]["recall"]
-                    },
-                    "F1-Score": {
-                        "Positif": report["positif"]["f1-score"],
-                        "Negatif": report["negatif"]["f1-score"]
+                # Ambil semua label kelas
+                labels = list(label_encoder.classes_)
+            
+                # Inisialisasi dictionary
+                rows = {}
+                for label in labels:
+                    rows[label.capitalize()] = {
+                        "Precision": report[label]["precision"],
+                        "Recall": report[label]["recall"],
+                        "F1-Score": report[label]["f1-score"]
                     }
-                })
             
-                # Tambahkan kolom akurasi di luar klasifikasi label (umum)
-                df_accuracy = pd.DataFrame({"Precision": [""], "Recall": [""], "F1-Score": [""]}, index=["Accuracy"])
-                df_accuracy.loc["Accuracy", "Precision"] = f"{accuracy:.4f}"
+                # Tambahkan akurasi (hanya 1 nilai di kolom Precision)
+                rows["Accuracy"] = {
+                    "Precision": accuracy,
+                    "Recall": None,
+                    "F1-Score": None
+                }
             
-                # Gabungkan
-                df_combined = pd.concat([df_metrics, df_accuracy])
-                
+                # Buat DataFrame
+                df_combined = pd.DataFrame.from_dict(rows, orient="index")
                 return df_combined
+
             
             # Panggil fungsi dan simpan ke session state
             df_eval_metrics = evaluate_per_class_df(y_test, y_pred_test_lr, le)
