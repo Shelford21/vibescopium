@@ -594,33 +594,81 @@ if st.session_state["current_page"] == "Input App ID":
             y_pred_train_lr = best_lr.predict(X_train)
             y_pred_test_lr = best_lr.predict(X_test)
             st.session_state["y_pred_test_lr"] = y_pred_test_lr
-            # Evaluate Accuracy
-            accuracy_train_lr = accuracy_score(y_train, y_pred_train_lr)
-            accuracy_test_lr = accuracy_score(y_test, y_pred_test_lr)
 
-                # Evaluate model
-            def evaluate_model(y_true, y_pred, model_name):
+            from sklearn.metrics import classification_report, accuracy_score
+
+            # Evaluasi per kategori dan masukkan ke DataFrame
+            def evaluate_per_class_df(y_true, y_pred, label_encoder):
+                report = classification_report(
+                    y_true,
+                    y_pred,
+                    target_names=label_encoder.classes_,
+                    output_dict=True
+                )
+            
                 accuracy = accuracy_score(y_true, y_pred)
-                precision = precision_score(y_true, y_pred, average='weighted')
-                recall = recall_score(y_true, y_pred, average='weighted')
-                f1 = f1_score(y_true, y_pred, average='weighted')
-                return accuracy, precision, recall, f1
+            
+                # Buat DataFrame dari precision, recall, dan f1-score
+                df_metrics = pd.DataFrame({
+                    "Precision": {
+                        "Positif": report["positif"]["precision"],
+                        "Negatif": report["negatif"]["precision"]
+                    },
+                    "Recall": {
+                        "Positif": report["positif"]["recall"],
+                        "Negatif": report["negatif"]["recall"]
+                    },
+                    "F1-Score": {
+                        "Positif": report["positif"]["f1-score"],
+                        "Negatif": report["negatif"]["f1-score"]
+                    }
+                })
+            
+                # Tambahkan kolom akurasi di luar klasifikasi label (umum)
+                df_accuracy = pd.DataFrame({"Precision": [""], "Recall": [""], "F1-Score": [""]}, index=["Accuracy"])
+                df_accuracy.loc["Accuracy", "Precision"] = f"{accuracy:.4f}"
+            
+                # Gabungkan
+                df_combined = pd.concat([df_metrics, df_accuracy])
+                
+                return df_combined
+            
+            # Panggil fungsi dan simpan ke session state
+            df_eval_metrics = evaluate_per_class_df(y_test, y_pred_test_lr, le)
+            st.session_state["df_eval_metrics"] = df_eval_metrics
+            
+            # Tampilkan di Streamlit
+            st.subheader("📊 Evaluasi Performa Model per Kategori")
+            st.dataframe(df_eval_metrics.style.format("{:.2%}", na_rep=""))
+            # # Evaluate Accuracy
+            # accuracy_train_lr = accuracy_score(y_train, y_pred_train_lr)
+            # accuracy_test_lr = accuracy_score(y_test, y_pred_test_lr)
 
-            acc_train_lr, prec_train_lr, rec_train_lr, f1_train_lr = evaluate_model(y_train, y_pred_train_lr, "Logistic Regression (Train)")
-            acc_test_lr, prec_test_lr, rec_test_lr, f1_test_lr = evaluate_model(y_test, y_pred_test_lr, "Logistic Regression (Test)")
+            #     # Evaluate model
+            # def evaluate_model(y_true, y_pred, model_name):
+            #     accuracy = accuracy_score(y_true, y_pred)
+            #     precision = precision_score(y_true, y_pred, average='weighted')
+            #     recall = recall_score(y_true, y_pred, average='weighted')
+            #     f1 = f1_score(y_true, y_pred, average='weighted')
+            #     return accuracy, precision, recall, f1
 
-            # Create a container
+            # acc_train_lr, prec_train_lr, rec_train_lr, f1_train_lr = evaluate_model(y_train, y_pred_train_lr, "Logistic Regression (Train)")
+            # acc_test_lr, prec_test_lr, rec_test_lr, f1_test_lr = evaluate_model(y_test, y_pred_test_lr, "Logistic Regression (Test)")
+
+            # # Create a container
             
                 
-            evaluation_data = {
-                "Metric": ["Accuracy", "Precision", "Recall", "F1 Score"],
-                "Training Score": [acc_train_lr, prec_train_lr, rec_train_lr, f1_train_lr],
-                "Testing Score": [acc_test_lr, prec_test_lr, rec_test_lr, f1_test_lr]
-            }
+            # evaluation_data = {
+            #     "Metric": ["Accuracy", "Precision", "Recall", "F1 Score"],
+            #     "Training Score": [acc_train_lr, prec_train_lr, rec_train_lr, f1_train_lr],
+            #     "Testing Score": [acc_test_lr, prec_test_lr, rec_test_lr, f1_test_lr]
+            # }
 
-            # Convert to DataFrame
-            df_evaluation = pd.DataFrame(evaluation_data)
-            st.session_state["eval_df"] = df_evaluation
+            # # Convert to DataFrame
+            # df_evaluation = pd.DataFrame(evaluation_data)
+            # st.session_state["eval_df"] = df_evaluation
+
+        
             # Display in Streamlit
                         #st.write("Cleaned Dataset Shape:", clean_df.shape)
                     #st.write(clean_df.head())  # Show sample cleaned data
