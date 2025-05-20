@@ -637,8 +637,10 @@ if st.session_state["current_page"] == "Input App ID":
             st.session_state["df_eval_metrics"] = df_eval_metrics
             
             # Tampilkan di Streamlit
-            st.subheader("📊 Evaluasi Performa Model per Kategori")
-            st.dataframe(df_eval_metrics.style.format("{:.2%}", na_rep=""))
+            #st.subheader("📊 Evaluasi Performa Model per Kategori")
+            #st.dataframe(df_eval_metrics.style.format("{:.2%}", na_rep=""))
+
+        
             # # Evaluate Accuracy
             # accuracy_train_lr = accuracy_score(y_train, y_pred_train_lr)
             # accuracy_test_lr = accuracy_score(y_test, y_pred_test_lr)
@@ -1399,7 +1401,8 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             y_test = st.session_state["y_test"]
             best_lr = st.session_state["best_lr"]
             y_pred_test_lr = st.session_state["y_pred_test_lr"]
-            df_evaluation = st.session_state['eval_df'].copy()
+            #df_evaluation = st.session_state['eval_df'].copy()
+            df_evaluation = st.session_state['df_eval_metrics'].copy()
             le = st.session_state["le"]
             st.dataframe(df_evaluation.style.format(precision=6),use_container_width=True, width=50)  # Formats numbers to 6 decimal places
 
