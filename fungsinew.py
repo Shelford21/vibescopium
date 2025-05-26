@@ -1508,6 +1508,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
                 #ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
 
             st.pyplot(fig)
+            st.write(sentiment_counts)
 
             st.markdown(
                 """
