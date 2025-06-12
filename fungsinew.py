@@ -1470,7 +1470,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             # Save evaluation metrics and confusion matrix to Excel
             output = io.BytesIO()
             with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-                df_eval_metrics.to_excel(writer, index=True, sheet_name='Evaluation Metrics')
+                df_evaluation.to_excel(writer, index=True, sheet_name='Evaluation Metrics')
                 cm_df.to_excel(writer, index=True, sheet_name='Confusion Matrix')
                 writer.save()
             
