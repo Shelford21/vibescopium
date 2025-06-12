@@ -1517,7 +1517,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
                 workbook = writer.book
             
                 # --- Sheet 1: Evaluation Metrics ---
-                df_evaluation.to_excel(writer, index=True, sheet_name='Evaluation Metrics', startrow=len(eval_intro) + len(eval_explanations) + 2)
+                df_evaluation.to_excel(writer, index=True, sheet_name='Evaluation Metrics', startrow=len(eval_intro) + len(eval_explanations) + 2, startcol=11)  # Column L (0-indexed)
                 worksheet1 = writer.sheets['Evaluation Metrics']
             
                 # Write intro
