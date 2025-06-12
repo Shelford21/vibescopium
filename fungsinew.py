@@ -1466,7 +1466,16 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             class_labels = le.classes_
             cm_df = pd.DataFrame(cm, index=class_labels, columns=class_labels)
             
-            # Create confusion matrix explanations
+            # ---------- Confusion Matrix Explanations ----------
+            cm_intro = [
+                "Understanding the Confusion Matrix:",
+                "- Rows represent the actual (true) labels.",
+                "- Columns represent the predicted labels from the model.",
+                "- Values on the diagonal (↘️) are correct predictions.",
+                "- Off-diagonal values are mistakes (misclassifications).",
+                ""
+            ]
+            
             cm_explanations = []
             for i, actual in enumerate(class_labels):
                 for j, predicted in enumerate(class_labels):
@@ -1477,7 +1486,16 @@ if st.session_state["current_page"] == "🩻 Evaluation":
                         else:
                             cm_explanations.append(f"{count} '{actual}' samples were misclassified as '{predicted}'.")
             
-            # Create evaluation metric explanations
+            # ---------- Evaluation Metric Explanations ----------
+            eval_intro = [
+                "Explanation of Evaluation Metrics:",
+                "- Precision: Of all the predicted [label], how many were actually correct?",
+                "- Recall: Of all the actual [label], how many did the model catch?",
+                "- F1-Score: A balanced score combining precision and recall.",
+                "- Accuracy: Overall, how often the model got predictions right.",
+                ""
+            ]
+            
             eval_explanations = []
             for label in class_labels:
                 label_cap = label.capitalize()
@@ -1486,36 +1504,50 @@ if st.session_state["current_page"] == "🩻 Evaluation":
                 f1 = df_evaluation.loc[label_cap, "F1-Score"]
             
                 explanation = (
-                    f"For class '{label}':\n"
-                    f"- Precision: {precision:.2f} → Out of all predicted '{label}' samples, {precision:.0%} were correct.\n"
-                    f"- Recall: {recall:.2f} → Out of all actual '{label}' samples, {recall:.0%} were correctly identified.\n"
-                    f"- F1-Score: {f1:.2f} → Balance between precision and recall."
+                    f"Class: {label_cap}\n"
+                    f"- Precision: {precision:.2f} → When the model predicted '{label}', it was correct {precision:.0%} of the time.\n"
+                    f"- Recall: {recall:.2f} → It correctly identified {recall:.0%} of all actual '{label}' examples.\n"
+                    f"- F1-Score: {f1:.2f} → Reflects a good balance between catching all cases and being correct."
                 )
                 eval_explanations.append(explanation)
             
-            # Save to Excel
+            # ---------- Save to Excel ----------
             output = io.BytesIO()
             with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
                 workbook = writer.book
             
-                # ========== Sheet 1: Evaluation Metrics ==========
-                df_evaluation.to_excel(writer, index=True, sheet_name='Evaluation Metrics', startrow=len(eval_explanations)+2)
+                # --- Sheet 1: Evaluation Metrics ---
+                df_evaluation.to_excel(writer, index=True, sheet_name='Evaluation Metrics', startrow=len(eval_intro) + len(eval_explanations) + 2)
                 worksheet1 = writer.sheets['Evaluation Metrics']
-                for i, line in enumerate(eval_explanations):
+            
+                # Write intro
+                for i, line in enumerate(eval_intro):
                     worksheet1.write(i, 0, line)
             
-                # ========== Sheet 2: Confusion Matrix ==========
-                cm_df.to_excel(writer, index=True, sheet_name='Confusion Matrix', startrow=len(cm_explanations)+2)
+                # Write per-class explanations
+                row_cursor = len(eval_intro)
+                for explanation in eval_explanations:
+                    for line in explanation.split("\n"):
+                        worksheet1.write(row_cursor, 0, line)
+                        row_cursor += 1
+                    row_cursor += 1  # space between blocks
+            
+                # --- Sheet 2: Confusion Matrix ---
+                cm_df.to_excel(writer, index=True, sheet_name='Confusion Matrix', startrow=len(cm_intro) + len(cm_explanations) + 2)
                 worksheet2 = writer.sheets['Confusion Matrix']
-                for i, line in enumerate(cm_explanations):
+            
+                # Write confusion matrix intro
+                for i, line in enumerate(cm_intro):
                     worksheet2.write(i, 0, line)
             
-                writer.save()
+                # Write explanations
+                for i, line in enumerate(cm_explanations, start=len(cm_intro) + 1):
+                    worksheet2.write(i, 0, line)
             
             # Reset buffer
             output.seek(0)
             
-            # Download button
+            # ---------- Streamlit Download Button ----------
             st.download_button(
                 label="📥 Download Explained Evaluation (.xlsx)",
                 data=output,
