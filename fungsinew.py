@@ -1511,6 +1511,14 @@ if st.session_state["current_page"] == "🩻 Evaluation":
                 )
                 eval_explanations.append(explanation)
             
+            # Accuracy explanation
+            accuracy_value = df_evaluation.loc["Accuracy", "Accuracy"]
+            accuracy_explanation = (
+                f"Overall Accuracy:\n"
+                f"- The model correctly predicted {accuracy_value:.0%} of all test samples.\n"
+                f"- This measures the total proportion of correct predictions across all categories."
+            )
+            eval_explanations.append(accuracy_explanation)
             # ---------- Save to Excel ----------
             output = io.BytesIO()
             with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
