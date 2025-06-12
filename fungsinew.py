@@ -1463,25 +1463,63 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             # Create two columns
             st.pyplot(fig)
 
-            # Generate confusion matrix as DataFrame
-            cm = confusion_matrix(y_test, y_pred_test_lr)
-            cm_df = pd.DataFrame(cm, index=le.classes_, columns=le.classes_)
+            class_labels = le.classes_
+            cm_df = pd.DataFrame(cm, index=class_labels, columns=class_labels)
             
-            # Save evaluation metrics and confusion matrix to Excel
+            # Create confusion matrix explanations
+            cm_explanations = []
+            for i, actual in enumerate(class_labels):
+                for j, predicted in enumerate(class_labels):
+                    count = cm[i][j]
+                    if count > 0:
+                        if i == j:
+                            cm_explanations.append(f"{count} '{actual}' samples were correctly predicted as '{predicted}'.")
+                        else:
+                            cm_explanations.append(f"{count} '{actual}' samples were misclassified as '{predicted}'.")
+            
+            # Create evaluation metric explanations
+            eval_explanations = []
+            for label in class_labels:
+                label_cap = label.capitalize()
+                precision = df_evaluation.loc[label_cap, "Precision"]
+                recall = df_evaluation.loc[label_cap, "Recall"]
+                f1 = df_evaluation.loc[label_cap, "F1-Score"]
+            
+                explanation = (
+                    f"For class '{label}':\n"
+                    f"- Precision: {precision:.2f} → Out of all predicted '{label}' samples, {precision:.0%} were correct.\n"
+                    f"- Recall: {recall:.2f} → Out of all actual '{label}' samples, {recall:.0%} were correctly identified.\n"
+                    f"- F1-Score: {f1:.2f} → Balance between precision and recall."
+                )
+                eval_explanations.append(explanation)
+            
+            # Save to Excel
             output = io.BytesIO()
             with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-                df_evaluation.to_excel(writer, index=True, sheet_name='Evaluation Metrics')
-                cm_df.to_excel(writer, index=True, sheet_name='Confusion Matrix')
+                workbook = writer.book
+            
+                # ========== Sheet 1: Evaluation Metrics ==========
+                df_evaluation.to_excel(writer, index=True, sheet_name='Evaluation Metrics', startrow=len(eval_explanations)+2)
+                worksheet1 = writer.sheets['Evaluation Metrics']
+                for i, line in enumerate(eval_explanations):
+                    worksheet1.write(i, 0, line)
+            
+                # ========== Sheet 2: Confusion Matrix ==========
+                cm_df.to_excel(writer, index=True, sheet_name='Confusion Matrix', startrow=len(cm_explanations)+2)
+                worksheet2 = writer.sheets['Confusion Matrix']
+                for i, line in enumerate(cm_explanations):
+                    worksheet2.write(i, 0, line)
+            
                 writer.save()
             
-            # Move to the beginning of the stream
+            # Reset buffer
             output.seek(0)
             
-            # Create a download button in Streamlit
+            # Download button
             st.download_button(
-                label="📥 Download Evaluation Metrics (.xlsx)",
+                label="📥 Download Explained Evaluation (.xlsx)",
                 data=output,
-                file_name='model_evaluation.xlsx',
+                file_name='explained_model_evaluation.xlsx',
                 mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
             )
         
