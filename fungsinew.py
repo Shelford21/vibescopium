@@ -32,6 +32,7 @@ import matplotlib.patheffects as path_effects
 from wordcloud import WordCloud
 import streamlit as st
 
+
 if 'app_options' not in st.session_state:
     st.session_state['app_options'] = {}
 if 'app_id' not in st.session_state:
@@ -1410,7 +1411,6 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             le = st.session_state["le"]
             st.dataframe(df_evaluation.style.format(precision=6),use_container_width=True, width=50)  # Formats numbers to 6 decimal places
 
-
             import matplotlib.patheffects as path_effects
 
             # Confusion matrix
@@ -1463,6 +1463,28 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             # Create two columns
             st.pyplot(fig)
 
+            # Generate confusion matrix as DataFrame
+            cm = confusion_matrix(y_test, y_pred_test_lr)
+            cm_df = pd.DataFrame(cm, index=le.classes_, columns=le.classes_)
+            
+            # Save evaluation metrics and confusion matrix to Excel
+            output = io.BytesIO()
+            with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+                df_eval_metrics.to_excel(writer, index=True, sheet_name='Evaluation Metrics')
+                cm_df.to_excel(writer, index=True, sheet_name='Confusion Matrix')
+                writer.save()
+            
+            # Move to the beginning of the stream
+            output.seek(0)
+            
+            # Create a download button in Streamlit
+            st.download_button(
+                label="📥 Download Evaluation Metrics (.xlsx)",
+                data=output,
+                file_name='model_evaluation.xlsx',
+                mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
+        
             st.markdown(
                 """
                 <div class="transparent-container">
