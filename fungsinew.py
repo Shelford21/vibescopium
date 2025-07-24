@@ -417,7 +417,7 @@ if st.session_state["current_page"] == "Input App ID":
     
         # Show the selectbox
         stemming_choice = st.selectbox(
-            "Do you want to apply stemming to the text?",
+            "Do you want to apply stemming to the text? (Stemming reduces words to their root form, e.g., 'running', 'ran', and 'runs' become 'run')",
             options=["No", "Yes"],
             index=0,
         )
