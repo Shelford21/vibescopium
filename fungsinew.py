@@ -1634,23 +1634,7 @@ if st.session_state["current_page"] == "🩻 Evaluation":
             
             # Display the explanation
             st.markdown(summary_text)
-            
-            # Prepare Excel download
-            excel_buffer = BytesIO()
-            summary_df = pd.DataFrame({
-                'Sentiment': ['Positive', 'Negative'],
-                'Count': [positive, negative]
-            })
-            summary_df.to_excel(excel_buffer, index=False, sheet_name='Sentiment Summary')
-            excel_buffer.seek(0)
-            
-            # Download button
-            st.download_button(
-                label="📥 Download Sentiment Summary (Excel)",
-                data=excel_buffer,
-                file_name="sentiment_summary.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
+
 
             st.markdown(
                 """
