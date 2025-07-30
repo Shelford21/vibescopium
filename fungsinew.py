@@ -1608,7 +1608,49 @@ if st.session_state["current_page"] == "🩻 Evaluation":
                 #ax.grid(color="#000000", linestyle="--", linewidth=1, alpha=0.5)
 
             st.pyplot(fig)
-            st.write(sentiment_counts)
+            #st.write(sentiment_counts)
+        # Get values safely (default to 0 if not present)
+            positive = sentiment_counts.get('positive', 0)
+            negative = sentiment_counts.get('negative', 0)
+            
+            # Interpret the result
+            if positive > negative:
+                summary_text = (
+                    f"🔷 The reviews are mostly **positive**, with {positive} positive reviews "
+                    f"compared to {negative} negative ones. This indicates that most users are satisfied with the app "
+                    f"and likely had a good experience using it."
+                )
+            elif negative > positive:
+                summary_text = (
+                    f"🔺 The reviews are mostly **negative**, with {negative} negative reviews "
+                    f"compared to {positive} positive ones. This suggests that many users are unhappy with the app, "
+                    f"possibly due to bugs, poor performance, or unmet expectations."
+                )
+            else:
+                summary_text = (
+                    f"⚖️ The number of **positive** and **negative** reviews is equal, each with {positive} reviews. "
+                    f"This means user opinions are split, with no clear dominant sentiment."
+                )
+            
+            # Display the explanation
+            st.markdown(summary_text)
+            
+            # Prepare Excel download
+            excel_buffer = BytesIO()
+            summary_df = pd.DataFrame({
+                'Sentiment': ['Positive', 'Negative'],
+                'Count': [positive, negative]
+            })
+            summary_df.to_excel(excel_buffer, index=False, sheet_name='Sentiment Summary')
+            excel_buffer.seek(0)
+            
+            # Download button
+            st.download_button(
+                label="📥 Download Sentiment Summary (Excel)",
+                data=excel_buffer,
+                file_name="sentiment_summary.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
 
             st.markdown(
                 """
